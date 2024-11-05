@@ -8,7 +8,7 @@
 </script>
 
 <div class="w-full max-w-6xl">
-    <div class="w-full p-2 aspect-video pt-28 flex flex-col gap-6">
+    <div class="w-full p-2 aspect-video pt-14 sm:pt-28 flex flex-col gap-6">
         <div
             class={cn(
                 "group mx-auto rounded-md w-fit border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-zinc-200 dark:border-white/5 dark:bg-zinc-900 dark:hover:bg-zinc-800",
@@ -22,13 +22,13 @@
             </Animatedtext>
         </div>
         <div
-            class="w-full flex justify-center text-5xl text-center tracking-normal leading-normal font-semibold"
+            class="w-full flex justify-center text-xl sm:text-6xl text-center tracking-normal leading-relaxed font-semibold"
         >
             Manage your development teams and projects effortlessly with
             CombineHub.
         </div>
         <div
-            class="text-md text-zinc-400 w-full mx-auto max-w-2xl"
+            class="text-xs sm:text-md text-zinc-400 w-full mx-auto max-w-2xl"
         >
             <div class="text-center ">
                 With CombineHub, easily collaborate with your team,
@@ -37,9 +37,10 @@
                 platform.
             </div>
         </div>
-        <div class="flex gap-2 mx-auto">
-            <Button class="border-none">Get started</Button>
-            <Button variant="outline">Learn more</Button>
+        <div class="flex gap-2 mx-auto pt-2 sm:pt-6">
+            <Button class="border-none rounded-lg">Get started</Button>
+            <Button variant="outline" class="rounded-lg">Learn more</Button>
         </div>
+        <div class="w-full bg-white aspect-video rounded-xl border dark:bg-zinc-900 bg-zinc-200"></div>
     </div>
 </div>

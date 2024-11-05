@@ -5,12 +5,12 @@
 <div class="w-full flex-col justify-center sticky top-0">
     <div class="flex justify-center">
     <div
-        class="w-full max-w-7xl py-1 px-12 flex justify-between items-center backdrop-blur	"
+        class="w-full max-w-7xl py-1 px-4 sm:px-12 flex justify-between items-center backdrop-blur	"
     >
         
 
         <div
-            class="w-fit flex justify-center gap-2 h-fit rounded-lg py-1 px-1"
+            class="w-fit flex justify-center gap-2 h-fit rounded-lg py-1 sm:px-1"
         >
         <a
                 href="./"
@@ -20,18 +20,18 @@
             </a>
             <a
                 href=""
-                class="hover:bg-zinc-200 dark:hover:bg-zinc-900 flex items-center px-2 py-2 text-sm rounded-lg transition-all font-sans "
+                class="hover:bg-zinc-200 hidden sm:flex dark:hover:bg-zinc-900/60 flex items-center px-2 py-2 text-sm rounded-lg transition-all font-sans "
                 >Getting started</a
             >
 
             <a
                 href=""
-                class="hover:bg-zinc-200 dark:hover:bg-zinc-900 flex items-center px-2 py-2 text-sm rounded-lg transition-all font-sans"
+                class="hover:bg-zinc-200 hidden sm:flex  dark:hover:bg-zinc-900/60 flex items-center px-2 py-2 text-sm rounded-lg transition-all font-sans"
                 >Functions</a
             >
             <a
                 href=""
-                class="hover:bg-zinc-200 dark:hover:bg-zinc-900 flex items-center px-2 py-2 text-sm rounded-lg transition-all font-sans"
+                class="hover:bg-zinc-200 hidden sm:flex  dark:hover:bg-zinc-900/60 flex items-center px-2 py-2 text-sm rounded-lg transition-all font-sans"
                 >Documentation</a
             >
         </div>
@@ -41,7 +41,7 @@
         >
         <a
         href=""
-        class="hover:bg-zinc-200 dark:hover:bg-zinc-800 flex items-center px-4 py-2 text-sm rounded-lg transition-all font-sans font-medium"
+        class="dark:bg-white dark:text-black dark:hover:bg-zinc-200 flex items-center px-3 py-1.5 text-sm rounded-lg transition-all font-sans font-medium"
         >
         
         Login</a
