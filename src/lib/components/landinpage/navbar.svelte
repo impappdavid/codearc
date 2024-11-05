@@ -1,7 +1,5 @@
 <script>
     import { Link } from "lucide-svelte";
-    import Modetoggle from "./modetoggle.svelte";
-    import Button from "./ui/button/button.svelte";
 </script>
 
 <div class="w-full flex-col justify-center sticky top-0">
