@@ -14,7 +14,7 @@
 
 <div class="w-full h-screen flex justify-center items-center">
     <div
-        class="w-full max-w-sm h-fit py-6 bg-zinc-900/50 px-6 rounded-xl backdrop-filter backdrop-blur-lg border flex-col gap-4"
+        class="w-full sm:max-w-sm h-screen sm:h-fit py-6 bg-zinc-900/50 px-6 sm:rounded-xl backdrop-filter backdrop-blur-lg sm:border flex-col gap-4"
     >
         <div class="w-full flex flex-col gap-4 items-center">
             <div
