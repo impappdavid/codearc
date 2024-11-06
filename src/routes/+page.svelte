@@ -7,7 +7,7 @@
     import { Link } from "lucide-svelte";
 </script>
 
-<div class="w-full">
+<div class="w-full px-2 sm:px-0">
     <Navbar></Navbar>
 
     <section class="w-full flex justify-center pt-2">
