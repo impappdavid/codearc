@@ -37,14 +37,21 @@
         </div>
 
         <div
-            class="w-full max-w-[100px] py-2 px-1 flex justify-end items-center gap-1"
+            class="w-full max-w-[200px] py-2 px-1 flex justify-end items-center gap-2"
         >
         <a
-        href=""
-        class="dark:bg-white dark:text-black dark:hover:bg-zinc-200 flex items-center px-3 py-1.5 text-sm rounded-lg transition-all font-sans font-medium"
+        href="/login"
+        class=" dark:text-white dark:hover:bg-zinc-800 flex items-center px-3 py-1.5 text-sm rounded-md transition-all font-sans font-medium"
         >
         
         Login</a
+    >
+    <a
+        href=""
+        class="dark:bg-white dark:text-black dark:hover:bg-zinc-200 flex items-center px-3 py-1.5 text-sm rounded-md transition-all font-sans font-medium"
+        >
+        
+        Create Account</a
     >
     
         </div>

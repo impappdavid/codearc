@@ -18,28 +18,28 @@
                 class=" inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-zinc-600 hover:duration-600 hover:dark:text-zinc-400 flex gap-1 text-sm"
             >
                 <Link class="w-4 h-4" />
-                CombineHub v1.0
+                Collabug v1.0
             </Animatedtext>
         </div>
         <div
             class="w-full flex justify-center text-xl sm:text-6xl text-center tracking-normal leading-relaxed font-semibold"
         >
             Manage your development teams and projects effortlessly with
-            CombineHub.
+            Collabug.
         </div>
         <div
-            class="text-xs sm:text-md text-zinc-400 w-full mx-auto max-w-2xl"
+            class="text-sm sm:text-md text-zinc-400 w-full mx-auto max-w-2xl"
         >
             <div class="text-center ">
-                With CombineHub, easily collaborate with your team,
+                With Collabug, easily collaborate with your team,
                 track project progress in real-time, and ensure timely
                 delivery of results, all from a single, intuitive
                 platform.
             </div>
         </div>
         <div class="flex gap-2 mx-auto pt-2 sm:pt-6">
-            <Button class="border-none rounded-lg">Get started</Button>
-            <Button variant="outline" class="rounded-lg">Learn more</Button>
+            <Button class="border-none rounded-lg px-6">Get started</Button>
+            <Button variant="outline" class="rounded-lg px-6">Learn more</Button>
         </div>
         <div class="w-full bg-white aspect-video rounded-xl border dark:bg-zinc-900 bg-zinc-200"></div>
     </div>
