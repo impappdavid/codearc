@@ -13,10 +13,10 @@ importers:
         version: 0.4.1(svelte@5.1.9)
     devDependencies:
       '@sveltejs/adapter-auto':
-        specifier: ^3.0.0
+        specifier: ^3.3.1
         version: 3.3.1(@sveltejs/kit@2.7.5(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.9)(vite@5.4.10))(svelte@5.1.9)(vite@5.4.10))
       '@sveltejs/kit':
-        specifier: ^2.0.0
+        specifier: ^2.7.5
         version: 2.7.5(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.9)(vite@5.4.10))(svelte@5.1.9)(vite@5.4.10)
       '@sveltejs/vite-plugin-svelte':
         specifier: ^4.0.0
@@ -49,10 +49,10 @@ importers:
         specifier: ^0.454.0
         version: 0.454.0(svelte@5.1.9)
       svelte:
-        specifier: ^5.0.0
+        specifier: ^5.1.9
         version: 5.1.9
       svelte-check:
-        specifier: ^4.0.0
+        specifier: ^4.0.5
         version: 4.0.5(svelte@5.1.9)(typescript@5.6.3)
       sveltekit-superforms:
         specifier: ^2.20.0
@@ -64,16 +64,16 @@ importers:
         specifier: ^0.2.1
         version: 0.2.1(tailwindcss@3.4.14)
       tailwindcss:
-        specifier: ^3.4.9
+        specifier: ^3.4.14
         version: 3.4.14
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.14)
       typescript:
-        specifier: ^5.0.0
+        specifier: ^5.6.3
         version: 5.6.3
       vite:
-        specifier: ^5.0.3
+        specifier: ^5.4.10
         version: 5.4.10
       zod:
         specifier: ^3.23.8
