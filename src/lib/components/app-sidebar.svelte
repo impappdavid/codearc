@@ -8,16 +8,17 @@
 	import GalleryVerticalEnd from "lucide-svelte/icons/gallery-vertical-end";
 	import Map from "lucide-svelte/icons/map";
 	import Settings2 from "lucide-svelte/icons/settings-2";
-	import SquareTerminal from "lucide-svelte/icons/square-terminal";
-
+	import { House ,Users, Info,ListTodo,Database,ShieldCheck,Files,Settings,Library } from "lucide-svelte";
+	
+	
 	// This is sample data.
 	const data = {
 		user: {
-			name: "shadcn",
-			email: "m@example.com",
+			name: "Collabug",
+			email: "Creator",
 			avatar: "",
 		},
-		teams: [
+		teamprojects: [
 			{
 				name: "Acme Inc",
 				logo: GalleryVerticalEnd,
@@ -34,108 +35,61 @@
 				plan: "Free",
 			},
 		],
+		
 		navMain: [
 			{
-				title: "Playground",
+				title: "Home",
 				url: "#",
-				icon: SquareTerminal,
+				icon: House,
 				isActive: true,
-				items: [
-					{
-						title: "History",
-						url: "#",
-					},
-					{
-						title: "Starred",
-						url: "#",
-					},
-					{
-						title: "Settings",
-						url: "#",
-					},
-				],
+				
 			},
-			{
-				title: "Models",
-				url: "#",
-				icon: Bot,
-				items: [
-					{
-						title: "Genesis",
-						url: "#",
-					},
-					{
-						title: "Explorer",
-						url: "#",
-					},
-					{
-						title: "Quantum",
-						url: "#",
-					},
-				],
-			},
-			{
-				title: "Documentation",
-				url: "#",
-				icon: BookOpen,
-				items: [
-					{
-						title: "Introduction",
-						url: "#",
-					},
-					{
-						title: "Get Started",
-						url: "#",
-					},
-					{
-						title: "Tutorials",
-						url: "#",
-					},
-					{
-						title: "Changelog",
-						url: "#",
-					},
-				],
-			},
-			{
-				title: "Settings",
-				url: "#",
-				icon: Settings2,
-				items: [
-					{
-						title: "General",
-						url: "#",
-					},
-					{
-						title: "Team",
-						url: "#",
-					},
-					{
-						title: "Billing",
-						url: "#",
-					},
-					{
-						title: "Limits",
-						url: "#",
-					},
-				],
-			},
+			
+			
 		],
+		navteam:[
+			{
+				name: "Team",
+				url: "#",
+				icon: Info,
+			},
+			{
+				name: "Team members",
+				url: "#",
+				icon: Users,
+			},
+			
+			],
 		projects: [
 			{
-				name: "Design Engineering",
+				name: "Todo",
 				url: "#",
-				icon: Frame,
+				icon: ListTodo,
 			},
 			{
-				name: "Sales & Marketing",
+				name: "Database planner",
 				url: "#",
-				icon: ChartPie,
+				icon: Database,
 			},
 			{
-				name: "Travel",
+				name: "Code quality checker",
 				url: "#",
-				icon: Map,
+				icon: ShieldCheck,
+			},
+			{
+				name: "Documentation generator",
+				url: "#",
+				icon: Files,
+			},
+			{
+				name: "Api test",
+				url: "#",
+				icon: Settings,
+			},
+			{
+				name: "Templates",
+				url: "#",
+				icon: Library,
 			},
 		],
 	};
@@ -148,6 +102,7 @@
 	import TeamSwitcher from "$lib/components/team-switcher.svelte";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import type { ComponentProps } from "svelte";
+    import NavTeam from "./nav-team.svelte";
 
 	let {
 		ref = $bindable(null),
@@ -158,10 +113,11 @@
 
 <Sidebar.Root bind:ref {collapsible} {...restProps}>
 	<Sidebar.Header>
-		<TeamSwitcher teams={data.teams} />
+		<TeamSwitcher teams={data.teamprojects} />
 	</Sidebar.Header>
 	<Sidebar.Content>
 		<NavMain items={data.navMain} />
+		<NavTeam navteam={data.navteam}/>
 		<NavProjects projects={data.projects} />
 	</Sidebar.Content>
 	<Sidebar.Footer>

@@ -21,7 +21,7 @@
 					<Sidebar.MenuButton
 						{...props}
 						size="lg"
-						class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+						class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground rounded-xl border transition-all hover:bg-zinc-950/20"
 					>
 						<div
 							class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
@@ -39,29 +39,28 @@
 				{/snippet}
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Content
-				class="w-[--bits-dropdown-menu-anchor-width] min-w-56 rounded-lg"
+				class="w-[--bits-dropdown-menu-anchor-width] min-w-56 rounded-xl bg-zinc-950/20 backdrop-blur-lg"
 				align="start"
-				side={sidebar.isMobile ? "bottom" : "right"}
+				side={sidebar.isMobile ? "bottom" : "bottom"}
 				sideOffset={4}
 			>
-				<DropdownMenu.Label class="text-muted-foreground text-xs">Teams</DropdownMenu.Label>
+				<DropdownMenu.Label class="text-muted-foreground text-xs">Team projects</DropdownMenu.Label>
 				{#each teams as team, index (team.name)}
-					<DropdownMenu.Item onSelect={() => (activeTeam = team)} class="gap-2 p-2">
+					<DropdownMenu.Item onSelect={() => (activeTeam = team)} class="gap-2 p-2 hover:cursor-pointer rounded-lg">
 						<div class="flex size-6 items-center justify-center rounded-sm border">
 							<team.logo class="size-4 shrink-0" />
 						</div>
 						{team.name}
-						<DropdownMenu.Shortcut>⌘{index + 1}</DropdownMenu.Shortcut>
 					</DropdownMenu.Item>
 				{/each}
 				<DropdownMenu.Separator />
-				<DropdownMenu.Item class="gap-2 p-2">
+				<DropdownMenu.Item class="gap-2 p-2 hover:cursor-pointer rounded-lg">
 					<div
-						class="bg-background flex size-6 items-center justify-center rounded-md border"
+						class="bg-zinc-950/20 flex size-6 items-center justify-center rounded-md border"
 					>
 						<Plus class="size-4" />
 					</div>
-					<div class="text-muted-foreground font-medium">Add team</div>
+					<div class="text-muted-foreground font-medium">Add project</div>
 				</DropdownMenu.Item>
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
