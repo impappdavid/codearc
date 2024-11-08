@@ -14,7 +14,12 @@
 	import Toolbar from "$lib/components/templates/toolbar.svelte";
 	import File from "$lib/components/templates/file.svelte";
 	import * as Table from "$lib/components/ui/table/index.js";
-    import Checkbox from "$lib/components/ui/checkbox/checkbox.svelte";
+	import Checkbox from "$lib/components/ui/checkbox/checkbox.svelte";
+	import { onMount } from "svelte";
+
+	let allSelected = false;
+	let searchQuery = ''; // Declare the variable in the parent component
+	
 </script>
 
 <Sidebar.Provider>
@@ -134,21 +139,21 @@
 			<div
 				class="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min p-2"
 			>
-				<Toolbar />
-				<Table.Root>
+				<Toolbar bind:value={searchQuery}/>
+				<Table.Root class="mt-2">
 					<Table.Caption
 						>A list of your recent templates.</Table.Caption
 					>
 					<Table.Header>
 						<Table.Row>
-							<Table.Head >
-								<Checkbox/>
+							<Table.Head>
+								<Checkbox bind:checked={allSelected} />
 							</Table.Head>
 							<Table.Head>File name</Table.Head>
 							<Table.Head>Created by</Table.Head>
 							<Table.Head>Edited by</Table.Head>
 							<Table.Head>Row</Table.Head>
-							<Table.Head>Statud</Table.Head>
+							<Table.Head>Status</Table.Head>
 							<Table.Head>Tag</Table.Head>
 							<Table.Head>Last modified</Table.Head>
 							<Table.Head>Created at</Table.Head>
@@ -156,7 +161,7 @@
 						</Table.Row>
 					</Table.Header>
 					<Table.Body>
-						<File />
+						<File isSelected={allSelected} searchdata={searchQuery}/>
 					</Table.Body>
 				</Table.Root>
 			</div>

@@ -3,6 +3,12 @@
     import Button from "../ui/button/button.svelte";
     import Separator from "../ui/separator/separator.svelte";
     import Input from "../ui/input/input.svelte";
+
+    
+
+    export let value = ''; // Declare the bindable variable
+   
+    
 </script>
 
 <div
@@ -33,8 +39,8 @@
     </div>
     <div class="flex gap-2">
         
-        <Input class="text-xs p-0 h-7 px-2 rounded-lg md:w-96 bg-zinc-800/70" placeholder="Search"/>
-            
+        <Input class="text-xs p-0 h-7 px-2 rounded-lg md:w-96 bg-zinc-800/70" placeholder="Search by file name"   bind:value/>
+        
     </div>
     <div class="flex gap-2 sm:w-full max-w-[300px] justify-end">
         
