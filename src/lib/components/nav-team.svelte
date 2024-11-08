@@ -24,7 +24,7 @@
 			<Collapsible.Root class="group/collapsible">
 				{#snippet child({ props })}
 					<Sidebar.MenuItem {...props}>
-						<Collapsible.Trigger class="rounded-lg transition-all">
+						<Collapsible.Trigger class="rounded-lg transition-all ">
 							{#snippet child({ props })}
 								<Sidebar.MenuButton {...props}>
 									{#snippet tooltipContent()}

@@ -37,7 +37,7 @@
 				{/snippet}
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Content
-				class="w-[--bits-dropdown-menu-anchor-width] min-w-56 rounded-xl bg-zinc-950/20 backdrop-blur-lg"
+				class="w-[--bits-dropdown-menu-anchor-width] min-w-56 rounded-xl bg-zinc-200/20 dark:bg-zinc-950/20 backdrop-blur-lg"
 				side={sidebar.isMobile ? "top" : "top"}
 				align="end"
 				sideOffset={4}
@@ -50,7 +50,7 @@
 						</Avatar.Root>
 						<div class="grid flex-1 text-left text-sm leading-tight">
 							<span class="truncate font-semibold">{user.name}</span>
-							<span class="truncate text-xs text-zinc-400">{user.email}</span>
+							<span class="truncate text-xs text-zinc-600 dark:text-zinc-400">{user.email}</span>
 						</div>
 					</div>
 				</DropdownMenu.Label>

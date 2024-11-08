@@ -39,7 +39,7 @@
 				{/snippet}
 			</DropdownMenu.Trigger>
 			<DropdownMenu.Content
-				class="w-[--bits-dropdown-menu-anchor-width] min-w-56 rounded-xl bg-zinc-950/20 backdrop-blur-lg"
+				class="w-[--bits-dropdown-menu-anchor-width] min-w-56 rounded-xl bg-zinc-200/20 dark:bg-zinc-950/20 backdrop-blur-lg"
 				align="start"
 				side={sidebar.isMobile ? "bottom" : "bottom"}
 				sideOffset={4}

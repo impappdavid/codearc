@@ -5,7 +5,7 @@
 <div class="w-full flex-col justify-center sticky top-5">
     <div class="flex justify-center">
         <div
-            class="w-full max-w-5xl px-2 sm:px-4 flex justify-between items-center backdrop-blur-xl dark:bg-zinc-900/50 rounded-xl"
+            class="w-full max-w-5xl px-2 sm:px-4 flex justify-between items-center backdrop-blur-xl bg-zinc-200/50 dark:bg-zinc-900/50 rounded-xl"
         >
             <div class="w-full max-w-[200px]">
                 <a
@@ -50,7 +50,7 @@
                 >
                 <a
                     href="/signup"
-                    class="dark:bg-white hidden sm:flex dark:text-black dark:hover:bg-zinc-200 items-center px-3 py-1.5 text-sm rounded-md transition-all font-sans"
+                    class="bg-zinc-950 dark:bg-white hidden sm:flex text-white dark:text-black dark:hover:bg-zinc-200 items-center px-3 py-1.5 text-sm rounded-md transition-all font-sans"
                 >
                     Get started</a
                 >

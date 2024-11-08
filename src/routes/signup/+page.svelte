@@ -14,7 +14,7 @@
 
 <div class="w-full h-screen flex justify-center items-center">
     <div
-        class="w-full sm:max-w-sm h-screen sm:h-fit py-6 bg-zinc-900/50 px-6 sm:rounded-xl backdrop-filter backdrop-blur-lg sm:border flex-col gap-4"
+        class="w-full sm:max-w-sm h-screen sm:h-fit py-6 bg-zinc-200/50 dark:bg-zinc-900/50 px-6 sm:rounded-xl backdrop-filter backdrop-blur-lg sm:border flex-col gap-4"
     >
         <div class="w-full flex flex-col gap-4 items-center">
             <div
@@ -44,7 +44,7 @@
                 <div class="flex flex-col gap-4">
                     <Button
                         variant="outline"
-                        class="flex gap-1 bg-zinc-900/50 hover:bg-zinc-900/70 rounded-lg"
+                        class="flex gap-1 bg-zinc-200 dark:bg-zinc-900/50 hover:bg-zinc-300 dark:hover:bg-zinc-900/70 rounded-lg"
                     >
                         <Github />
                         Continue with Github

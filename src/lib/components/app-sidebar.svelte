@@ -58,6 +58,11 @@
 				url: "#",
 				icon: Users,
 			},
+			{
+				name: "Templates",
+				url: "/team/templates",
+				icon: Library,
+			},
 			
 			],
 		projects: [
@@ -86,11 +91,7 @@
 				url: "#",
 				icon: Settings,
 			},
-			{
-				name: "Templates",
-				url: "#",
-				icon: Library,
-			},
+			
 		],
 	};
 </script>
