@@ -6,9 +6,9 @@
 </script>
 
 <div
-    class="w-full dark:bg-zinc-950/20 py-1 px-1 rounded-xl border flex justify-between"
+    class="w-full dark:bg-zinc-950/20 py-1.5 px-1.5 rounded-xl border flex justify-between"
 >
-    <div class="flex gap-2">
+    <div class="flex gap-2 sm:w-full max-w-[300px]">
         <Button
             class="p-0 h-7 w-7 dark:bg-zinc-800 dark:hover:bg-zinc-800/70 rounded-lg"
         >
@@ -33,10 +33,10 @@
     </div>
     <div class="flex gap-2">
         
-        <Input class="text-xs p-0 h-7 px-2 rounded-lg w-96 bg-zinc-800/70" placeholder="Search"/>
+        <Input class="text-xs p-0 h-7 px-2 rounded-lg md:w-96 bg-zinc-800/70" placeholder="Search"/>
             
     </div>
-    <div class="flex gap-2">
+    <div class="flex gap-2 sm:w-full max-w-[300px] justify-end">
         
         <Button
             class="p-0 h-7 w-7 dark:bg-red-400/20 dark:hover:bg-red-400/10 rounded-lg"
