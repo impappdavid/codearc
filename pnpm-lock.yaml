@@ -11,6 +11,9 @@ importers:
       mode-watcher:
         specifier: ^0.4.1
         version: 0.4.1(svelte@5.1.9)
+      monaco-editor:
+        specifier: ^0.52.0
+        version: 0.52.0
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.3.1
@@ -883,6 +886,9 @@ packages:
     resolution: {integrity: sha512-bNC+1NXmwEFZtziCdZSgP7HFQTpqJPcQn9GwwJQGSf6SBF3neEPYV1uRwkYuAQwbsvsXIYtzaqgedDzJ7D1mhg==}
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0-next.1
+
+  monaco-editor@0.52.0:
+    resolution: {integrity: sha512-OeWhNpABLCeTqubfqLMXGsqf6OmPU6pHM85kF3dhy6kq5hnhuVS1p3VrEW/XhWHc71P2tHyS5JFySD8mgs1crw==}
 
   mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
@@ -2017,6 +2023,8 @@ snapshots:
   mode-watcher@0.4.1(svelte@5.1.9):
     dependencies:
       svelte: 5.1.9
+
+  monaco-editor@0.52.0: {}
 
   mri@1.2.0: {}
 

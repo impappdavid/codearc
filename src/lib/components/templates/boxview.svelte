@@ -1,11 +1,12 @@
 <script>
+    import { Trash2 } from "lucide-svelte";
     import { Button } from "../ui/button";
     import Checkbox from "../ui/checkbox/checkbox.svelte";
     import Separator from "../ui/separator/separator.svelte";
     import * as Table from "$lib/components/ui/table";
     import * as ContextMenu from "$lib/components/ui/context-menu";
+    import ContextMenuSeparator from "../ui/context-menu/context-menu-separator.svelte";
     import { onDestroy, onMount } from "svelte";
-    import { Trash2 } from "lucide-svelte";
     export let isSelected;
 
     let rows = [
@@ -115,7 +116,6 @@
     $: filteredRows = rows.filter((row) =>
         row.file.name.toLowerCase().includes(searchdata.toLowerCase()),
     );
-
     let selectedIds = []; // Store selected row IDs
 
     let lastSelectedId = null; // Track the last selected row for Shift selection
@@ -188,138 +188,125 @@
   });
 </script>
 
-{#if searchdata.length > 0}
-    {#each filteredRows as row}
-    <ContextMenu.Root>
-        <ContextMenu.Trigger>
-            <div
-            class={`selectable-item flex items-center border-t border-zinc-400 select-none ${
-                selectedIds.includes(row.id)
-                    ? "bg-zinc-200 dark:bg-zinc-800 select-none"
-                    : "bg-zinc-100 dark:bg-zinc-900 select-none"
-            }`}
-                class:selected={selectedIds.includes(row.id)}
-                ondblclick={() => (location.href = `/${row.file.url}`)}
-                onclick={(event) => toggleColor(row.id, event)}
-            >
-                <div class="px-2 flex-1 flex items-center gap-1 text-xs">
-                    <!-- File Icon and Name -->
+<div class="w-full flex gap-2 flex-wrap">
+    {#if searchdata.length > 0}
+        {#each filteredRows as row}
+        <ContextMenu.Root>
+            <ContextMenu.Trigger>
+                <div
+                    key={row.id}
+                    class={`selectable-item text-xs flex flex-col gap-1 items-center w-fit px-2 py-2 rounded-xl select-none ${
+                        selectedIds.includes(row.id)
+                            ? "bg-zinc-200 dark:bg-zinc-800 rounded-lg"
+                            : "bg-zinc-100 dark:bg-zinc-900 rounded-lg"
+                    }`}
+                    ondblclick={() => (location.href = `/${row.file.url}`)}
+                    onclick={(event) => toggleColor(row.id, event)}
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
+                        width="50"
+                        height="50"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        class={`w-4 h-4 icon icon-tabler icon-tabler-brand-${row.file.icon} ${row.file.iconColor}`}
+                        class={`icon icon-tabler icons-tabler-outline icon-tabler-brand-${row.file.icon} ${row.file.iconColor}`}
                     >
                         {@html row.file.iconpaths}
                     </svg>
+
                     {row.file.name}
                 </div>
-                <div class="p-2 flex-1 text-xs">{row.author}</div>
-                <div class="p-2 flex-1 text-xs">{row.reviewer}</div>
-                <div class="p-2 flex-1 text-xs">{row.lines}</div>
-                <div class="p-2 flex-1 text-xs">{row.createdDate}</div>
-                <div class="p-2 flex-1 text-xs text-right">
-                    {row.updatedDate}
-                </div>
-            </div>
-        </ContextMenu.Trigger>
+            </ContextMenu.Trigger>
 
-        <ContextMenu.Content class="dark:bg-zinc-900 rounded-xl">
-            <ContextMenu.Item
-                class="rounded-lg"
-                onclick={() => (location.href = `/${row.file.url}`)}
+            <ContextMenu.Content class="dark:bg-zinc-900 rounded-xl">
+                
+                {#if selectedIds.length >1}
+                <ContextMenu.Item
+                class="rounded-lg text-red-500 hover:text-red-400"
+                >Remove all</ContextMenu.Item
             >
-                Open
-            </ContextMenu.Item>
-            <ContextMenu.Item class="rounded-lg">Rename</ContextMenu.Item>
-            <ContextMenu.Separator />
-            {#if selectedIds.length > 1}
+                {:else}
                 <ContextMenu.Item
-                    class="rounded-lg text-red-500 hover:text-red-400"
+                    class="rounded-lg"
+                    onclick={() => (location.href = `/${row.file.url}`)}
+                    >Open</ContextMenu.Item
                 >
-                    Remove all
-                </ContextMenu.Item>
-            {:else}
+                <ContextMenu.Item class="rounded-lg"
+                    >Rename</ContextMenu.Item
+                >
+                <ContextMenuSeparator />
                 <ContextMenu.Item
-                    class="rounded-lg text-red-500 hover:text-red-400"
-                >
-                    Remove
-                </ContextMenu.Item>
-            {/if}
-        </ContextMenu.Content>
-    </ContextMenu.Root>
-    {/each}
-{:else}
-    {#each rows as row (row.id)}
-        <ContextMenu.Root>
-            <ContextMenu.Trigger>
-                <div
-                class={`selectable-item flex items-center border-t border-zinc-700 ${
-                    selectedIds.includes(row.id)
-                        ? "bg-zinc-200 dark:bg-zinc-800 select-none"
-                        : "bg-zinc-100 dark:bg-zinc-900 select-none"
-                }`}
-                    class:selected={selectedIds.includes(row.id)}
-                    ondblclick={() => (location.href = `/${row.file.url}`)}
-                    onclick={(event) => toggleColor(row.id, event)}
-                >
-                    <div class="px-2 flex-1 flex items-center gap-1 text-xs">
-                        <!-- File Icon and Name -->
+                class="rounded-lg text-red-500 hover:text-red-400"
+                >Remove</ContextMenu.Item
+            >
+                {/if}
+                
+            </ContextMenu.Content>
+        </ContextMenu.Root>
+        {/each}
+    {:else}
+        {#each rows as row}
+            <ContextMenu.Root>
+                <ContextMenu.Trigger>
+                    <div
+                        key={row.id}
+                        class={`selectable-item text-xs flex flex-col gap-1 items-center w-fit px-2 py-2 rounded-xl select-none ${
+                            selectedIds.includes(row.id)
+                                ? "bg-zinc-200 dark:bg-zinc-800 rounded-lg"
+                                : "bg-zinc-100 dark:bg-zinc-900 rounded-lg"
+                        }`}
+                        ondblclick={() => (location.href = `/${row.file.url}`)}
+                        onclick={(event) => toggleColor(row.id, event)}
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
+                            width="50"
+                            height="50"
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
                             stroke-width="2"
                             stroke-linecap="round"
                             stroke-linejoin="round"
-                            class={`w-4 h-4 icon icon-tabler icon-tabler-brand-${row.file.icon} ${row.file.iconColor}`}
+                            class={`icon icon-tabler icons-tabler-outline icon-tabler-brand-${row.file.icon} ${row.file.iconColor}`}
                         >
                             {@html row.file.iconpaths}
                         </svg>
+
                         {row.file.name}
                     </div>
-                    <div class="p-2 hidden md:flex flex-1 text-xs">{row.author}</div>
-                    <div class="p-2 hidden xl:flex flex-1 text-xs">{row.reviewer}</div>
-                    <div class="p-2 hidden md:flex flex-1 text-xs">{row.lines}</div>
-                    <div class="p-2 hidden xl:flex flex-1 text-xs">{row.createdDate}</div>
-                    <div class="p-2 flex-1 text-xs text-right">
-                        {row.updatedDate}
-                    </div>
-                </div>
-            </ContextMenu.Trigger>
+                </ContextMenu.Trigger>
 
-            <ContextMenu.Content class="dark:bg-zinc-900 rounded-xl">
-                <ContextMenu.Item
-                    class="rounded-lg text-xs"
-                    onclick={() => (location.href = `/${row.file.url}`)}
+                <ContextMenu.Content class="dark:bg-zinc-900 rounded-xl">
+                    
+                    {#if selectedIds.length >1}
+                    
+                    <ContextMenu.Item
+                    class="rounded-lg text-red-500 hover:text-red-400"
+                    >Remove</ContextMenu.Item
                 >
-                    Open
-                </ContextMenu.Item>
-                <ContextMenu.Item class="rounded-lg text-xs">Rename</ContextMenu.Item>
-                <ContextMenu.Separator />
-                {#if selectedIds.length > 1}
+                    {:else}
                     <ContextMenu.Item
-                        class="rounded-lg text-red-500 hover:text-red-400 text-xs"
+                        class="rounded-lg"
+                        onclick={() => (location.href = `/${row.file.url}`)}
+                        >Open</ContextMenu.Item
                     >
-                        Remove all
-                    </ContextMenu.Item>
-                {:else}
+                    <ContextMenu.Item class="rounded-lg"
+                        >Rename</ContextMenu.Item
+                    >
+                    <ContextMenuSeparator />
                     <ContextMenu.Item
-                        class="rounded-lg text-red-500 hover:text-red-400 text-xs"
-                    >
-                        Remove
-                    </ContextMenu.Item>
-                {/if}
-            </ContextMenu.Content>
-        </ContextMenu.Root>
-    {/each}
-{/if}
+                    class="rounded-lg text-red-500 hover:text-red-400"
+                    >Remove</ContextMenu.Item
+                >
+                    {/if}
+                    
+                </ContextMenu.Content>
+            </ContextMenu.Root>
+        {/each}
+    {/if}
+</div>
