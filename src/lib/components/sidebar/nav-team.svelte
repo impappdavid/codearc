@@ -23,7 +23,7 @@
 		{#each navteam as mainItem (mainItem.name)}
 			<Collapsible.Root class="group/collapsible">
 				{#snippet child({ props })}
-					<Sidebar.MenuItem {...props}>
+					<Sidebar.MenuItem {...props} onclick={() => location.href= mainItem.url}>
 						<Collapsible.Trigger class="rounded-lg transition-all ">
 							{#snippet child({ props })}
 								<Sidebar.MenuButton {...props}>

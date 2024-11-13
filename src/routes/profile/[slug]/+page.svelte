@@ -133,7 +133,7 @@
         </header>
         <div class="flex flex-col gap-6 p-4 py-4 h-full">
             <div class="bg-zinc-100 border dark:bg-muted/30 h-56 flex rounded-xl p-2"></div>
-            <div class="w-full px-8 grid grid-cols-6 gap-4">
+            <div class="w-full sm:px-8 grid lg:grid-cols-6 gap-4">
                 <div
                     class="col-span-3 flex flex-col gap-4 p-4 bg-zinc-100 border  dark:bg-muted/30 rounded-2xl"
                 >
@@ -342,7 +342,7 @@
                     <div class="w-full flex flex-col gap-2">
                         <div class="text-md font-medium">Summary</div>
                         <div class="flex">
-                            <div class="w-1/4 h-28 p-2">
+                            <div class="w-1/3 h-28 p-2">
                                 <div
                                     class="w-full h-full bg-zinc-200 dark:bg-muted/30 rounded-2xl flex flex-col gap-2 justify-center items-center"
                                 >
@@ -369,7 +369,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="w-1/4 h-28 p-2">
+                            <div class="w-1/3 h-28 p-2">
                                 <div
                                     class="w-full h-full bg-zinc-200 dark:bg-muted/30 rounded-2xl flex flex-col gap-2 justify-center items-center"
                                 >
@@ -398,7 +398,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="w-1/4 h-28 p-2">
+                            <div class="w-1/3 h-28 p-2">
                                 <div
                                     class="w-full h-full bg-zinc-200 dark:bg-muted/30 rounded-2xl flex flex-col gap-2 justify-center items-center"
                                 >
@@ -435,7 +435,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="w-1/4 h-20 p-2"></div>
                         </div>
                     </div>
 

@@ -24,24 +24,8 @@
             author: "Papp Dávid",
             reviewer: "Bognár Ádám",
             lines: 453,
-            status: {
-                label: "Error",
-                color: "bg-red-400/40",
-            },
-            category: {
-                label: "Frontend",
-                color: "dark:bg-sky-500/40",
-            },
             createdDate: "2024.10.08",
             updatedDate: "2024.10.01",
-            actions: [
-                {
-                    type: "delete",
-                    icon: "trash",
-                    iconColor: "dark:text-red-500",
-                    buttonClass: "dark:bg-red-400/20 dark:hover:bg-red-400/10",
-                },
-            ],
             isClicked: false,
         },
         {
@@ -57,24 +41,8 @@
             author: "Bognár Ádám",
             reviewer: "Bognár Ádám",
             lines: 16,
-            status: {
-                label: "Ready",
-                color: "bg-emerald-400/40",
-            },
-            category: {
-                label: "Frontend",
-                color: "dark:bg-sky-500/40",
-            },
             createdDate: "2024.07.02",
             updatedDate: "2024.05.01",
-            actions: [
-                {
-                    type: "delete",
-                    icon: "trash",
-                    iconColor: "dark:text-red-500",
-                    buttonClass: "dark:bg-red-400/20 dark:hover:bg-red-400/10",
-                },
-            ],
             isClicked: false,
         },
         {
@@ -90,24 +58,8 @@
             author: "Papp Dávid",
             reviewer: "Papp Dávid",
             lines: 160,
-            status: {
-                label: "Ready",
-                color: "bg-emerald-400/40",
-            },
-            category: {
-                label: "Backend",
-                color: "dark:bg-green-500/40",
-            },
             createdDate: "2024.07.02",
             updatedDate: "2024.05.01",
-            actions: [
-                {
-                    type: "delete",
-                    icon: "trash",
-                    iconColor: "dark:text-red-500",
-                    buttonClass: "dark:bg-red-400/20 dark:hover:bg-red-400/10",
-                },
-            ],
             isClicked: false,
         },
     ];

@@ -27,7 +27,7 @@
 		{#each items as mainItem (mainItem.title)}
 			<Collapsible.Root open={mainItem.isActive} class="group/collapsible">
 				{#snippet child({ props })}
-					<Sidebar.MenuItem {...props}>
+					<Sidebar.MenuItem {...props} onclick={() => location.href= mainItem.url}>
 						<Collapsible.Trigger class="rounded-lg transition-all">
 							{#snippet child({ props })}
 								<Sidebar.MenuButton {...props}>

@@ -91,7 +91,7 @@
 								>My Account</DropdownMenu.GroupHeading
 							>
 							<DropdownMenuSeparator />
-							<DropdownMenu.Item
+							<DropdownMenu.Item onclick={() => location.href= "../profile/david"}
 								class="rounded-lg hover:cursor-pointer"
 							>
 								<User class="w-4 h-4" />

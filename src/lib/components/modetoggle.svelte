@@ -7,7 +7,7 @@
     import { buttonVariants } from "$lib/components/ui/button/index.js";
     import Button from "./ui/button/button.svelte";
   </script>
-   <div class="flex flex-col gap-2">
+   <div class="flex flex gap-2">
     <div class="flex w-full flex-col gap-1">
         <div class="text-md">
             Light mode
@@ -27,12 +27,7 @@
             <Button onclick={() => setMode("dark")}
                 class="w-36 h-24 bg-zinc-950 rounded-lg hover:bg-zinc-950/80 transition-all"
             ></Button>
-            <Button
-                class="w-36 h-24 bg-zinc-950 rounded-lg hover:bg-zinc-950/80 transition-all"
-            ></Button>
-            <Button
-                class="w-36 h-24 bg-zinc-950 rounded-lg hover:bg-zinc-950/80 transition-all"
-            ></Button>
+            
         </div>
     </div>
 

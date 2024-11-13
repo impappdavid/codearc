@@ -8,7 +8,7 @@
 	import GalleryVerticalEnd from "lucide-svelte/icons/gallery-vertical-end";
 	import Map from "lucide-svelte/icons/map";
 	import Settings2 from "lucide-svelte/icons/settings-2";
-	import { House ,Users, Info,ListTodo,Database,ShieldCheck,Files,Settings,Library } from "lucide-svelte";
+	import { House ,Users, Info,ListTodo,Database,ShieldCheck,Files,Settings,Library, Folder } from "lucide-svelte";
 	
 	
 	// This is sample data.
@@ -21,25 +21,16 @@
 		teamprojects: [
 			{
 				name: "Collabug",
-				logo: GalleryVerticalEnd,
+				logo: Folder,
 				plan: "Project manager",
 			},
-			{
-				name: "Acme Corp.",
-				logo: AudioWaveform,
-				plan: "Startup",
-			},
-			{
-				name: "Evil Corp.",
-				logo: Command,
-				plan: "Free",
-			},
+			
 		],
 		
 		navMain: [
 			{
 				title: "Home",
-				url: "#",
+				url: "../home",
 				icon: House,
 				isActive: true,
 				
@@ -48,16 +39,7 @@
 			
 		],
 		navteam:[
-			{
-				name: "Team",
-				url: "#",
-				icon: Info,
-			},
-			{
-				name: "Team members",
-				url: "#",
-				icon: Users,
-			},
+			
 			{
 				name: "Templates",
 				url: "/team/templates",
