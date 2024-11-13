@@ -14,6 +14,13 @@
     import { onMount } from "svelte";
     export let value = ""; // Declare the bindable variable
 
+    import { storable } from '../../stores/templatevies'
+    const viewPreference = storable('viewPreference', 'listview');
+
+    
+  function setView(view) {
+    viewPreference.set(view);  // This will trigger the store subscription and update localStorage
+  }
     
 </script>
 
@@ -26,14 +33,10 @@
         >
             <Plus class="w-4 h-4 text-black dark:text-white" />
         </Button>
-        <Button
-            class="p-0 h-7 w-7 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-800/70 rounded-lg"
-        >
-            <FolderPlus class="w-4 h-4 text-black dark:text-white" />
-        </Button>
         <Separator orientation="vertical" />
         <Tabs.Trigger value="listview" class="focus:ring-0 focus:ring-offset-0 outline-none">
             <Button
+            onclick={() => setView('listview')}
                 class="p-0 h-7 w-7 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-800/70 rounded-lg"
             >
                 <List class="w-4 h-4 text-black dark:text-white" />
@@ -41,6 +44,7 @@
         </Tabs.Trigger>
         <Tabs.Trigger value="boxview" class="focus:ring-0 focus:ring-offset-0 outline-none">
             <Button
+            onclick={() => setView('boxview')}
                 class="p-0 h-7 w-7 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-800/70 rounded-lg"
             >
                 <Grid2x2 class="w-4 h-4 text-black dark:text-white" />

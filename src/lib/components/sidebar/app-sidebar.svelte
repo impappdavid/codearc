@@ -20,9 +20,9 @@
 		},
 		teamprojects: [
 			{
-				name: "Acme Inc",
+				name: "Collabug",
 				logo: GalleryVerticalEnd,
-				plan: "Enterprise",
+				plan: "Project manager",
 			},
 			{
 				name: "Acme Corp.",

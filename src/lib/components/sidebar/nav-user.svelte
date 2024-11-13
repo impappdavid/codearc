@@ -30,7 +30,7 @@
 						</Avatar.Root>
 						<div class="grid flex-1 text-left text-sm leading-tight">
 							<span class="truncate font-semibold">{user.name}</span>
-							<span class="truncate text-xs">{user.email}</span>
+							<span class="truncate text-xs text-zinc-600 dark:text-zinc-400">{user.email}</span>
 						</div>
 						<ChevronsUpDown class="ml-auto size-4" />
 					</Sidebar.MenuButton>

@@ -1,4 +1,5 @@
 <script>
+
     import { Trash2 } from "lucide-svelte";
     import { Button } from "../ui/button";
     import Checkbox from "../ui/checkbox/checkbox.svelte";
@@ -7,6 +8,9 @@
     import * as ContextMenu from "$lib/components/ui/context-menu";
     import ContextMenuSeparator from "../ui/context-menu/context-menu-separator.svelte";
     import { onDestroy, onMount } from "svelte";
+    import * as Dialog from "$lib/components/ui/dialog";
+    import DialogFooter from "../ui/dialog/dialog-footer.svelte";
+
     export let isSelected;
 
     let rows = [
@@ -120,133 +124,132 @@
 
     let lastSelectedId = null; // Track the last selected row for Shift selection
 
-  // Function to toggle the clicked state
-  function toggleColor(id, event) {
-    if (event.shiftKey && lastSelectedId !== null) {
-      // If Shift is pressed, select a range of items
-      const startIndex = rows.findIndex(row => row.id === lastSelectedId);
-      const endIndex = rows.findIndex(row => row.id === id);
+    let foundRows;
+    // Function to toggle the clicked state
+    function toggleColor(id, event) {
+        if (event.shiftKey && lastSelectedId !== null) {
+            // If Shift is pressed, select a range of items
+            const startIndex = rows.findIndex(
+                (row) => row.id === lastSelectedId,
+            );
+            const endIndex = rows.findIndex((row) => row.id === id);
 
-      // Determine the range (either forward or backward)
-      const [start, end] = startIndex < endIndex ? [startIndex, endIndex] : [endIndex, startIndex];
-      
-      // Select all items within the range
-      selectedIds = rows.slice(start, end + 1).map(row => row.id);
-    } else if (event.ctrlKey) {
-      // If Ctrl is pressed, toggle the selection of the clicked row
-      if (selectedIds.includes(id)) {
-        // Deselect if already selected
-        selectedIds = selectedIds.filter(itemId => itemId !== id);
-      } else {
-        // Select the row
-        selectedIds = [...selectedIds, id];
-      }
-    } else {
-      // If neither Ctrl nor Shift is pressed, select only the clicked row and clear others
-      selectedIds = [id];
+            // Determine the range (either forward or backward)
+            const [start, end] =
+                startIndex < endIndex
+                    ? [startIndex, endIndex]
+                    : [endIndex, startIndex];
+
+            // Select all items within the range
+            selectedIds = rows.slice(start, end + 1).map((row) => row.id);
+            foundRows = rows.filter((row) => selectedIds.includes(row.id));
+        } else if (event.ctrlKey) {
+            // If Ctrl is pressed, toggle the selection of the clicked row
+            if (selectedIds.includes(id)) {
+                // Deselect if already selected
+                selectedIds = selectedIds.filter((itemId) => itemId !== id);
+                foundRows = rows.filter((row) => selectedIds.includes(row.id));
+            } else {
+                // Select the row
+                selectedIds = [...selectedIds, id];
+                foundRows = rows.filter((row) => selectedIds.includes(row.id));
+            }
+        } else {
+            // If neither Ctrl nor Shift is pressed, select only the clicked row and clear others
+            selectedIds = [id];
+            foundRows = rows.filter((row) => selectedIds.includes(row.id));
+        }
+
+        // Update last selected ID
+        lastSelectedId = id;
     }
 
-    // Update last selected ID
-    lastSelectedId = id;
-  }
-
-  // Function to handle clicks outside the items
-  function handleOutsideClick(event) {
-    if (!event.target.closest(".selectable-item")) {
-      selectedIds = []; // Reset selection if clicked outside
-      lastSelectedId = null; // Reset last selected ID
+    // Function to select all items
+    function selectAll() {
+        selectedIds = rows.map((row) => row.id); // Select all row IDs
+        foundRows = rows.filter((row) => selectedIds.includes(row.id));
     }
-  }
 
-  // Function to select all items
-  function selectAll() {
-    selectedIds = rows.map(row => row.id); // Select all row IDs
-  }
-
-  // Handle "Ctrl + A" keydown
-  function handleKeydown(event) {
-    if (event.ctrlKey && event.key === "a") {
-      event.preventDefault(); // Prevent the default "select all" browser behavior
-      selectAll();
+    // Handle "Ctrl + A" keydown
+    function handleKeydown(event) {
+        if (event.ctrlKey && event.key === "a") {
+            event.preventDefault(); // Prevent the default "select all" browser behavior
+            selectAll();
+        }
     }
-  }
 
-  // Attach event listeners on mount and remove on destroy
-  onMount(() => {
-    if (typeof window !== "undefined") {
-      // Only add listeners if running in the browser
-      document.addEventListener("click", handleOutsideClick);
-      document.addEventListener("keydown", handleKeydown);
-    }
-  });
+    // Attach event listeners on mount and remove on destroy
+    onMount(() => {
+        if (typeof window !== "undefined") {
+            // Only add listeners if running in the browser
+            document.addEventListener("keydown", handleKeydown);
+        }
+    });
 
-  onDestroy(() => {
-    if (typeof window !== "undefined") {
-      document.removeEventListener("click", handleOutsideClick);
-      document.removeEventListener("keydown", handleKeydown);
-    }
-  });
+    onDestroy(() => {
+        if (typeof window !== "undefined") {
+            document.removeEventListener("keydown", handleKeydown);
+        }
+    });
 </script>
 
 <div class="w-full flex gap-2 flex-wrap">
     {#if searchdata.length > 0}
         {#each filteredRows as row}
-        <ContextMenu.Root>
-            <ContextMenu.Trigger>
-                <div
-                    key={row.id}
-                    class={`selectable-item text-xs flex flex-col gap-1 items-center w-fit px-2 py-2 rounded-xl select-none ${
-                        selectedIds.includes(row.id)
-                            ? "bg-zinc-200 dark:bg-zinc-800 rounded-lg"
-                            : "bg-zinc-100 dark:bg-zinc-900 rounded-lg"
-                    }`}
-                    ondblclick={() => (location.href = `/${row.file.url}`)}
-                    onclick={(event) => toggleColor(row.id, event)}
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="50"
-                        height="50"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class={`icon icon-tabler icons-tabler-outline icon-tabler-brand-${row.file.icon} ${row.file.iconColor}`}
+            <ContextMenu.Root>
+                <ContextMenu.Trigger>
+                    <div
+                        key={row.id}
+                        class={`selectable-item text-xs flex flex-col gap-1 items-center w-fit px-2 py-2 rounded-xl select-none ${
+                            selectedIds.includes(row.id)
+                                ? "bg-zinc-200 dark:bg-zinc-800 rounded-lg"
+                                : "bg-zinc-100 dark:bg-zinc-900 rounded-lg"
+                        }`}
+                        ondblclick={() => (location.href = `/${row.file.url}`)}
+                        onclick={(event) => toggleColor(row.id, event)}
                     >
-                        {@html row.file.iconpaths}
-                    </svg>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="50"
+                            height="50"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class={`icon icon-tabler icons-tabler-outline icon-tabler-brand-${row.file.icon} ${row.file.iconColor}`}
+                        >
+                            {@html row.file.iconpaths}
+                        </svg>
 
-                    {row.file.name}
-                </div>
-            </ContextMenu.Trigger>
+                        {row.file.name}
+                    </div>
+                </ContextMenu.Trigger>
 
-            <ContextMenu.Content class="dark:bg-zinc-900 rounded-xl">
-                
-                {#if selectedIds.length >1}
-                <ContextMenu.Item
-                class="rounded-lg text-red-500 hover:text-red-400"
-                >Remove all</ContextMenu.Item
-            >
-                {:else}
-                <ContextMenu.Item
-                    class="rounded-lg"
-                    onclick={() => (location.href = `/${row.file.url}`)}
-                    >Open</ContextMenu.Item
-                >
-                <ContextMenu.Item class="rounded-lg"
-                    >Rename</ContextMenu.Item
-                >
-                <ContextMenuSeparator />
-                <ContextMenu.Item
-                class="rounded-lg text-red-500 hover:text-red-400"
-                >Remove</ContextMenu.Item
-            >
-                {/if}
-                
-            </ContextMenu.Content>
-        </ContextMenu.Root>
+                <ContextMenu.Content class="dark:bg-zinc-900 rounded-xl">
+                    {#if selectedIds.length > 1}
+                        <ContextMenu.Item
+                            class="rounded-lg text-red-500 hover:text-red-400"
+                            >Remove all</ContextMenu.Item
+                        >
+                    {:else}
+                        <ContextMenu.Item
+                            class="rounded-lg"
+                            onclick={() => (location.href = `/${row.file.url}`)}
+                            >Open</ContextMenu.Item
+                        >
+                        <ContextMenu.Item class="rounded-lg"
+                            >Rename</ContextMenu.Item
+                        >
+                        <ContextMenuSeparator />
+                        <ContextMenu.Item
+                            class="rounded-lg text-red-500 hover:text-red-400"
+                            >Remove</ContextMenu.Item
+                        >
+                    {/if}
+                </ContextMenu.Content>
+            </ContextMenu.Root>
         {/each}
     {:else}
         {#each rows as row}
@@ -282,29 +285,129 @@
                 </ContextMenu.Trigger>
 
                 <ContextMenu.Content class="dark:bg-zinc-900 rounded-xl">
-                    
-                    {#if selectedIds.length >1}
-                    
-                    <ContextMenu.Item
-                    class="rounded-lg text-red-500 hover:text-red-400"
-                    >Remove</ContextMenu.Item
-                >
+                    {#if selectedIds.length > 1}
+                    <Dialog.Root>
+                        <Dialog.Trigger class="w-full">
+                            <ContextMenu.Item
+                                class="rounded-lg text-red-500 hover:text-red-400"
+                                >Remove</ContextMenu.Item
+                            >
+                        </Dialog.Trigger>
+                        <Dialog.Content>
+                            <Dialog.Header>
+                                <Dialog.Title
+                                    >Are you sure to delete this
+                                    file?</Dialog.Title
+                                >
+                                <Dialog.Description class="flex gap-4 flex-wrap">
+                                    {#each foundRows as row}
+                                        <div
+                                            key={row.id}
+                                            class={`selectable-item text-xs flex flex-col gap-1 items-center w-fit px-2 py-2 rounded-xl select-none bg-zinc-100 dark:bg-zinc-950 rounded-lg`}
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="50"
+                                                height="50"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class={`icon icon-tabler icons-tabler-outline icon-tabler-brand-${row.file.icon} ${row.file.iconColor}`}
+                                            >
+                                                {@html row.file.iconpaths}
+                                            </svg>
+
+                                            {row.file.name}
+                                        </div>
+                                    {/each}
+                                </Dialog.Description>
+                            </Dialog.Header>
+                            <DialogFooter>
+                                <div class="w-full flex gap-4">
+                                    <Dialog.Close class="w-1/2">
+                                        <Button
+                                            class="w-full bg-transparent border hover:bg-zinc-900 text-zinc-400 transition-all"
+                                            >Close</Button
+                                        >
+                                    </Dialog.Close>
+                                    <Button
+                                        class="w-1/2 bg-red-500/50 text-zinc-200 hover:bg-red-500/60 transition-all"
+                                        >Delete</Button
+                                    >
+                                </div>
+                            </DialogFooter>
+                        </Dialog.Content>
+                    </Dialog.Root>
                     {:else}
-                    <ContextMenu.Item
-                        class="rounded-lg"
-                        onclick={() => (location.href = `/${row.file.url}`)}
-                        >Open</ContextMenu.Item
-                    >
-                    <ContextMenu.Item class="rounded-lg"
-                        >Rename</ContextMenu.Item
-                    >
-                    <ContextMenuSeparator />
-                    <ContextMenu.Item
-                    class="rounded-lg text-red-500 hover:text-red-400"
-                    >Remove</ContextMenu.Item
-                >
+                        <ContextMenu.Item
+                            class="rounded-lg"
+                            onclick={() => (location.href = `/${row.file.url}`)}
+                            >Open</ContextMenu.Item
+                        >
+                        <ContextMenu.Item class="rounded-lg"
+                            >Rename</ContextMenu.Item
+                        >
+                        <ContextMenuSeparator />
+
+                        <Dialog.Root>
+                            <Dialog.Trigger class="w-full">
+                                <ContextMenu.Item
+                                    class="rounded-lg text-red-500 hover:text-red-400"
+                                    >Remove</ContextMenu.Item
+                                >
+                            </Dialog.Trigger>
+                            <Dialog.Content>
+                                <Dialog.Header>
+                                    <Dialog.Title
+                                        >Are you sure to delete this
+                                        file?</Dialog.Title
+                                    >
+                                    <Dialog.Description>
+                                        {#each foundRows as row}
+                                            <div
+                                                key={row.id}
+                                                class={`selectable-item text-xs flex flex-col gap-1 items-center w-fit px-2 py-2 rounded-xl select-none bg-zinc-100 dark:bg-zinc-950 rounded-lg`}
+                                            >
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="50"
+                                                    height="50"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class={`icon icon-tabler icons-tabler-outline icon-tabler-brand-${row.file.icon} ${row.file.iconColor}`}
+                                                >
+                                                    {@html row.file.iconpaths}
+                                                </svg>
+
+                                                {row.file.name}
+                                            </div>
+                                        {/each}
+                                    </Dialog.Description>
+                                </Dialog.Header>
+                                <DialogFooter>
+                                    <div class="w-full flex gap-4">
+                                        <Dialog.Close class="w-1/2">
+                                            <Button
+                                                class="w-full bg-transparent border hover:bg-zinc-900 text-zinc-400 transition-all"
+                                                >Close</Button
+                                            >
+                                        </Dialog.Close>
+                                        <Button
+                                            class="w-1/2 bg-red-500/50 text-zinc-200 hover:bg-red-500/60 transition-all"
+                                            >Delete</Button
+                                        >
+                                    </div>
+                                </DialogFooter>
+                            </Dialog.Content>
+                        </Dialog.Root>
                     {/if}
-                    
                 </ContextMenu.Content>
             </ContextMenu.Root>
         {/each}

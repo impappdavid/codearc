@@ -32,7 +32,7 @@
 							<span class="truncate font-semibold">
 								{activeTeam.name}
 							</span>
-							<span class="truncate text-xs">{activeTeam.plan}</span>
+							<span class="truncate text-xs text-zinc-400">{activeTeam.plan}</span>
 						</div>
 						<ChevronsUpDown class="ml-auto" />
 					</Sidebar.MenuButton>

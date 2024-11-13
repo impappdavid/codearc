@@ -21,6 +21,8 @@
 
 	let allSelected = false;
 	let searchQuery = ""; // Declare the variable in the parent component
+
+
 </script>
 
 <Sidebar.Provider>
