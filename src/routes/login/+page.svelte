@@ -44,7 +44,7 @@
                 <div class="flex flex-col gap-4">
                     <Button
                         variant="outline"
-                        class="flex gap-1 bg-zinc-200 dark:bg-zinc-900/50 hover:bg-zinc-300 dark:hover:bg-zinc-900/70 rounded-lg"
+                        class="flex gap-1 bg-zinc-900 dark:text-black text-white dark:bg-white/90 hover:bg-zinc-300 dark:hover:bg-zinc-900/70 rounded-lg"
                     >
                         <Github />
                         Sign In with Github
@@ -62,7 +62,7 @@
                         type="email"
                         id="email"
                         placeholder="Email"
-                        class="bg-white dark:bg-zinc-900 border-zinc-300 dark:border-zinc-800 text-black dark:text-white  rounded-lg w-full"
+                        class="bg-zinc-100 dark:bg-zinc-900 border-zinc-300 dark:border-zinc-800 text-black dark:text-white  rounded-lg w-full"
                     />
                 </div>
                 <div class="flex flex-col w-full justify-center gap-1.5">
@@ -74,7 +74,7 @@
                         type="password"
                         id="password"
                         placeholder="Password"
-                        class="bg-white dark:bg-zinc-900 border-zinc-300 dark:border-zinc-800 text-black dark:text-white rounded-lg w-full"
+                        class="bg-zinc-100 dark:bg-zinc-900 border-zinc-300 dark:border-zinc-800 text-black dark:text-white rounded-lg w-full"
                     />
                 </div>
 

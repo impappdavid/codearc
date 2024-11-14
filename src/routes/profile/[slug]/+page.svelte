@@ -91,7 +91,7 @@
                                 Profile
                             </DropdownMenu.Item>
                             <Dialog.Root>
-                                <Dialog.Trigger class="w-full">
+                                <Dialog.Trigger class="w-full outline-none">
                                     <DropdownMenu.Item
                                         class="rounded-lg hover:cursor-pointer"
                                     >
@@ -132,10 +132,12 @@
             </div>
         </header>
         <div class="flex flex-col gap-6 p-4 py-4 h-full">
-            <div class="bg-zinc-100 border dark:bg-muted/30 h-56 flex rounded-xl p-2"></div>
+            <div
+                class="bg-zinc-100 border dark:bg-muted/30 h-56 flex rounded-xl p-2"
+            ></div>
             <div class="w-full sm:px-8 grid lg:grid-cols-6 gap-4">
                 <div
-                    class="col-span-3 flex flex-col gap-4 p-4 bg-zinc-100 border  dark:bg-muted/30 rounded-2xl"
+                    class="col-span-3 flex flex-col gap-4 p-4 bg-zinc-100 border dark:bg-muted/30 rounded-2xl"
                 >
                     <div class="flex gap-4">
                         <div
@@ -175,7 +177,9 @@
                                     <div class="text-xl font-medium">
                                         Papp David
                                     </div>
-                                    <div class="text-xs text-zinc-600 dark:text-zinc-400">
+                                    <div
+                                        class="text-xs text-zinc-600 dark:text-zinc-400"
+                                    >
                                         pappd377@gmail.com
                                     </div>
                                 </div>
@@ -196,9 +200,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-full border flex h-14 rounded-2xl px-1 py-1">
+                    <div
+                        class="w-full border grid grid-cols-1 sm:flex sm:h-14 rounded-2xl px-1 py-1"
+                    >
                         <div
-                            class="w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 rounded-l-xl px-2 py-2 transition-all"
+                            class=" sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 rounded-t-xl sm:rounded-l-xl px-2 py-2 transition-all"
                         >
                             <div
                                 class="w-8 h-8 bg-zinc-200 dark:bg-muted/90 flex items-center justify-center rounded-lg"
@@ -227,15 +233,17 @@
                             </div>
                             <div class="flex flex-col justify-center">
                                 <div class="text-sm font-medium">Twitter</div>
-                                <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
+                                <div
+                                    class="text-[10px] text-zinc-600 dark:text-zinc-400"
+                                >
                                     Open
                                 </div>
                             </div>
                         </div>
-
                         <Separator orientation="vertical" />
+
                         <div
-                            class="w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 px-2 py-2 transition-all"
+                            class="sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 px-2 py-2 transition-all"
                         >
                             <div
                                 class="w-8 h-8 bg-zinc-200 dark:bg-muted/90 flex items-center justify-center rounded-lg"
@@ -262,7 +270,9 @@
                             </div>
                             <div class="flex flex-col justify-center">
                                 <div class="text-sm font-medium">GitHub</div>
-                                <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
+                                <div
+                                    class="text-[10px] text-zinc-600 dark:text-zinc-400"
+                                >
                                     Open
                                 </div>
                             </div>
@@ -270,7 +280,7 @@
                         <Separator orientation="vertical" />
 
                         <div
-                            class="w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 px-2 py-2 transition-all"
+                            class="sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 px-2 py-2 transition-all"
                         >
                             <div
                                 class="w-8 h-8 bg-zinc-200 dark:bg-muted/90 flex items-center justify-center rounded-lg"
@@ -293,7 +303,9 @@
                             </div>
                             <div class="flex flex-col justify-center">
                                 <div class="text-sm font-medium">LinkedIn</div>
-                                <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
+                                <div
+                                    class="text-[10px] text-zinc-600 dark:text-zinc-400"
+                                >
                                     Open
                                 </div>
                             </div>
@@ -301,7 +313,7 @@
                         <Separator orientation="vertical" />
 
                         <div
-                            class="w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 rounded-r-xl px-2 py-2 transition-all"
+                            class="sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 rounded-b-xl sm:rounded-r-xl px-2 py-2 transition-all"
                         >
                             <div
                                 class="w-8 h-8 bg-zinc-200 dark:bg-muted/90 flex items-center justify-center rounded-lg"
@@ -332,7 +344,9 @@
                             </div>
                             <div class="flex flex-col justify-center">
                                 <div class="text-sm font-medium">Website</div>
-                                <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
+                                <div
+                                    class="text-[10px] text-zinc-600 dark:text-zinc-400"
+                                >
                                     Open
                                 </div>
                             </div>
@@ -342,7 +356,7 @@
                     <div class="w-full flex flex-col gap-2">
                         <div class="text-md font-medium">Summary</div>
                         <div class="flex">
-                            <div class="w-1/3 h-28 p-2">
+                            <div class="w-1/3 h-28 p-1 sm:p-2">
                                 <div
                                     class="w-full h-full bg-zinc-200 dark:bg-muted/30 rounded-2xl flex flex-col gap-2 justify-center items-center"
                                 >
@@ -363,13 +377,15 @@
                                     >
                                     <div class="flex flex-col items-center">
                                         <div class="text-sm">August 6 2024</div>
-                                        <div class="text-xs text-zinc-600 dark:text-zinc-400">
+                                        <div
+                                            class="text-xs text-zinc-600 dark:text-zinc-400"
+                                        >
                                             Join date
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="w-1/3 h-28 p-2">
+                            <div class="w-1/3 h-28 p-1 sm:p-2">
                                 <div
                                     class="w-full h-full bg-zinc-200 dark:bg-muted/30 rounded-2xl flex flex-col gap-2 justify-center items-center"
                                 >
@@ -392,13 +408,15 @@
                                     >
                                     <div class="flex flex-col items-center">
                                         <div class="text-sm">April 17 2024</div>
-                                        <div class="text-xs text-zinc-600 dark:text-zinc-400">
+                                        <div
+                                            class="text-xs text-zinc-600 dark:text-zinc-400"
+                                        >
                                             First team join
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="w-1/3 h-28 p-2">
+                            <div class="w-1/3 h-28 p-1 sm:p-2">
                                 <div
                                     class="w-full h-full bg-zinc-200 dark:bg-muted/30 rounded-2xl flex flex-col gap-2 justify-center items-center"
                                 >
@@ -429,7 +447,9 @@
                                     >
                                     <div class="flex flex-col items-center">
                                         <div class="text-sm">Collabug</div>
-                                        <div class="text-xs text-zinc-600 dark:text-zinc-400">
+                                        <div
+                                            class="text-xs text-zinc-600 dark:text-zinc-400"
+                                        >
                                             First team
                                         </div>
                                     </div>
@@ -440,7 +460,9 @@
 
                     <div class="w-full flex flex-col gap-2">
                         <div class="text-md font-medium">About</div>
-                        <div class="w-full text-sm text-zinc-600 dark:text-zinc-400">
+                        <div
+                            class="w-full text-sm text-zinc-600 dark:text-zinc-400"
+                        >
                             Hi, I'm a software developer with a love for
                             learning and building impactful apps. I enjoy
                             exploring tech, creating with code, and am driven by
@@ -449,32 +471,43 @@
                     </div>
                 </div>
                 <div class=" col-span-3 rounded-2xl">
-                    <div class="grid grid-cols-2 grid-rows-9 gap-4 h-full">
+                    <div class="grid sm:grid-cols-2 grid-rows-9 gap-4 h-full">
                         <div
                             class=" rounded-xl grid grid-rows-9 row-span-9 gap-4"
                         >
                             <div
-                                class="w-full row-span-2 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col items-center justify-center"
+                                class="w-full row-span-2 p-4 sm:p-0 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col items-center justify-center"
                             >
                                 <div class="text-2xl font-medium">12</div>
-                                <div class="text-sm text-zinc-600 dark:text-zinc-400">
+                                <div
+                                    class="text-sm text-zinc-600 dark:text-zinc-400"
+                                >
                                     Total projects
                                 </div>
                             </div>
 
                             <div
-                                class="w-full row-span-3 gap-4  grid grid-cols-2"
+                                class="w-full row-span-3 gap-4 grid grid-cols-2"
                             >
-                                <div class="bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col justify-center items-center">
-                                    
+                                <div
+                                    class="bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col justify-center items-center"
+                                >
                                     <div class="text-2xl font-medium">21</div>
-                                    <div class="text-sm text-zinc-600 dark:text-zinc-400">
+                                    <div
+                                        class="text-sm text-zinc-600 dark:text-zinc-400"
+                                    >
                                         Years old
                                     </div>
                                 </div>
-                                <div class="bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col justify-center items-center">
-                                    <div class="text-2xl font-medium">Hungary</div>
-                                    <div class="text-sm text-zinc-600 dark:text-zinc-400">
+                                <div
+                                    class="bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col justify-center items-center"
+                                >
+                                    <div class="text-2xl font-medium">
+                                        Hungary
+                                    </div>
+                                    <div
+                                        class="text-sm text-zinc-600 dark:text-zinc-400"
+                                    >
                                         Location
                                     </div>
                                 </div>
@@ -483,7 +516,9 @@
                         <div
                             class="p-4 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col gap-6 row-span-9 items-center"
                         >
-                            <div class="text-xl text-zinc-400">
+                            <div
+                                class="text-xl text-zinc-600 dark:text-zinc-400"
+                            >
                                 Latest projects
                             </div>
 
@@ -529,7 +564,9 @@
                                     class="w-full h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all rounded-b-xl"
                                 ></div>
                             </div>
-                            <div class="text-xs text-zinc-600 dark:text-zinc-400">
+                            <div
+                                class="text-xs text-zinc-600 dark:text-zinc-400"
+                            >
                                 (Last 5 project)
                             </div>
                         </div>

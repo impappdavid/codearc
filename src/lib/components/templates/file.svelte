@@ -199,7 +199,7 @@
                 </ContextMenu.Item>
             {:else}
                 <ContextMenu.Item
-                    class="rounded-lg text-red-500 hover:text-red-400"
+                    class="rounded-lg text-red-500 hover:text-red-400 outline-none"
                 >
                     Remove
                 </ContextMenu.Item>
@@ -212,7 +212,7 @@
         <ContextMenu.Root>
             <ContextMenu.Trigger>
                 <div
-                class={`selectable-item flex items-center border-t border-zinc-700 ${
+                class={`selectable-item flex items-center border-t border-zinc-300 dark:border-zinc-700 ${
                     selectedIds.includes(row.id)
                         ? "bg-zinc-200 dark:bg-zinc-800 select-none"
                         : "bg-zinc-100 dark:bg-zinc-900 select-none"
@@ -254,9 +254,9 @@
                 {#if selectedIds.length > 1}
                 <Dialog.Root>
                     
-                    <Dialog.Trigger class="w-full">
+                    <Dialog.Trigger class="w-full outline-none">
                         <ContextMenu.Item
-                            class="rounded-lg text-red-500 hover:text-red-400"
+                            class="rounded-lg text-red-500 hover:text-red-400 outline-none"
                             >Remove</ContextMenu.Item
                         >
                     </Dialog.Trigger>
@@ -301,14 +301,14 @@
                         </Dialog.Header>
                         <DialogFooter>
                             <div class="w-full flex gap-4">
-                                <Dialog.Close class="w-1/2">
+                                <Dialog.Close class="w-1/2 outline-none">
                                     <Button
-                                        class="w-full bg-transparent border hover:bg-zinc-900 text-zinc-400 transition-all"
+                                        class="w-full bg-transparent border hover:bg-zinc-900 text-zinc-400 transition-all rounded-xl"
                                         >Close</Button
                                     >
                                 </Dialog.Close>
                                 <Button
-                                    class="w-1/2 bg-red-500/50 text-zinc-200 hover:bg-red-500/60 transition-all"
+                                    class="w-1/2 bg-red-500/50 text-zinc-200 hover:bg-red-500/60 transition-all rounded-xl"
                                     >Delete</Button
                                 >
                             </div>
@@ -328,7 +328,7 @@
                     
                     <Dialog.Trigger class="w-full">
                         <ContextMenu.Item
-                            class="rounded-lg text-red-500 hover:text-red-400"
+                            class="rounded-lg text-red-500 hover:text-red-400  outline-none"
                             >Remove</ContextMenu.Item
                         >
                     </Dialog.Trigger>
@@ -375,12 +375,12 @@
                             <div class="w-full flex gap-4">
                                 <Dialog.Close class="w-1/2">
                                     <Button
-                                        class="w-full bg-transparent border hover:bg-zinc-900 text-zinc-400 text-xs transition-all"
+                                        class="w-full bg-transparent border hover:bg-zinc-900 text-zinc-400 text-xs transition-all rounded-xl  outline-none focus-none"
                                         >Close</Button
                                     >
                                 </Dialog.Close>
                                 <Button
-                                    class="w-1/2 bg-red-500/50 text-zinc-200 hover:bg-red-500/60 transition-all text-xs p-0"
+                                    class="w-1/2 bg-red-500/50 text-zinc-200 hover:bg-red-500/60 transition-all text-xs p-0 rounded-xl "
                                     >Delete</Button
                                 >
                             </div>

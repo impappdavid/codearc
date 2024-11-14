@@ -98,7 +98,7 @@
 								Profile
 							</DropdownMenu.Item>
 							<Dialog.Root>
-								<Dialog.Trigger class="w-full">
+								<Dialog.Trigger class="w-full outline-none">
 									<DropdownMenu.Item
 										class="rounded-lg hover:cursor-pointer"
 									>
@@ -150,7 +150,7 @@
 						<div class="mt-2 w-full">
 						
 							<!-- Header Row -->
-							<div class="flex border-b border-zinc-500 text-zinc-400 text-sm">
+							<div class="flex border-b border-zinc-500 text-zinc-600 dark:text-zinc-400 text-sm">
 								<div class="p-2 flex-1">File name</div>
 								<div class="p-2 hidden md:flex flex-1">Created by</div>
 								<div class="p-2  hidden xl:flex flex-1">Edited by</div>

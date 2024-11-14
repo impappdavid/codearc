@@ -161,8 +161,8 @@
 								<User class="w-4 h-4" />
 								Profile
 							</DropdownMenu.Item>
-							<Dialog.Root>
-								<Dialog.Trigger class="w-full">
+							<Dialog.Root> 
+								<Dialog.Trigger class="w-full outline-none">
 									<DropdownMenu.Item
 										class="rounded-lg hover:cursor-pointer"
 									>
