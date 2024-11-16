@@ -8,7 +8,7 @@
     import Button from "./ui/button/button.svelte";
   </script>
    <div class="flex flex gap-2">
-    <div class="flex w-full flex-col gap-1">
+    <div class="flex w-1/3 flex-col gap-1">
         <div class="text-md">
             Light mode
         </div>
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="flex w-full flex-col gap-1">
+    <div class="flex w-1/3 flex-col gap-1">
         <div class="text-md">
             Dark mode
         </div>
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="flex w-full flex-col gap-1">
+    <div class="flex w-1/3 flex-col gap-1">
         <div class="text-md">
             System mode
         </div>

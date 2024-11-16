@@ -17,9 +17,10 @@
     import * as Sheet from "$lib/components/ui/sheet/index.js";
     import { Label } from "$lib/components/ui/label";
     import { Input } from "$lib/components/ui/input";
-    import { buttonVariants } from "$lib/components/ui/button";
+    import { Button, buttonVariants } from "$lib/components/ui/button";
     import * as Dialog from "$lib/components/ui/dialog/index.js";
     import Modetoggle from "$lib/components/modetoggle.svelte";
+    import * as Avatar from "$lib/components/ui/avatar/index.js";
 </script>
 
 <Sidebar.Provider>
@@ -37,8 +38,12 @@
                             <Breadcrumb.Link href="#">Collabug</Breadcrumb.Link>
                         </Breadcrumb.Item>
                         <Breadcrumb.Separator class="hidden md:block" />
+                        <Breadcrumb.Item class="hidden md:block">
+                            <Breadcrumb.Link href="#">Team</Breadcrumb.Link>
+                        </Breadcrumb.Item>
+                        <Breadcrumb.Separator class="hidden md:block" />
                         <Breadcrumb.Item>
-                            <Breadcrumb.Page>Profile</Breadcrumb.Page>
+                            <Breadcrumb.Page>Collabug</Breadcrumb.Page>
                         </Breadcrumb.Item>
                     </Breadcrumb.List>
                 </Breadcrumb.Root>
@@ -51,29 +56,166 @@
                     >
                     <Sheet.Content
                         side="right"
-                        class="bg-zinc-200 dark:bg-zinc-900"
+                        class=" p-3 h-full bg-transparent flex-1 w-full"
                     >
-                        <Sheet.Header>
-                            <Sheet.Title>Edit profile</Sheet.Title>
-                            <Sheet.Description>
-                                Make changes to your profile here. Click save
-                                when you're done.
-                            </Sheet.Description>
-                        </Sheet.Header>
-                        <div class="grid gap-4 py-4"></div>
-                        <Sheet.Footer>
-                            <Sheet.Close
-                                class={buttonVariants({ variant: "outline" })}
-                                >Save changes</Sheet.Close
-                            >
-                        </Sheet.Footer>
+                        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-xl h-full p-4">
+                            <Sheet.Header class="flex flex-col gap-1">
+                                <Sheet.Title class="flex gap-2 items-center">
+                                    <div class="flex gap-1 items-center">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="22"
+                                            height="22"
+                                            viewBox="0 0 24 24"
+                                            fill="currentColor"
+                                            class="icon icon-tabler icons-tabler-filled icon-tabler-bell"
+                                            ><path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            /><path
+                                                d="M14.235 19c.865 0 1.322 1.024 .745 1.668a3.992 3.992 0 0 1 -2.98 1.332a3.992 3.992 0 0 1 -2.98 -1.332c-.552 -.616 -.158 -1.579 .634 -1.661l.11 -.006h4.471z"
+                                            /><path
+                                                d="M12 2c1.358 0 2.506 .903 2.875 2.141l.046 .171l.008 .043a8.013 8.013 0 0 1 4.024 6.069l.028 .287l.019 .289v2.931l.021 .136a3 3 0 0 0 1.143 1.847l.167 .117l.162 .099c.86 .487 .56 1.766 -.377 1.864l-.116 .006h-16c-1.028 0 -1.387 -1.364 -.493 -1.87a3 3 0 0 0 1.472 -2.063l.021 -.143l.001 -2.97a8 8 0 0 1 3.821 -6.454l.248 -.146l.01 -.043a3.003 3.003 0 0 1 2.562 -2.29l.182 -.017l.176 -.004z"
+                                            /></svg
+                                        >
+                                        Notifications
+                                    </div>
+                                    <div
+                                        class="h-5 w-5 bg-zinc-300 dark:bg-zinc-700 text-xs flex justify-center font-normal items-center text-center rounded-md"
+                                    >
+                                        2
+                                    </div>
+                                </Sheet.Title>
+                                <Sheet.Description>
+                                    <Separator />
+                                </Sheet.Description>
+                            </Sheet.Header>
+                            <div class="flex flex-col h-full max-h-[580px] sm:max-h-[835px] max-h-96">
+                                <div class="w-full p-2 py-3 hover:cursor-pointer hover:bg-zinc-300/80 dark:hover:bg-zinc-950/30 transition-all flex flex-col gap-2">
+                                    <div class="flex justify-between">
+                                        <div class="flex gap-2 items-center">
+                                            <Avatar.Root
+                                                class="h-9 w-9 rounded-lg"
+                                            >
+                                                <Avatar.Image src="" alt="PD" />
+                                                <Avatar.Fallback
+                                                    class="rounded-xl text-xs"
+                                                    >PD</Avatar.Fallback
+                                                >
+                                            </Avatar.Root>
+                                            <div class="flex-col flex">
+                                                <div class="text-sm">
+                                                    <span class="font-medium"
+                                                        >David</span
+                                                    >
+                                                    invited you to
+                                                    <span class="font-medium"
+                                                        >Collabug</span
+                                                    >
+                                                </div>
+                                                <div
+                                                    class="text-xs dark:text-zinc-400"
+                                                >
+                                                    Moday 4:18 PM
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="w-2 h-2 rounded-full bg-blue-500 mt-1"></div>
+                                    </div>
+                                    <div class="flex w-fit ml-9 pl-1 gap-2">
+                                        <Button class="bg-transparent border border-zinc-400 dark:border-zinc-700 h-8 text-black dark:text-white hover:bg-zinc-500/30 dark:hover:bg-zinc-950/40 rounded-lg">Decline</Button>
+                                        <Button class="bg-blue-500/80 h-8 text-white hover:bg-blue-500/70 rounded-lg">Accept</Button>
+                                    </div>
+                                </div>
+
+                                <div class="w-full p-2 py-3 hover:cursor-pointer hover:bg-zinc-300/80 dark:hover:bg-zinc-950/30 transition-all flex flex-col gap-2">
+                                    <div class="flex justify-between">
+                                        <div class="flex gap-2 items-center">
+                                            <Avatar.Root
+                                                class="h-9 w-9 rounded-lg"
+                                            >
+                                                <Avatar.Image src="" alt="PD" />
+                                                <Avatar.Fallback
+                                                    class="rounded-xl text-xs"
+                                                    >PD</Avatar.Fallback
+                                                >
+                                            </Avatar.Root>
+                                            <div class="flex-col flex">
+                                                <div class="text-sm">
+                                                    <span class="font-medium"
+                                                        >David</span
+                                                    >
+                                                    added a card to
+                                                    <span class="font-medium"
+                                                        >Todo</span
+                                                    >
+                                                </div>
+                                                <div
+                                                    class="text-xs dark:text-zinc-400"
+                                                >
+                                                    Sunday 8:47 PM
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="w-2 h-2 rounded-full bg-blue-500 mt-1"></div>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="w-full p-2 py-3 hover:cursor-pointer hover:bg-zinc-300/80 dark:hover:bg-zinc-950/30 transition-all flex flex-col gap-2">
+                                    <div class="flex justify-between">
+                                        <div class="flex gap-2 items-center">
+                                            <Avatar.Root
+                                                class="h-9 w-9 rounded-lg"
+                                            >
+                                                <Avatar.Image src="" alt="PD" />
+                                                <Avatar.Fallback
+                                                    class="rounded-xl text-xs"
+                                                    >BÁ</Avatar.Fallback
+                                                >
+                                            </Avatar.Root>
+                                            <div class="flex-col flex">
+                                                <div class="text-sm max-w-60  truncate ">
+                                                    <span class="font-medium"
+                                                        >Ádám</span
+                                                    >
+                                                    edited a table in
+                                                    <span class="font-medium"
+                                                        >Database planner</span
+                                                    >
+                                                </div>
+                                                <div
+                                                    class="text-xs dark:text-zinc-400"
+                                                >
+                                                    Sunday 8:47 PM
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <Sheet.Footer class="">
+                                <div class="w-full ">
+                                    <Button class="h-9 w-full dark:bg-zinc-950 text-white dark:hover:bg-zinc-950/80 rounded-xl">
+                                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-checks"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 12l5 5l10 -10" /><path d="M2 12l5 5m5 -5l5 -5" /></svg>
+                                        Mark all as read
+                                    </Button>
+                                    
+                                </div>
+                            </Sheet.Footer>
+                        </div>
                     </Sheet.Content>
                 </Sheet.Root>
                 <DropdownMenu.Root>
                     <DropdownMenu.Trigger class="flex items-center gap-2 ">
                         <div
                             class="w-8 h-8 bg-black dark:bg-white rounded-lg"
-                        ></div>
+                        >
+                    
+                    </div>
                     </DropdownMenu.Trigger>
                     <DropdownMenu.Content
                         align="end"
@@ -133,8 +275,10 @@
         </header>
         <div class="flex flex-col gap-6 p-4 py-4 h-full">
             <div
-                class="bg-zinc-100 border dark:bg-muted/30 h-56 flex rounded-xl p-2"
-            ></div>
+                class="bg-zinc-100 border dark:bg-gradient-to-bl from-zinc-950 via-zinc-900 to-zinc-950 h-56 flex rounded-xl p-2 justify-center items-center text-6xl font-sans dark:text-zinc-700"
+            >
+                Collabug
+            </div>
             <div class="w-full sm:px-8 grid lg:grid-cols-6 gap-4">
                 <div
                     class="col-span-3 flex flex-col gap-4 p-4 bg-zinc-100 border dark:bg-muted/30 rounded-2xl"
@@ -175,19 +319,21 @@
                             <div class="flex flex-col gap-3 justify-center">
                                 <div class="flex flex-col">
                                     <div class="text-xl font-medium">
-                                        Papp David
+                                        Collabug
                                     </div>
-                                    <div
-                                        class="text-xs text-zinc-600 dark:text-zinc-400"
+                                    <a
+                                        href="https://portfolio-impappdavids-projects.vercel.app/"
+                                        target="_blank"
+                                        class="text-xs text-zinc-600 dark:text-zinc-400 underline"
                                     >
-                                        pappd377@gmail.com
-                                    </div>
+                                        https://portfolio-impappdavids-projects.vercel.app/
+                                    </a>
                                 </div>
                                 <div class="flex gap-2">
                                     <div
                                         class="text-xs text-zinc-600 dark:text-zinc-400 py-1 px-2 rounded-md bg-muted/50 border"
                                     >
-                                        Frontend
+                                        Team
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +341,7 @@
                                 <div
                                     class="flex justify-center items-center text-xs p-1 px-2 rounded-lg bg-emerald-500/60"
                                 >
-                                    Collabug
+                                    Active
                                 </div>
                             </div>
                         </div>
@@ -204,7 +350,7 @@
                         class="w-full border grid grid-cols-1 sm:flex sm:h-14 rounded-2xl px-1 py-1"
                     >
                         <div
-                            class=" sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 rounded-t-xl  sm:rounded-tr-none sm:rounded-l-xl px-2 py-2 transition-all"
+                            class=" sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 rounded-t-xl sm:rounded-tr-none sm:rounded-l-xl px-2 py-2 transition-all"
                         >
                             <div
                                 class="w-8 h-8 bg-zinc-200 dark:bg-muted/90 flex items-center justify-center rounded-lg"
@@ -290,19 +436,33 @@
                                     width="18"
                                     height="18"
                                     viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                    class="icon icon-tabler icons-tabler-filled icon-tabler-brand-linkedin text-blue-500"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-users-group"
                                     ><path
                                         stroke="none"
                                         d="M0 0h24v24H0z"
                                         fill="none"
                                     /><path
-                                        d="M17 2a5 5 0 0 1 5 5v10a5 5 0 0 1 -5 5h-10a5 5 0 0 1 -5 -5v-10a5 5 0 0 1 5 -5zm-9 8a1 1 0 0 0 -1 1v5a1 1 0 0 0 2 0v-5a1 1 0 0 0 -1 -1m6 0a3 3 0 0 0 -1.168 .236l-.125 .057a1 1 0 0 0 -1.707 .707v5a1 1 0 0 0 2 0v-3a1 1 0 0 1 2 0v3a1 1 0 0 0 2 0v-3a3 3 0 0 0 -3 -3m-6 -3a1 1 0 0 0 -.993 .883l-.007 .127a1 1 0 0 0 1.993 .117l.007 -.127a1 1 0 0 0 -1 -1"
+                                        d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"
+                                    /><path
+                                        d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"
+                                    /><path
+                                        d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"
+                                    /><path d="M17 10h2a2 2 0 0 1 2 2v1" /><path
+                                        d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"
+                                    /><path
+                                        d="M3 13v-1a2 2 0 0 1 2 -2h2"
                                     /></svg
                                 >
                             </div>
                             <div class="flex flex-col justify-center">
-                                <div class="text-sm font-medium">LinkedIn</div>
+                                <div class="text-sm font-medium">
+                                    Member history
+                                </div>
                                 <div
                                     class="text-[10px] text-zinc-600 dark:text-zinc-400"
                                 >
@@ -380,7 +540,7 @@
                                         <div
                                             class="text-xs text-zinc-600 dark:text-zinc-400"
                                         >
-                                            Join date
+                                            Created at
                                         </div>
                                     </div>
                                 </div>
@@ -411,7 +571,7 @@
                                         <div
                                             class="text-xs text-zinc-600 dark:text-zinc-400"
                                         >
-                                            First team join
+                                            First project
                                         </div>
                                     </div>
                                 </div>
@@ -450,7 +610,7 @@
                                         <div
                                             class="text-xs text-zinc-600 dark:text-zinc-400"
                                         >
-                                            First team
+                                            First project name
                                         </div>
                                     </div>
                                 </div>
@@ -473,10 +633,10 @@
                 <div class=" col-span-3 rounded-2xl">
                     <div class="grid sm:grid-cols-2 grid-rows-9 gap-4 h-full">
                         <div
-                            class=" rounded-xl grid grid-rows-4 row-span-4 gap-4"
+                            class=" rounded-xl grid grid-rows-4 row-span-9 gap-4 h-full"
                         >
                             <div
-                                class="w-full row-span-2 p-4 sm:p-0 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col items-center justify-center"
+                                class="w-full row-span-1 p-4 sm:p-0 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col items-center justify-center"
                             >
                                 <div class="text-2xl font-medium">12</div>
                                 <div
@@ -487,28 +647,61 @@
                             </div>
 
                             <div
-                                class="w-full row-span-3 gap-4 grid grid-cols-2"
+                                class="w-full row-span-5 gap-4 grid grid-cols-1"
                             >
                                 <div
-                                    class="bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col justify-center items-center"
+                                    class="bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col gap-2 items-center p-4"
                                 >
-                                    <div class="text-2xl font-medium">21</div>
                                     <div
-                                        class="text-sm text-zinc-600 dark:text-zinc-400"
+                                        class="text-xl text-zinc-600 dark:text-zinc-400"
                                     >
-                                        Years old
-                                    </div>
-                                </div>
-                                <div
-                                    class="bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col justify-center items-center"
-                                >
-                                    <div class="text-2xl font-medium">
-                                        Hungary
+                                        Latest projects
                                     </div>
                                     <div
-                                        class="text-sm text-zinc-600 dark:text-zinc-400"
+                                        class="flex flex-col w-full border rounded-2xl p-1"
                                     >
-                                        Location
+                                        <div
+                                            class="w-full border-b h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 px-2 transition-all flex gap-3 rounded-t-xl justify-between items-center"
+                                        >
+                                            <div
+                                                class="flex gap-3 items-center"
+                                            >
+                                                <div
+                                                    class="w-9 h-9 bg-emerald-500/80 rounded-lg"
+                                                ></div>
+                                                <div
+                                                    class="flex flex-col justify-center"
+                                                >
+                                                    <div
+                                                        class="text-sm font-medium"
+                                                    >
+                                                        Collabug
+                                                    </div>
+                                                    <div
+                                                        class="text-[11px] text-zinc-600 dark:text-zinc-400"
+                                                    >
+                                                        Project manager
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex justify-center items-center"
+                                            >
+                                                <ExternalLink class="w-4 h-4" />
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="w-full border-b h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all"
+                                        ></div>
+                                        <div
+                                            class="w-full border-b h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all"
+                                        ></div>
+                                        <div
+                                            class="w-full border-b h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all"
+                                        ></div>
+                                        <div
+                                            class="w-full h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all rounded-b-xl"
+                                        ></div>
                                     </div>
                                 </div>
                             </div>
@@ -519,7 +712,7 @@
                             <div
                                 class="text-xl text-zinc-600 dark:text-zinc-400"
                             >
-                                Latest projects
+                                Active members
                             </div>
 
                             <div
@@ -536,12 +729,12 @@
                                             class="flex flex-col justify-center"
                                         >
                                             <div class="text-sm font-medium">
-                                                Collabug
+                                                Papp David
                                             </div>
                                             <div
                                                 class="text-[11px] text-zinc-600 dark:text-zinc-400"
                                             >
-                                                Project manager
+                                                Creator
                                             </div>
                                         </div>
                                     </div>
