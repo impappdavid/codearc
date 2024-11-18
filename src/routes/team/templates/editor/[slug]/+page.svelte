@@ -11,18 +11,74 @@
 	import { buttonVariants } from "$lib/components/ui/button";
 	import * as Dialog from "$lib/components/ui/dialog/index.js";
 	import Modetoggle from "$lib/components/modetoggle.svelte";
-	import Toolbar from "$lib/components/templates/toolbar.svelte";
-	import File from "$lib/components/templates/file.svelte";
-	import * as Table from "$lib/components/ui/table/index.js";
-	import Checkbox from "$lib/components/ui/checkbox/checkbox.svelte";
-	import { onMount } from "svelte";
-	import * as Tabs from "$lib/components/ui/tabs/index.js";
-    import Boxview from "$lib/components/templates/boxview.svelte";
 
 	let allSelected = false;
 	let searchQuery = ""; // Declare the variable in the parent component
+	import { page } from "$app/stores";
+	import MonacoEditor from "$lib/components/templates/MonacoEditor.svelte";
+	let code = "";
+	if ($page.params.slug == "bottom_nav_menu.xml") {
+		code = `<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/baseline_fitness_center_24"
+        android:iconTint="@color/white"
+        />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/baseline_calendar_month_24"
+        android:iconTint="@color/white"/>
+
+</menu>
+	`;
+	}else if($page.params.slug == "+page.svelte"){
+		code = `
+<div
+    class="w-full dark:bg-zinc-950/20 py-1.5 px-1.5 rounded-xl border flex justify-between"
+>
+    <div class="flex gap-2 sm:w-full max-w-[300px]">
+        <Button
+            class="p-0 h-7 w-7 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-800/70 rounded-lg"
+        >
+            <Plus class="w-4 h-4 text-black dark:text-white" />
+        </Button>
+        <Button
+            class="p-0 h-7 w-7 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-800/70 rounded-lg"
+        >
+            <FolderPlus class="w-4 h-4 text-black dark:text-white" />
+        </Button>
+        <Separator orientation="vertical" />
+        <Button
+            class="p-0 h-7 w-7 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-800/70 rounded-lg"
+        >
+            <List class="w-4 h-4 text-black dark:text-white" />
+        </Button>
+        <Button
+            class="p-0 h-7 w-7 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-800/70 rounded-lg"
+        >
+            <Grid2x2 class="w-4 h-4 text-black dark:text-white" />
+        </Button>
+    </div>
+    <div class="flex gap-2">
+        
+        <Input class="text-xs p-0 h-7 px-2 bg-zinc-200 rounded-lg md:w-96 dark:bg-zinc-800/70" placeholder="Search by file name"   bind:value/>
+        
+    </div>
+    <div class="flex gap-2 sm:w-full max-w-[300px] justify-end">
+        
+        <Button
+            class="p-0 h-7 w-7 bg-red-800/20 dark:bg-red-400/20 hover:bg-red-700/30 dark:hover:bg-red-400/10 rounded-lg"
+        >
+            <Trash2 class="w-4 h-4 text-red-500 dark:text-red-500" />
+        </Button>
+    </div>
+</div>
+`
+	}
 </script>
 
 <Sidebar.Provider>
@@ -44,8 +100,16 @@
 							<Breadcrumb.Link href="#">Team</Breadcrumb.Link>
 						</Breadcrumb.Item>
 						<Breadcrumb.Separator class="hidden md:block" />
+						<Breadcrumb.Item class="hidden md:block">
+							<Breadcrumb.Link href="../teamName"
+								>Templates</Breadcrumb.Link
+							>
+						</Breadcrumb.Item>
+						<Breadcrumb.Separator class="hidden md:block" />
 						<Breadcrumb.Item>
-							<Breadcrumb.Page>Templates</Breadcrumb.Page>
+							<Breadcrumb.Page
+								>{$page.params.slug}</Breadcrumb.Page
+							>
 						</Breadcrumb.Item>
 					</Breadcrumb.List>
 				</Breadcrumb.Root>
@@ -91,13 +155,13 @@
 								>My Account</DropdownMenu.GroupHeading
 							>
 							<DropdownMenuSeparator />
-							<DropdownMenu.Item onclick={() => location.href= "../profile/david"}
+							<DropdownMenu.Item
 								class="rounded-lg hover:cursor-pointer"
 							>
 								<User class="w-4 h-4" />
 								Profile
 							</DropdownMenu.Item>
-							<Dialog.Root>
+							<Dialog.Root> 
 								<Dialog.Trigger class="w-full outline-none">
 									<DropdownMenu.Item
 										class="rounded-lg hover:cursor-pointer"
@@ -139,35 +203,8 @@
 			</div>
 		</header>
 		<div class="flex flex-1 flex-col gap-4 p-4 py-4">
-			<div
-				class="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min p-2"
-			>
-				<Tabs.Root value="listview" class="w-full">
-					<Tabs.List>
-						<Toolbar bind:value={searchQuery} />
-					</Tabs.List>
-					<Tabs.Content value="listview" class="focus:ring-0 focus:ring-offset-0 outline-none">
-						<div class="mt-2 w-full">
-						
-							<!-- Header Row -->
-							<div class="flex border-b border-zinc-500 text-zinc-600 dark:text-zinc-400 text-sm">
-								<div class="p-2 flex-1">File name</div>
-								<div class="p-2 hidden md:flex flex-1">Created by</div>
-								<div class="p-2  hidden xl:flex flex-1">Edited by</div>
-								<div class="p-2  hidden md:flex flex-1">Row</div>
-								<div class="p-2  hidden xl:flex flex-1">Last modified</div>
-								<div class="p-2 flex-1 text-right">Created at</div>
-							</div>
-						
-							<!-- Body (Rows) -->
-							<File isSelected={allSelected} searchdata={searchQuery} />
-						</div>
-					</Tabs.Content>
-					<Tabs.Content value="boxview" class=" w-full h-full outline-none"
-						>
-						<Boxview isSelected={allSelected} searchdata={searchQuery}/>
-						</Tabs.Content>
-				</Tabs.Root>
+			<div class="min-h-[100vh] flex-1 rounded-xl md:min-h-min w-full">
+				<MonacoEditor bind:value={code} language="xml" />
 			</div>
 		</div>
 	</Sidebar.Inset>

@@ -21,6 +21,53 @@
     import * as Dialog from "$lib/components/ui/dialog/index.js";
     import Modetoggle from "$lib/components/modetoggle.svelte";
     import * as Avatar from "$lib/components/ui/avatar/index.js";
+    import Notification from "$lib/components/notifications/notification.svelte";
+
+    let teamData = {
+        id: 0,
+        teamName: "Collabug",
+        description: "Making competition able applications",
+        tag: "Team",
+        avtivity: true,
+        links: [
+            {
+                name: "Twitter",
+                link: "",
+            },
+            {
+                name: "GitHub",
+                link: "",
+            },
+            {
+                name: "Memberhistory",
+                link: "",
+            },
+            {
+                name: "Website",
+                link: "",
+            },
+        ],
+
+        createdAt: "August 6 2024",
+        firstProjectDate: "April 17 2024",
+        firstProjectName: "Collabug",
+        aboutText: `Hi, I'm a software developer with a love for learning and building impactful apps. I enjoy exploring tech, creating with code, and am driven by the motto, "Dream big and make it happen!"`,
+        totalProjectCount: "12",
+        latestProjects: [
+            {
+                id: 0,
+                projectName: "Collabug",
+                projectType: "Project manager app",
+            },
+        ],
+        activeMembers: [
+            {
+                id: 0,
+                memberName: "Papp Dávid",
+                teamRole: "Creator",
+            },
+        ],
+    };
 </script>
 
 <Sidebar.Provider>
@@ -58,7 +105,9 @@
                         side="right"
                         class=" p-3 h-full bg-transparent flex-1 w-full"
                     >
-                        <div class="bg-zinc-200 dark:bg-zinc-900 rounded-xl h-full p-4">
+                        <div
+                            class="bg-zinc-100 dark:bg-zinc-900 rounded-xl h-full p-4"
+                        >
                             <Sheet.Header class="flex flex-col gap-1">
                                 <Sheet.Title class="flex gap-2 items-center">
                                     <div class="flex gap-1 items-center">
@@ -91,119 +140,33 @@
                                     <Separator />
                                 </Sheet.Description>
                             </Sheet.Header>
-                            <div class="flex flex-col h-full max-h-[580px] sm:max-h-[835px] max-h-96">
-                                <div class="w-full p-2 py-3 hover:cursor-pointer hover:bg-zinc-300/80 dark:hover:bg-zinc-950/30 transition-all flex flex-col gap-2">
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-2 items-center">
-                                            <Avatar.Root
-                                                class="h-9 w-9 rounded-lg"
-                                            >
-                                                <Avatar.Image src="" alt="PD" />
-                                                <Avatar.Fallback
-                                                    class="rounded-xl text-xs"
-                                                    >PD</Avatar.Fallback
-                                                >
-                                            </Avatar.Root>
-                                            <div class="flex-col flex">
-                                                <div class="text-sm">
-                                                    <span class="font-medium"
-                                                        >David</span
-                                                    >
-                                                    invited you to
-                                                    <span class="font-medium"
-                                                        >Collabug</span
-                                                    >
-                                                </div>
-                                                <div
-                                                    class="text-xs dark:text-zinc-400"
-                                                >
-                                                    Moday 4:18 PM
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="w-2 h-2 rounded-full bg-blue-500 mt-1"></div>
-                                    </div>
-                                    <div class="flex w-fit ml-9 pl-1 gap-2">
-                                        <Button class="bg-transparent border border-zinc-400 dark:border-zinc-700 h-8 text-black dark:text-white hover:bg-zinc-500/30 dark:hover:bg-zinc-950/40 rounded-lg">Decline</Button>
-                                        <Button class="bg-blue-500/80 h-8 text-white hover:bg-blue-500/70 rounded-lg">Accept</Button>
-                                    </div>
-                                </div>
-
-                                <div class="w-full p-2 py-3 hover:cursor-pointer hover:bg-zinc-300/80 dark:hover:bg-zinc-950/30 transition-all flex flex-col gap-2">
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-2 items-center">
-                                            <Avatar.Root
-                                                class="h-9 w-9 rounded-lg"
-                                            >
-                                                <Avatar.Image src="" alt="PD" />
-                                                <Avatar.Fallback
-                                                    class="rounded-xl text-xs"
-                                                    >PD</Avatar.Fallback
-                                                >
-                                            </Avatar.Root>
-                                            <div class="flex-col flex">
-                                                <div class="text-sm">
-                                                    <span class="font-medium"
-                                                        >David</span
-                                                    >
-                                                    added a card to
-                                                    <span class="font-medium"
-                                                        >Todo</span
-                                                    >
-                                                </div>
-                                                <div
-                                                    class="text-xs dark:text-zinc-400"
-                                                >
-                                                    Sunday 8:47 PM
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="w-2 h-2 rounded-full bg-blue-500 mt-1"></div>
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="w-full p-2 py-3 hover:cursor-pointer hover:bg-zinc-300/80 dark:hover:bg-zinc-950/30 transition-all flex flex-col gap-2">
-                                    <div class="flex justify-between">
-                                        <div class="flex gap-2 items-center">
-                                            <Avatar.Root
-                                                class="h-9 w-9 rounded-lg"
-                                            >
-                                                <Avatar.Image src="" alt="PD" />
-                                                <Avatar.Fallback
-                                                    class="rounded-xl text-xs"
-                                                    >BÁ</Avatar.Fallback
-                                                >
-                                            </Avatar.Root>
-                                            <div class="flex-col flex">
-                                                <div class="text-sm max-w-60  truncate ">
-                                                    <span class="font-medium"
-                                                        >Ádám</span
-                                                    >
-                                                    edited a table in
-                                                    <span class="font-medium"
-                                                        >Database planner</span
-                                                    >
-                                                </div>
-                                                <div
-                                                    class="text-xs dark:text-zinc-400"
-                                                >
-                                                    Sunday 8:47 PM
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                
-                            </div>
+                            <Notification />
                             <Sheet.Footer class="">
-                                <div class="w-full ">
-                                    <Button class="h-9 w-full dark:bg-zinc-950 text-white dark:hover:bg-zinc-950/80 rounded-xl">
-                                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-checks"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 12l5 5l10 -10" /><path d="M2 12l5 5m5 -5l5 -5" /></svg>
+                                <div class="w-full">
+                                    <Button
+                                        class="h-9 w-full dark:bg-zinc-950 text-white dark:hover:bg-zinc-950/80 rounded-xl"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="icon icon-tabler icons-tabler-outline icon-tabler-checks"
+                                            ><path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            /><path d="M7 12l5 5l10 -10" /><path
+                                                d="M2 12l5 5m5 -5l5 -5"
+                                            /></svg
+                                        >
                                         Mark all as read
                                     </Button>
-                                    
                                 </div>
                             </Sheet.Footer>
                         </div>
@@ -213,9 +176,7 @@
                     <DropdownMenu.Trigger class="flex items-center gap-2 ">
                         <div
                             class="w-8 h-8 bg-black dark:bg-white rounded-lg"
-                        >
-                    
-                    </div>
+                        ></div>
                     </DropdownMenu.Trigger>
                     <DropdownMenu.Content
                         align="end"
@@ -227,6 +188,8 @@
                             >
                             <DropdownMenuSeparator />
                             <DropdownMenu.Item
+                                onclick={() =>
+                                    (location.href = "../profile/david")}
                                 class="rounded-lg hover:cursor-pointer"
                             >
                                 <User class="w-4 h-4" />
@@ -319,38 +282,47 @@
                             <div class="flex flex-col gap-3 justify-center">
                                 <div class="flex flex-col">
                                     <div class="text-xl font-medium">
-                                        Collabug
+                                        {teamData.teamName}
                                     </div>
-                                    <a
-                                        href="https://portfolio-impappdavids-projects.vercel.app/"
-                                        target="_blank"
-                                        class="text-xs text-zinc-600 dark:text-zinc-400 underline"
+                                    <div
+                                        class="text-xs text-zinc-600 dark:text-zinc-400"
                                     >
-                                        https://portfolio-impappdavids-projects.vercel.app/
-                                    </a>
+                                        {teamData.description}
+                                    </div>
                                 </div>
                                 <div class="flex gap-2">
                                     <div
                                         class="text-xs text-zinc-600 dark:text-zinc-400 py-1 px-2 rounded-md bg-muted/50 border"
                                     >
-                                        Team
+                                        {teamData.tag}
                                     </div>
                                 </div>
                             </div>
                             <div class="flex items-start">
-                                <div
-                                    class="flex justify-center items-center text-xs p-1 px-2 rounded-lg bg-emerald-500/60"
-                                >
-                                    Active
-                                </div>
+                                {#if teamData.avtivity}
+                                    <div
+                                        class="flex justify-center items-center text-xs p-1 px-2 rounded-lg bg-emerald-500/60"
+                                    >
+                                        Active
+                                    </div>
+                                {:else}
+                                    <div
+                                        class="flex justify-center items-center text-xs p-1 px-2 rounded-lg bg-zinc-500/60"
+                                    >
+                                        Inactive
+                                    </div>
+                                {/if}
                             </div>
                         </div>
                     </div>
                     <div
-                        class="w-full border grid grid-cols-1 sm:flex sm:h-14 rounded-2xl px-1 py-1"
+                        class="w-full border-y grid grid-cols-1 sm:flex sm:h-14 "
                     >
+                    {#each teamData.links as link}
+                    <Separator orientation="vertical" />
+                    
                         <div
-                            class=" sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 rounded-t-xl sm:rounded-tr-none sm:rounded-l-xl px-2 py-2 transition-all"
+                            class=" sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 sm:rounded-tr-none px-2 py-2 transition-all"
                         >
                             <div
                                 class="w-8 h-8 bg-zinc-200 dark:bg-muted/90 flex items-center justify-center rounded-lg"
@@ -378,7 +350,7 @@
                                 >
                             </div>
                             <div class="flex flex-col justify-center">
-                                <div class="text-sm font-medium">Twitter</div>
+                                <div class="text-sm font-medium">{link.name}</div>
                                 <div
                                     class="text-[10px] text-zinc-600 dark:text-zinc-400"
                                 >
@@ -387,130 +359,9 @@
                             </div>
                         </div>
                         <Separator orientation="vertical" />
+                        {/each}
 
-                        <div
-                            class="sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 px-2 py-2 transition-all"
-                        >
-                            <div
-                                class="w-8 h-8 bg-zinc-200 dark:bg-muted/90 flex items-center justify-center rounded-lg"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"
-                                    ><path
-                                        stroke="none"
-                                        d="M0 0h24v24H0z"
-                                        fill="none"
-                                    /><path
-                                        d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
-                                    /></svg
-                                >
-                            </div>
-                            <div class="flex flex-col justify-center">
-                                <div class="text-sm font-medium">GitHub</div>
-                                <div
-                                    class="text-[10px] text-zinc-600 dark:text-zinc-400"
-                                >
-                                    Open
-                                </div>
-                            </div>
-                        </div>
-                        <Separator orientation="vertical" />
-
-                        <div
-                            class="sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 px-2 py-2 transition-all"
-                        >
-                            <div
-                                class="w-8 h-8 bg-zinc-200 dark:bg-muted/90 flex items-center justify-center rounded-lg"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-users-group"
-                                    ><path
-                                        stroke="none"
-                                        d="M0 0h24v24H0z"
-                                        fill="none"
-                                    /><path
-                                        d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"
-                                    /><path
-                                        d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"
-                                    /><path
-                                        d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"
-                                    /><path d="M17 10h2a2 2 0 0 1 2 2v1" /><path
-                                        d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"
-                                    /><path
-                                        d="M3 13v-1a2 2 0 0 1 2 -2h2"
-                                    /></svg
-                                >
-                            </div>
-                            <div class="flex flex-col justify-center">
-                                <div class="text-sm font-medium">
-                                    Member history
-                                </div>
-                                <div
-                                    class="text-[10px] text-zinc-600 dark:text-zinc-400"
-                                >
-                                    Open
-                                </div>
-                            </div>
-                        </div>
-                        <Separator orientation="vertical" />
-
-                        <div
-                            class="sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 rounded-b-xl sm:rounded-bl-none sm:rounded-r-xl px-2 py-2 transition-all"
-                        >
-                            <div
-                                class="w-8 h-8 bg-zinc-200 dark:bg-muted/90 flex items-center justify-center rounded-lg"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-world"
-                                    ><path
-                                        stroke="none"
-                                        d="M0 0h24v24H0z"
-                                        fill="none"
-                                    /><path
-                                        d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"
-                                    /><path d="M3.6 9h16.8" /><path
-                                        d="M3.6 15h16.8"
-                                    /><path d="M11.5 3a17 17 0 0 0 0 18" /><path
-                                        d="M12.5 3a17 17 0 0 1 0 18"
-                                    /></svg
-                                >
-                            </div>
-                            <div class="flex flex-col justify-center">
-                                <div class="text-sm font-medium">Website</div>
-                                <div
-                                    class="text-[10px] text-zinc-600 dark:text-zinc-400"
-                                >
-                                    Open
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div class="w-full flex flex-col gap-2">
@@ -536,7 +387,7 @@
                                         /></svg
                                     >
                                     <div class="flex flex-col items-center">
-                                        <div class="text-sm">August 6 2024</div>
+                                        <div class="text-sm">{teamData.createdAt}</div>
                                         <div
                                             class="text-xs text-zinc-600 dark:text-zinc-400"
                                         >
@@ -567,7 +418,7 @@
                                         /><path d="M5 12l5 5l10 -10" /></svg
                                     >
                                     <div class="flex flex-col items-center">
-                                        <div class="text-sm">April 17 2024</div>
+                                        <div class="text-sm">{teamData.firstProjectDate}</div>
                                         <div
                                             class="text-xs text-zinc-600 dark:text-zinc-400"
                                         >
@@ -606,7 +457,7 @@
                                         /></svg
                                     >
                                     <div class="flex flex-col items-center">
-                                        <div class="text-sm">Collabug</div>
+                                        <div class="text-sm">{teamData.firstProjectName}</div>
                                         <div
                                             class="text-xs text-zinc-600 dark:text-zinc-400"
                                         >
@@ -623,10 +474,7 @@
                         <div
                             class="w-full text-sm text-zinc-600 dark:text-zinc-400"
                         >
-                            Hi, I'm a software developer with a love for
-                            learning and building impactful apps. I enjoy
-                            exploring tech, creating with code, and am driven by
-                            the motto, "Dream big and make it happen!"
+                            {teamData.aboutText}
                         </div>
                     </div>
                 </div>
@@ -638,7 +486,7 @@
                             <div
                                 class="w-full row-span-1 p-4 sm:p-0 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col items-center justify-center"
                             >
-                                <div class="text-2xl font-medium">12</div>
+                                <div class="text-2xl font-medium">{teamData.totalProjectCount}</div>
                                 <div
                                     class="text-sm text-zinc-600 dark:text-zinc-400"
                                 >
@@ -658,10 +506,13 @@
                                         Latest projects
                                     </div>
                                     <div
-                                        class="flex flex-col w-full border rounded-2xl p-1"
+                                        class="flex flex-col w-full"
                                     >
+                                    <Separator />
+                                    {#each teamData.latestProjects as project}
+                                        
                                         <div
-                                            class="w-full border-b h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 px-2 transition-all flex gap-3 rounded-t-xl justify-between items-center"
+                                            class="w-full border-b min-h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 px-2 transition-all flex gap-3 justify-between items-center"
                                         >
                                             <div
                                                 class="flex gap-3 items-center"
@@ -675,12 +526,12 @@
                                                     <div
                                                         class="text-sm font-medium"
                                                     >
-                                                        Collabug
+                                                        {project.projectName}
                                                     </div>
                                                     <div
                                                         class="text-[11px] text-zinc-600 dark:text-zinc-400"
                                                     >
-                                                        Project manager
+                                                        {project.projectType}
                                                     </div>
                                                 </div>
                                             </div>
@@ -690,36 +541,33 @@
                                                 <ExternalLink class="w-4 h-4" />
                                             </div>
                                         </div>
-                                        <div
-                                            class="w-full border-b h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all"
-                                        ></div>
-                                        <div
-                                            class="w-full border-b h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all"
-                                        ></div>
-                                        <div
-                                            class="w-full border-b h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all"
-                                        ></div>
-                                        <div
-                                            class="w-full h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all rounded-b-xl"
-                                        ></div>
+                                        {/each}
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div
-                            class="p-4 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col gap-6 row-span-9 items-center"
+                            class="p-4 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col row-span-9 items-center"
                         >
                             <div
-                                class="text-xl text-zinc-600 dark:text-zinc-400"
-                            >
-                                Active members
-                            </div>
-
-                            <div
-                                class="flex flex-col w-full border rounded-2xl p-1"
+                                class="flex flex-col gap-2 w-full items-center"
                             >
                                 <div
-                                    class="w-full border-b h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 px-2 transition-all flex gap-3 rounded-t-xl justify-between items-center"
+                                    class="text-xl text-zinc-600 dark:text-zinc-400"
+                                >
+                                    Active members
+                                </div>
+                                <Separator />
+                            </div>
+                            <div
+                                class="flex flex-col w-full h-full max-h-[400px] overflow-y-scroll"
+                            >
+                            {#each teamData.activeMembers as member}
+                                
+                            
+                                <div
+                                    class="w-full min-h-14 border-b hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 px-2 transition-all flex gap-3 justify-between items-center"
                                 >
                                     <div class="flex gap-3 items-center">
                                         <div
@@ -729,12 +577,12 @@
                                             class="flex flex-col justify-center"
                                         >
                                             <div class="text-sm font-medium">
-                                                Papp David
+                                                {member.memberName}
                                             </div>
                                             <div
                                                 class="text-[11px] text-zinc-600 dark:text-zinc-400"
                                             >
-                                                Creator
+                                                {member.teamRole}
                                             </div>
                                         </div>
                                     </div>
@@ -744,23 +592,8 @@
                                         <ExternalLink class="w-4 h-4" />
                                     </div>
                                 </div>
-                                <div
-                                    class="w-full border-b h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all"
-                                ></div>
-                                <div
-                                    class="w-full border-b h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all"
-                                ></div>
-                                <div
-                                    class="w-full border-b h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all"
-                                ></div>
-                                <div
-                                    class="w-full h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 transition-all rounded-b-xl"
-                                ></div>
-                            </div>
-                            <div
-                                class="text-xs text-zinc-600 dark:text-zinc-400"
-                            >
-                                (Last 5 project)
+                                {/each}
+                                
                             </div>
                         </div>
                     </div>

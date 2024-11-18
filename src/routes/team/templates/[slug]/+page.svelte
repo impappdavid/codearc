@@ -8,77 +8,22 @@
 	import LogOut from "lucide-svelte/icons/log-out";
 	import { Palette, Settings, User, Users, Bell } from "lucide-svelte";
 	import * as Sheet from "$lib/components/ui/sheet/index.js";
-	import { buttonVariants } from "$lib/components/ui/button";
+	import { Button, buttonVariants } from "$lib/components/ui/button";
 	import * as Dialog from "$lib/components/ui/dialog/index.js";
 	import Modetoggle from "$lib/components/modetoggle.svelte";
+	import Toolbar from "$lib/components/templates/toolbar.svelte";
+	import File from "$lib/components/templates/file.svelte";
+	import * as Table from "$lib/components/ui/table/index.js";
+	import Checkbox from "$lib/components/ui/checkbox/checkbox.svelte";
+	import { onMount } from "svelte";
+	import * as Tabs from "$lib/components/ui/tabs/index.js";
+    import Boxview from "$lib/components/templates/boxview.svelte";
+    import Notification from "$lib/components/notifications/notification.svelte";
 
 	let allSelected = false;
 	let searchQuery = ""; // Declare the variable in the parent component
-	import { page } from "$app/stores";
-	import MonacoEditor from "$lib/components/templates/MonacoEditor.svelte";
-	let code = "";
-	if ($page.params.slug == "bottom_nav_menu.xml") {
-		code = `<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/baseline_fitness_center_24"
-        android:iconTint="@color/white"
-        />
-
-    <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/baseline_calendar_month_24"
-        android:iconTint="@color/white"/>
-
-</menu>
-	`;
-	}else if($page.params.slug == "+page.svelte"){
-		code = `
-<div
-    class="w-full dark:bg-zinc-950/20 py-1.5 px-1.5 rounded-xl border flex justify-between"
->
-    <div class="flex gap-2 sm:w-full max-w-[300px]">
-        <Button
-            class="p-0 h-7 w-7 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-800/70 rounded-lg"
-        >
-            <Plus class="w-4 h-4 text-black dark:text-white" />
-        </Button>
-        <Button
-            class="p-0 h-7 w-7 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-800/70 rounded-lg"
-        >
-            <FolderPlus class="w-4 h-4 text-black dark:text-white" />
-        </Button>
-        <Separator orientation="vertical" />
-        <Button
-            class="p-0 h-7 w-7 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-800/70 rounded-lg"
-        >
-            <List class="w-4 h-4 text-black dark:text-white" />
-        </Button>
-        <Button
-            class="p-0 h-7 w-7 bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-800/70 rounded-lg"
-        >
-            <Grid2x2 class="w-4 h-4 text-black dark:text-white" />
-        </Button>
-    </div>
-    <div class="flex gap-2">
-        
-        <Input class="text-xs p-0 h-7 px-2 bg-zinc-200 rounded-lg md:w-96 dark:bg-zinc-800/70" placeholder="Search by file name"   bind:value/>
-        
-    </div>
-    <div class="flex gap-2 sm:w-full max-w-[300px] justify-end">
-        
-        <Button
-            class="p-0 h-7 w-7 bg-red-800/20 dark:bg-red-400/20 hover:bg-red-700/30 dark:hover:bg-red-400/10 rounded-lg"
-        >
-            <Trash2 class="w-4 h-4 text-red-500 dark:text-red-500" />
-        </Button>
-    </div>
-</div>
-`
-	}
 </script>
 
 <Sidebar.Provider>
@@ -100,46 +45,68 @@
 							<Breadcrumb.Link href="#">Team</Breadcrumb.Link>
 						</Breadcrumb.Item>
 						<Breadcrumb.Separator class="hidden md:block" />
-						<Breadcrumb.Item class="hidden md:block">
-							<Breadcrumb.Link href="./"
-								>Templates</Breadcrumb.Link
-							>
-						</Breadcrumb.Item>
-						<Breadcrumb.Separator class="hidden md:block" />
 						<Breadcrumb.Item>
-							<Breadcrumb.Page
-								>{$page.params.slug}</Breadcrumb.Page
-							>
+							<Breadcrumb.Page>Templates</Breadcrumb.Page>
 						</Breadcrumb.Item>
 					</Breadcrumb.List>
 				</Breadcrumb.Root>
 			</div>
 			<div class="flex gap-3 items-center px-4">
 				<Sheet.Root>
-					<Sheet.Trigger
-						class="w-9 h-9 border rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-950/20 transition-all"
-						><Bell class="w-4 h-4" /></Sheet.Trigger
-					>
-					<Sheet.Content
-						side="right"
-						class="bg-zinc-200 dark:bg-zinc-900"
-					>
-						<Sheet.Header>
-							<Sheet.Title>Edit profile</Sheet.Title>
-							<Sheet.Description>
-								Make changes to your profile here. Click save
-								when you're done.
-							</Sheet.Description>
-						</Sheet.Header>
-						<div class="grid gap-4 py-4"></div>
-						<Sheet.Footer>
-							<Sheet.Close
-								class={buttonVariants({ variant: "outline" })}
-								>Save changes</Sheet.Close
-							>
-						</Sheet.Footer>
-					</Sheet.Content>
-				</Sheet.Root>
+                    <Sheet.Trigger
+                        class="w-9 h-9 border rounded-lg flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-950/20 transition-all"
+                        ><Bell class="w-4 h-4" /></Sheet.Trigger
+                    >
+                    <Sheet.Content
+                        side="right"
+                        class=" p-3 h-full bg-transparent flex-1 w-full"
+                    >
+                        <div class="bg-zinc-100 dark:bg-zinc-900 rounded-xl h-full p-4">
+                            <Sheet.Header class="flex flex-col gap-1">
+                                <Sheet.Title class="flex gap-2 items-center">
+                                    <div class="flex gap-1 items-center">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="22"
+                                            height="22"
+                                            viewBox="0 0 24 24"
+                                            fill="currentColor"
+                                            class="icon icon-tabler icons-tabler-filled icon-tabler-bell"
+                                            ><path
+                                                stroke="none"
+                                                d="M0 0h24v24H0z"
+                                                fill="none"
+                                            /><path
+                                                d="M14.235 19c.865 0 1.322 1.024 .745 1.668a3.992 3.992 0 0 1 -2.98 1.332a3.992 3.992 0 0 1 -2.98 -1.332c-.552 -.616 -.158 -1.579 .634 -1.661l.11 -.006h4.471z"
+                                            /><path
+                                                d="M12 2c1.358 0 2.506 .903 2.875 2.141l.046 .171l.008 .043a8.013 8.013 0 0 1 4.024 6.069l.028 .287l.019 .289v2.931l.021 .136a3 3 0 0 0 1.143 1.847l.167 .117l.162 .099c.86 .487 .56 1.766 -.377 1.864l-.116 .006h-16c-1.028 0 -1.387 -1.364 -.493 -1.87a3 3 0 0 0 1.472 -2.063l.021 -.143l.001 -2.97a8 8 0 0 1 3.821 -6.454l.248 -.146l.01 -.043a3.003 3.003 0 0 1 2.562 -2.29l.182 -.017l.176 -.004z"
+                                            /></svg
+                                        >
+                                        Notifications
+                                    </div>
+                                    <div
+                                        class="h-5 w-5 bg-zinc-300 dark:bg-zinc-700 text-xs flex justify-center font-normal items-center text-center rounded-md"
+                                    >
+                                        2
+                                    </div>
+                                </Sheet.Title>
+                                <Sheet.Description>
+                                    <Separator />
+                                </Sheet.Description>
+                            </Sheet.Header>
+                            <Notification />
+                            <Sheet.Footer class="">
+                                <div class="w-full ">
+                                    <Button class="h-9 w-full dark:bg-zinc-950 text-white dark:hover:bg-zinc-950/80 rounded-xl">
+                                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-checks"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 12l5 5l10 -10" /><path d="M2 12l5 5m5 -5l5 -5" /></svg>
+                                        Mark all as read
+                                    </Button>
+                                    
+                                </div>
+                            </Sheet.Footer>
+                        </div>
+                    </Sheet.Content>
+                </Sheet.Root>
 				<DropdownMenu.Root>
 					<DropdownMenu.Trigger class="flex items-center gap-2 ">
 						<div
@@ -155,13 +122,13 @@
 								>My Account</DropdownMenu.GroupHeading
 							>
 							<DropdownMenuSeparator />
-							<DropdownMenu.Item
+							<DropdownMenu.Item onclick={() => location.href= "../../profile/david"}
 								class="rounded-lg hover:cursor-pointer"
 							>
 								<User class="w-4 h-4" />
 								Profile
 							</DropdownMenu.Item>
-							<Dialog.Root> 
+							<Dialog.Root>
 								<Dialog.Trigger class="w-full outline-none">
 									<DropdownMenu.Item
 										class="rounded-lg hover:cursor-pointer"
@@ -203,8 +170,35 @@
 			</div>
 		</header>
 		<div class="flex flex-1 flex-col gap-4 p-4 py-4">
-			<div class="min-h-[100vh] flex-1 rounded-xl md:min-h-min w-full">
-				<MonacoEditor bind:value={code} language="xml" />
+			<div
+				class="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min p-2"
+			>
+				<Tabs.Root value="listview" class="w-full">
+					<Tabs.List>
+						<Toolbar bind:value={searchQuery} />
+					</Tabs.List>
+					<Tabs.Content value="listview" class="focus:ring-0 focus:ring-offset-0 outline-none">
+						<div class="mt-2 w-full">
+						
+							<!-- Header Row -->
+							<div class="flex border-b border-zinc-500 text-zinc-600 dark:text-zinc-400 text-sm">
+								<div class="p-2 flex-1">File name</div>
+								<div class="p-2 hidden md:flex flex-1">Created by</div>
+								<div class="p-2  hidden xl:flex flex-1">Edited by</div>
+								<div class="p-2  hidden md:flex flex-1">Row</div>
+								<div class="p-2  hidden xl:flex flex-1">Last modified</div>
+								<div class="p-2 flex-1 text-right">Created at</div>
+							</div>
+						
+							<!-- Body (Rows) -->
+							<File isSelected={allSelected} searchdata={searchQuery} />
+						</div>
+					</Tabs.Content>
+					<Tabs.Content value="boxview" class=" w-full h-full outline-none"
+						>
+						<Boxview isSelected={allSelected} searchdata={searchQuery}/>
+						</Tabs.Content>
+				</Tabs.Root>
 			</div>
 		</div>
 	</Sidebar.Inset>

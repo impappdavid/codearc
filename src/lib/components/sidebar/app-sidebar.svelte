@@ -42,7 +42,7 @@
 			
 			{
 				name: "Templates",
-				url: "/team/templates",
+				url: "/team/templates/teamName",
 				icon: Library,
 			},
 			

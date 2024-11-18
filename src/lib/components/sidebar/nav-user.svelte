@@ -57,7 +57,7 @@
 				<DropdownMenu.Separator />
 				
 				<DropdownMenu.Group>
-					<DropdownMenu.Item class="hover:cursor-pointer rounded-lg" onclick={() => location.href= "../team/collabug"}>
+					<DropdownMenu.Item class="hover:cursor-pointer rounded-lg" onclick={() => location.href= "../../team/collabug"}>
 						<BadgeCheck />
 						Team 
 					</DropdownMenu.Item>
