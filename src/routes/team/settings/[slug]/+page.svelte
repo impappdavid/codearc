@@ -15,6 +15,7 @@
     import Input from "$lib/components/ui/input/input.svelte";
     import { toast } from "svelte-sonner";
     import { Label } from "$lib/components/ui/label";
+
     let teamData = {
         id: 0,
         teamName: "Collabug",
@@ -95,6 +96,34 @@
         },
     ];
 
+    let activeUsers = [
+        {
+            id: 0,
+            userName: "Papp Dávid",
+            userEmail: "pappd377@gmail.com",
+            teamRole: "Frontend",
+        },
+        {
+            id: 1,
+            userName: "Bognár Ádám",
+            userEmail: "bgnradam@gmail.com",
+            teamRole: "Backend",
+        },
+        {
+            id: 2,
+            userName: "Makai Atilla",
+            userEmail: "mkatilla@gmail.com",
+            teamRole: "Homeless",
+        },
+        {
+            id: 3,
+            userName: "Bogda Zoltán",
+            userEmail: "bgnradam@gmail.com",
+            teamRole: "Designer",
+        },
+        
+    ];
+
     // Find the closest match
     $: closestUser =
         searchQuery.length >= 2
@@ -135,6 +164,10 @@
                         <Breadcrumb.Separator class="hidden md:block" />
                         <Breadcrumb.Item class="hidden md:block">
                             <Breadcrumb.Link href="#">Team</Breadcrumb.Link>
+                        </Breadcrumb.Item>
+                        <Breadcrumb.Separator class="hidden md:block" />
+                        <Breadcrumb.Item>
+                            <Breadcrumb.Page>Settings</Breadcrumb.Page>
                         </Breadcrumb.Item>
                         <Breadcrumb.Separator class="hidden md:block" />
                         <Breadcrumb.Item>
@@ -223,7 +256,7 @@
                 <DropdownMenu.Root>
                     <DropdownMenu.Trigger class="flex items-center gap-2 ">
                         <div
-                            class="w-8 h-8 bg-black dark:bg-white rounded-lg"
+                            class="w-8 h-8 bg-blue-500 dark:bg-blue-500 rounded-lg"
                         ></div>
                     </DropdownMenu.Trigger>
                     <DropdownMenu.Content
@@ -284,15 +317,14 @@
                 </DropdownMenu.Root>
             </div>
         </header>
-        <div class="flex flex-col gap-6 p-4 py-4 h-full">
-            
-            <div class="w-full sm:px-8 grid lg:grid-cols-9 gap-4">
+        <div class="flex flex-col p-4 py-4 h-full w-full">
+            <div class="w-full sm:px-8 grid xl:grid-cols-2 grid-rows-2 gap-4">
                 <div
-                    class="col-span-5 flex flex-col gap-4 p-4 bg-zinc-100 border dark:bg-muted/30 rounded-2xl"
+                    class="w-full flex flex-col gap-4 p-4 bg-zinc-100 border dark:bg-muted/30 rounded-2xl"
                 >
-                    <div class="flex gap-4">
+                    <div class=" flex gap-4">
                         <div
-                            class="min-w-24 h-24 border bg-emerald-500/80 rounded-2xl flex justify-center items-center"
+                            class="min-w-24 h-24 shadow-sm border dark:border-zinc-900 dark:shadow-zinc-950 text-zinc-700 dark:text-zinc-200 dark:bg-zinc-900 rounded-2xl flex justify-center items-center"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -304,7 +336,7 @@
                                 stroke-width="2"
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-spider text-black"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-spider "
                                 ><path
                                     stroke="none"
                                     d="M0 0h24v24H0z"
@@ -406,7 +438,7 @@
                                 />
                             </div>
                         </div>
-                        
+
                         <div
                             class=" h-9 h-full flex gap-2 items-center px-2 py-2 transition-all"
                         >
@@ -423,22 +455,140 @@
                         </div>
                     </div>
 
-                    
-
                     <div class="w-full flex flex-col gap-2">
                         <div class="text-md font-medium">About</div>
                         <div
                             class="w-full text-sm text-zinc-600 dark:text-zinc-400"
                         >
-                            <textarea value={teamData.aboutText} class="w-full bg-zinc-950 border p-2 outline-none rounded-lg"/>
+                            <textarea
+                                value={teamData.aboutText}
+                                class="w-full dark:bg-zinc-950 border p-2 outline-none rounded-lg max-h-[100px]"
+                            />
                         </div>
                     </div>
-                    <Button class="bg-zinc-950 dark:hover:bg-zinc-950/80 text-white">Save changes</Button>
+                    <Button
+                        class="bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-950 dark:hover:bg-zinc-950/80 text-black dark:text-white"
+                        >Save changes</Button
+                    >
                 </div>
-                <div class=" col-span-4 rounded-2xl">
-                    <div class="grid sm:grid-cols-2 grid-rows-9 gap-4 h-full">
+
+                <div
+                    class="w-full bg-muted/30 grid row-span-2 grid rounded-xl border p-4"
+                >
+                    <div class="h-full">
+                        <div class="flex flex-col gap-2 w-full items-center">
+                            <div
+                                class="text-xl text-zinc-600 dark:text-zinc-400"
+                            >
+                                Members
+                            </div>
+                            <Separator />
+                        </div>
+                        
+                            
+                       
+                        <div class="flex flex-col overflow-y-scroll max-h-[700px]">
+                            {#each activeUsers as active}
+                            <div
+                                class="w-full min-h-14 hover:bg-muted/20 border-b flex justify-between px-2"
+                            >
+                                <div class="flex items-center gap-2">
+                                    <div
+                                        class="w-9 h-9 bg-blue-500 rounded-md"
+                                    ></div>
+                                    <div class="flex flex-col justify-center">
+                                        <div class="text-sm">{active.userName}</div>
+
+                                        <div class="text-xs text-zinc-400">
+                                            {active.userEmail}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="text-xs py-1 px-2 bg-blue-500 rounded-md  text-white"
+                                    >
+                                        {active.teamRole}
+                                    </div>
+
+                                    <div class="flex gap-1">
+                                        <Button
+                                            size="icon"
+                                            class="h-8 w-8 bg-transparent hover:bg-zinc-950/10 dark:hover:bg-white/10 text-black dark:text-white transition-all flex justify-center items-center"
+                                        >
+                                            <ExternalLink />
+                                        </Button>
+
+                                        <Button
+                                            size="icon"
+                                            class="h-8 w-8 bg-transparent hover:bg-blue-500/20 text-blue-500 transition-all flex justify-center items-center"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="icon icon-tabler icons-tabler-outline icon-tabler-user-edit"
+                                                ><path
+                                                    stroke="none"
+                                                    d="M0 0h24v24H0z"
+                                                    fill="none"
+                                                /><path
+                                                    d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"
+                                                /><path
+                                                    d="M6 21v-2a4 4 0 0 1 4 -4h3.5"
+                                                /><path
+                                                    d="M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97l-3.39 3.42h-3v-3l3.42 -3.39z"
+                                                /></svg
+                                            >
+                                        </Button>
+
+                                        <Button
+                                            size="icon"
+                                            class="h-8 w-8 bg-transparent hover:bg-red-500/20 text-red-500 transition-all flex justify-center items-center"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="icon icon-tabler icons-tabler-outline icon-tabler-user-x"
+                                                ><path
+                                                    stroke="none"
+                                                    d="M0 0h24v24H0z"
+                                                    fill="none"
+                                                /><path
+                                                    d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"
+                                                /><path
+                                                    d="M6 21v-2a4 4 0 0 1 4 -4h3.5"
+                                                /><path d="M22 22l-5 -5" /><path
+                                                    d="M17 22l5 -5"
+                                                /></svg
+                                            >
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                            {/each}
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full rounded-2xl grid">
+                    <div class="grid gap-4 w-full h-full">
                         <div
-                            class="p-4 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col row-span-9 items-center"
+                            class="p-4 w-full bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col row-span-9 items-center"
                         >
                             <div
                                 class="flex flex-col gap-2 w-full items-center"
@@ -455,18 +605,12 @@
                             >
                                 <div class="w-full max-w-md mx-auto">
                                     <div class="pt-2">
-                                        <label
-                                            for="username"
-                                            class="block text-sm font-medium text-zinc-300"
-                                        >
-                                            Search for a User
-                                        </label>
                                         <Input
                                             id="username"
                                             type="text"
                                             bind:value={searchQuery}
                                             autocomplete="off"
-                                            placeholder="Type at least 2 characters..."
+                                            placeholder="Search users..."
                                             class="w-full px-4 py-2 border  rounded-lg focus:outline-none "
                                         />
                                     </div>
