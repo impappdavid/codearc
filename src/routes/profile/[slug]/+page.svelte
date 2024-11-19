@@ -10,14 +10,11 @@
         Palette,
         Settings,
         User,
-        Users,
         Bell,
         ExternalLink,
     } from "lucide-svelte";
     import * as Sheet from "$lib/components/ui/sheet/index.js";
-    import { Label } from "$lib/components/ui/label";
-    import { Input } from "$lib/components/ui/input";
-    import { Button, buttonVariants } from "$lib/components/ui/button";
+    import { Button } from "$lib/components/ui/button";
     import * as Dialog from "$lib/components/ui/dialog/index.js";
     import Modetoggle from "$lib/components/modetoggle.svelte";
 

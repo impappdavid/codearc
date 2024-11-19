@@ -6,19 +6,15 @@
     import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
     import DropdownMenuSeparator from "$lib/components/ui/dropdown-menu/dropdown-menu-separator.svelte";
     import LogOut from "lucide-svelte/icons/log-out";
-    import {
-        Palette,
-        Settings,
-        User,
-        Bell,
-        ExternalLink,
-    } from "lucide-svelte";
+    import { Palette, Settings, User, Bell, ExternalLink } from "lucide-svelte";
     import * as Sheet from "$lib/components/ui/sheet/index.js";
     import { Button } from "$lib/components/ui/button";
     import * as Dialog from "$lib/components/ui/dialog/index.js";
     import Modetoggle from "$lib/components/modetoggle.svelte";
     import Notification from "$lib/components/notifications/notification.svelte";
-
+    import Input from "$lib/components/ui/input/input.svelte";
+    import { toast } from "svelte-sonner";
+    import { Label } from "$lib/components/ui/label";
     let teamData = {
         id: 0,
         teamName: "Collabug",
@@ -64,6 +60,62 @@
             },
         ],
     };
+
+    let searchQuery = "";
+    let users = [
+        {
+            id: 0,
+            userName: "Papp Dávid",
+            userEmail: "pappd377@gmail.com",
+        },
+        {
+            id: 1,
+            userName: "Bognár Ádám",
+            userEmail: "bgnradam@gmail.com",
+        },
+        {
+            id: 2,
+            userName: "Makai Atilla",
+            userEmail: "mkatilla@gmail.com",
+        },
+        {
+            id: 3,
+            userName: "Bogda Zoltán",
+            userEmail: "bgnradam@gmail.com",
+        },
+        {
+            id: 4,
+            userName: "Paplan Péter",
+            userEmail: "pplnpeti@gmail.com",
+        },
+        {
+            id: 5,
+            userName: "Papkan Dávid",
+            userEmail: "ppkndave@gmail.com",
+        },
+    ];
+
+    // Find the closest match
+    $: closestUser =
+        searchQuery.length >= 2
+            ? users.find((user) =>
+                  user.userName
+                      .toLowerCase()
+                      .includes(searchQuery.toLowerCase()),
+              )
+            : null;
+
+    // Find up to 5 closest matches
+    $: closestUsers =
+        searchQuery.length >= 2
+            ? users
+                  .filter((user) =>
+                      user.userName
+                          .toLowerCase()
+                          .includes(searchQuery.toLowerCase()),
+                  )
+                  .slice(0, 5)
+            : [];
 </script>
 
 <Sidebar.Provider>
@@ -233,14 +285,10 @@
             </div>
         </header>
         <div class="flex flex-col gap-6 p-4 py-4 h-full">
-            <div
-                class="bg-zinc-100 border dark:bg-gradient-to-bl from-zinc-950 via-zinc-900 to-zinc-950 h-56 flex rounded-xl p-2 justify-center items-center text-6xl font-sans dark:text-zinc-700"
-            >
-                Collabug
-            </div>
-            <div class="w-full sm:px-8 grid lg:grid-cols-6 gap-4">
+            
+            <div class="w-full sm:px-8 grid lg:grid-cols-9 gap-4">
                 <div
-                    class="col-span-3 flex flex-col gap-4 p-4 bg-zinc-100 border dark:bg-muted/30 rounded-2xl"
+                    class="col-span-5 flex flex-col gap-4 p-4 bg-zinc-100 border dark:bg-muted/30 rounded-2xl"
                 >
                     <div class="flex gap-4">
                         <div
@@ -276,14 +324,31 @@
                         </div>
                         <div class="w-full flex justify-between">
                             <div class="flex flex-col gap-3 justify-center">
-                                <div class="flex flex-col">
-                                    <div class="text-xl font-medium">
-                                        {teamData.teamName}
+                                <div class="flex gap-2 w-full">
+                                    <div
+                                        class="flex w-2/6 max-w-sm flex-col gap-1.5"
+                                    >
+                                        <Label for="email">Team name</Label>
+                                        <Input
+                                            type="text"
+                                            id="email"
+                                            autocomplete="off"
+                                            placeholder="Team name"
+                                            value={teamData.teamName}
+                                        />
                                     </div>
                                     <div
-                                        class="text-xs text-zinc-600 dark:text-zinc-400"
+                                        class="flex w-4/6 max-w-sm flex-col gap-1.5"
                                     >
-                                        {teamData.description}
+                                        <Label for="email">Description</Label>
+                                        <Input
+                                            type="text"
+                                            id="email"
+                                            autocomplete="off"
+                                            placeholder="Description"
+                                            class="text-xs"
+                                            value={teamData.description}
+                                        />
                                     </div>
                                 </div>
                                 <div class="flex gap-2">
@@ -311,238 +376,67 @@
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="w-full border-y grid grid-cols-1 sm:flex sm:h-14 "
-                    >
-                    {#each teamData.links as link}
-                    <Separator orientation="vertical" />
-                    
+                    <div class="w-full grid grid-cols-3 sm:h-14">
                         <div
-                            class=" sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 sm:rounded-tr-none px-2 py-2 transition-all"
+                            class=" w-full h-9 h-full flex gap-2 items-center px-2 py-2 transition-all"
                         >
-                            <div
-                                class="w-8 h-8 bg-zinc-200 dark:bg-muted/90 flex items-center justify-center rounded-lg"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"
-                                    ><path
-                                        stroke="none"
-                                        d="M0 0h24v24H0z"
-                                        fill="none"
-                                    /><path
-                                        d="M4 4l11.733 16h4.267l-11.733 -16z"
-                                    /><path
-                                        d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"
-                                    /></svg
-                                >
-                            </div>
-                            <div class="flex flex-col justify-center">
-                                <div class="text-sm font-medium">{link.name}</div>
-                                <div
-                                    class="text-[10px] text-zinc-600 dark:text-zinc-400"
-                                >
-                                    Open
-                                </div>
+                            <div class="flex w-full max-w-sm flex-col gap-1.5">
+                                <Label for="email">Twitter</Label>
+                                <Input
+                                    type="text"
+                                    id="email"
+                                    autocomplete="off"
+                                    placeholder={`Twitter link`}
+                                    class="text-xs w-full"
+                                />
                             </div>
                         </div>
-                        <Separator orientation="vertical" />
-                        {/each}
 
+                        <div
+                            class="  h-9 h-full flex gap-2 items-center px-2 py-2 transition-all"
+                        >
+                            <div class="flex w-full max-w-sm flex-col gap-1.5">
+                                <Label for="email">Github</Label>
+                                <Input
+                                    type="text"
+                                    id="email"
+                                    autocomplete="off"
+                                    placeholder={`Github link`}
+                                    class="text-xs w-full"
+                                />
+                            </div>
+                        </div>
                         
-                    </div>
-
-                    <div class="w-full flex flex-col gap-2">
-                        <div class="text-md font-medium">Summary</div>
-                        <div class="flex">
-                            <div class="w-1/3 h-28 p-1 sm:p-2">
-                                <div
-                                    class="w-full h-full bg-zinc-200 dark:bg-muted/30 rounded-2xl flex flex-col gap-2 justify-center items-center"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="20"
-                                        height="20"
-                                        viewBox="0 0 24 24"
-                                        fill="currentColor"
-                                        class="icon icon-tabler icons-tabler-filled icon-tabler-bolt"
-                                        ><path
-                                            stroke="none"
-                                            d="M0 0h24v24H0z"
-                                            fill="none"
-                                        /><path
-                                            d="M13 2l.018 .001l.016 .001l.083 .005l.011 .002h.011l.038 .009l.052 .008l.016 .006l.011 .001l.029 .011l.052 .014l.019 .009l.015 .004l.028 .014l.04 .017l.021 .012l.022 .01l.023 .015l.031 .017l.034 .024l.018 .011l.013 .012l.024 .017l.038 .034l.022 .017l.008 .01l.014 .012l.036 .041l.026 .027l.006 .009c.12 .147 .196 .322 .218 .513l.001 .012l.002 .041l.004 .064v6h5a1 1 0 0 1 .868 1.497l-.06 .091l-8 11c-.568 .783 -1.808 .38 -1.808 -.588v-6h-5a1 1 0 0 1 -.868 -1.497l.06 -.091l8 -11l.01 -.013l.018 -.024l.033 -.038l.018 -.022l.009 -.008l.013 -.014l.04 -.036l.028 -.026l.008 -.006a1 1 0 0 1 .402 -.199l.011 -.001l.027 -.005l.074 -.013l.011 -.001l.041 -.002z"
-                                        /></svg
-                                    >
-                                    <div class="flex flex-col items-center">
-                                        <div class="text-sm">{teamData.createdAt}</div>
-                                        <div
-                                            class="text-xs text-zinc-600 dark:text-zinc-400"
-                                        >
-                                            Created at
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-1/3 h-28 p-1 sm:p-2">
-                                <div
-                                    class="w-full h-full bg-zinc-200 dark:bg-muted/30 rounded-2xl flex flex-col gap-2 justify-center items-center"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="20"
-                                        height="20"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-check"
-                                        ><path
-                                            stroke="none"
-                                            d="M0 0h24v24H0z"
-                                            fill="none"
-                                        /><path d="M5 12l5 5l10 -10" /></svg
-                                    >
-                                    <div class="flex flex-col items-center">
-                                        <div class="text-sm">{teamData.firstProjectDate}</div>
-                                        <div
-                                            class="text-xs text-zinc-600 dark:text-zinc-400"
-                                        >
-                                            First project
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-1/3 h-28 p-1 sm:p-2">
-                                <div
-                                    class="w-full h-full bg-zinc-200 dark:bg-muted/30 rounded-2xl flex flex-col gap-2 justify-center items-center"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="20"
-                                        height="20"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-users"
-                                        ><path
-                                            stroke="none"
-                                            d="M0 0h24v24H0z"
-                                            fill="none"
-                                        /><path
-                                            d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"
-                                        /><path
-                                            d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"
-                                        /><path
-                                            d="M16 3.13a4 4 0 0 1 0 7.75"
-                                        /><path
-                                            d="M21 21v-2a4 4 0 0 0 -3 -3.85"
-                                        /></svg
-                                    >
-                                    <div class="flex flex-col items-center">
-                                        <div class="text-sm">{teamData.firstProjectName}</div>
-                                        <div
-                                            class="text-xs text-zinc-600 dark:text-zinc-400"
-                                        >
-                                            First project name
-                                        </div>
-                                    </div>
-                                </div>
+                        <div
+                            class=" h-9 h-full flex gap-2 items-center px-2 py-2 transition-all"
+                        >
+                            <div class="flex w-full max-w-sm flex-col gap-1.5">
+                                <Label for="email">Website</Label>
+                                <Input
+                                    type="text"
+                                    id="email"
+                                    autocomplete="off"
+                                    placeholder={`Website link`}
+                                    class="text-xs w-full"
+                                />
                             </div>
                         </div>
                     </div>
+
+                    
 
                     <div class="w-full flex flex-col gap-2">
                         <div class="text-md font-medium">About</div>
                         <div
                             class="w-full text-sm text-zinc-600 dark:text-zinc-400"
                         >
-                            {teamData.aboutText}
+                            <textarea value={teamData.aboutText} class="w-full bg-zinc-950 border p-2 outline-none rounded-lg"/>
                         </div>
                     </div>
+                    <Button class="bg-zinc-950 dark:hover:bg-zinc-950/80 text-white">Save changes</Button>
                 </div>
-                <div class=" col-span-3 rounded-2xl">
+                <div class=" col-span-4 rounded-2xl">
                     <div class="grid sm:grid-cols-2 grid-rows-9 gap-4 h-full">
-                        <div
-                            class=" rounded-xl grid grid-rows-4 row-span-9 gap-4 h-full"
-                        >
-                            <div
-                                class="w-full row-span-1 p-4 sm:p-0 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col items-center justify-center"
-                            >
-                                <div class="text-2xl font-medium">{teamData.totalProjectCount}</div>
-                                <div
-                                    class="text-sm text-zinc-600 dark:text-zinc-400"
-                                >
-                                    Total projects
-                                </div>
-                            </div>
-
-                            <div
-                                class="w-full row-span-5 gap-4 grid grid-cols-1"
-                            >
-                                <div
-                                    class="bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col gap-2 items-center p-4"
-                                >
-                                    <div
-                                        class="text-xl text-zinc-600 dark:text-zinc-400"
-                                    >
-                                        Latest projects
-                                    </div>
-                                    <div
-                                        class="flex flex-col w-full"
-                                    >
-                                    <Separator />
-                                    {#each teamData.latestProjects as project}
-                                        
-                                        <div
-                                            class="w-full border-b min-h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 px-2 transition-all flex gap-3 justify-between items-center"
-                                        >
-                                            <div
-                                                class="flex gap-3 items-center"
-                                            >
-                                                <div
-                                                    class="w-9 h-9 bg-emerald-500/80 rounded-lg"
-                                                ></div>
-                                                <div
-                                                    class="flex flex-col justify-center"
-                                                >
-                                                    <div
-                                                        class="text-sm font-medium"
-                                                    >
-                                                        {project.projectName}
-                                                    </div>
-                                                    <div
-                                                        class="text-[11px] text-zinc-600 dark:text-zinc-400"
-                                                    >
-                                                        {project.projectType}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="flex justify-center items-center"
-                                            >
-                                                <ExternalLink class="w-4 h-4" />
-                                            </div>
-                                        </div>
-                                        {/each}
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div
                             class="p-4 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col row-span-9 items-center"
                         >
@@ -552,44 +446,124 @@
                                 <div
                                     class="text-xl text-zinc-600 dark:text-zinc-400"
                                 >
-                                    Active members
+                                    Invite new users
                                 </div>
                                 <Separator />
                             </div>
                             <div
                                 class="flex flex-col w-full h-full max-h-[400px] overflow-y-scroll"
                             >
-                            {#each teamData.activeMembers as member}
-                                
-                            
-                                <div
-                                    class="w-full min-h-14 border-b hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 px-2 transition-all flex gap-3 justify-between items-center"
-                                >
-                                    <div class="flex gap-3 items-center">
-                                        <div
-                                            class="w-9 h-9 bg-emerald-500/80 rounded-lg"
-                                        ></div>
-                                        <div
-                                            class="flex flex-col justify-center"
+                                <div class="w-full max-w-md mx-auto">
+                                    <div class="pt-2">
+                                        <label
+                                            for="username"
+                                            class="block text-sm font-medium text-zinc-300"
                                         >
-                                            <div class="text-sm font-medium">
-                                                {member.memberName}
-                                            </div>
+                                            Search for a User
+                                        </label>
+                                        <Input
+                                            id="username"
+                                            type="text"
+                                            bind:value={searchQuery}
+                                            autocomplete="off"
+                                            placeholder="Type at least 2 characters..."
+                                            class="w-full px-4 py-2 border  rounded-lg focus:outline-none "
+                                        />
+                                    </div>
+
+                                    {#if searchQuery.length >= 2}
+                                        {#if closestUsers.length > 0}
                                             <div
-                                                class="text-[11px] text-zinc-600 dark:text-zinc-400"
+                                                class="bg-zinc-950 p-2 rounded-xl flex flex-col gap-2"
                                             >
-                                                {member.teamRole}
+                                                {#each closestUsers as user}
+                                                    <div
+                                                        class=" p-2 bg-zinc-900 shadow-sm flex justify-between rounded-lg"
+                                                    >
+                                                        <div
+                                                            class="flex gap-2 items-center"
+                                                        >
+                                                            <div
+                                                                class="w-9 h-9 bg-blue-500 rounded-md"
+                                                            ></div>
+                                                            <div
+                                                                class="flex flex-col"
+                                                            >
+                                                                <p
+                                                                    class="text-sm text-zinc-200"
+                                                                >
+                                                                    {user.userName}
+                                                                </p>
+                                                                <p
+                                                                    class="text-xs text-zinc-400"
+                                                                >
+                                                                    {user.userEmail}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="flex items-center"
+                                                        >
+                                                            <Button
+                                                                onclick={() =>
+                                                                    toast.success(
+                                                                        `User ${user.userName} has been invited`,
+                                                                        {
+                                                                            description:
+                                                                                "Sunday, December 03, 2023 at 9:00 AM",
+                                                                            action: {
+                                                                                label: "Close",
+                                                                                onClick:
+                                                                                    () =>
+                                                                                        console.info(
+                                                                                            "Close",
+                                                                                        ),
+                                                                            },
+                                                                        },
+                                                                    )}
+                                                                size="icon"
+                                                                class="h-7 w-7 p-0 bg-transparent dark:hover:bg-zinc-800 transition-all text-white border"
+                                                            >
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="30"
+                                                                    height="30"
+                                                                    viewBox="0 0 24 24"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    stroke-width="2"
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+                                                                    ><path
+                                                                        stroke="none"
+                                                                        d="M0 0h24v24H0z"
+                                                                        fill="none"
+                                                                    /><path
+                                                                        d="M12 5l0 14"
+                                                                    /><path
+                                                                        d="M5 12l14 0"
+                                                                    /></svg
+                                                                >
+                                                            </Button>
+                                                        </div>
+                                                    </div>
+                                                {/each}
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="flex justify-center items-center"
-                                    >
-                                        <ExternalLink class="w-4 h-4" />
-                                    </div>
+                                        {:else}
+                                            <p
+                                                class="mt-4 text-sm text-red-500"
+                                            >
+                                                No user found.
+                                            </p>
+                                        {/if}
+                                    {:else if searchQuery.length > 0}
+                                        <p class="mt-4 text-sm text-gray-500">
+                                            Type at least 2 characters to
+                                            search.
+                                        </p>
+                                    {/if}
                                 </div>
-                                {/each}
-                                
                             </div>
                         </div>
                     </div>

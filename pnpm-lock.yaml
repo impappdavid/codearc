@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      mode-watcher:
-        specifier: ^0.4.1
-        version: 0.4.1(svelte@5.1.9)
       monaco-editor:
         specifier: ^0.52.0
         version: 0.52.0
@@ -51,12 +48,18 @@ importers:
       lucide-svelte:
         specifier: ^0.454.0
         version: 0.454.0(svelte@5.1.9)
+      mode-watcher:
+        specifier: ^0.4.1
+        version: 0.4.1(svelte@5.1.9)
       svelte:
         specifier: ^5.1.9
         version: 5.1.9
       svelte-check:
         specifier: ^4.0.5
         version: 4.0.5(svelte@5.1.9)(typescript@5.6.3)
+      svelte-sonner:
+        specifier: ^0.3.28
+        version: 0.3.28(svelte@5.1.9)
       sveltekit-superforms:
         specifier: ^2.20.0
         version: 2.20.0(@sveltejs/kit@2.7.5(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.1.9)(vite@5.4.10))(svelte@5.1.9)(vite@5.4.10))(@types/json-schema@7.0.15)(svelte@5.1.9)(typescript@5.6.3)
@@ -1123,6 +1126,11 @@ packages:
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0-next.0
       typescript: '>=5.0.0'
+
+  svelte-sonner@0.3.28:
+    resolution: {integrity: sha512-K3AmlySeFifF/cKgsYNv5uXqMVNln0NBAacOYgmkQStLa/UoU0LhfAACU6Gr+YYC8bOCHdVmFNoKuDbMEsppJg==}
+    peerDependencies:
+      svelte: ^3.0.0 || ^4.0.0 || ^5.0.0-next.1
 
   svelte-toolbelt@0.4.6:
     resolution: {integrity: sha512-k8OUvXBUifHZcAlWeY/HLg/4J0v5m2iOfOhn8fDmjt4AP8ZluaDh9eBFus9lFiLX6O5l6vKqI1dKL5wy7090NQ==}
@@ -2257,6 +2265,10 @@ snapshots:
       typescript: 5.6.3
     transitivePeerDependencies:
       - picomatch
+
+  svelte-sonner@0.3.28(svelte@5.1.9):
+    dependencies:
+      svelte: 5.1.9
 
   svelte-toolbelt@0.4.6(svelte@5.1.9):
     dependencies:
