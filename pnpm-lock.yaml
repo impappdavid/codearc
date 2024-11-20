@@ -11,6 +11,9 @@ importers:
       monaco-editor:
         specifier: ^0.52.0
         version: 0.52.0
+      svelte-dnd-action:
+        specifier: ^0.9.52
+        version: 0.9.52(svelte@5.1.9)
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.3.1
@@ -37,8 +40,8 @@ importers:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
       bits-ui:
-        specifier: 1.0.0-next.46
-        version: 1.0.0-next.46(svelte@5.1.9)
+        specifier: 1.0.0-next.62
+        version: 1.0.0-next.62(svelte@5.1.9)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -569,8 +572,8 @@ packages:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
 
-  bits-ui@1.0.0-next.46:
-    resolution: {integrity: sha512-ATEyY4z3amOA5C3E7GsiV5H5kPpaNldrclDfDI0iUY6NfNJwNEv44crYlLNEyU8rBkSOGpQfonpwMp/mhtYoDQ==}
+  bits-ui@1.0.0-next.62:
+    resolution: {integrity: sha512-Fv49QlBZOp6/ZfvDEXyQ0mA5LV1DZs5XySLFBjTr679ybpPw+VikRNF2N54SGoVkVBCvCR0kMBySLz3u2iKTXQ==}
     engines: {node: '>=18', pnpm: '>=8.7.0'}
     peerDependencies:
       svelte: ^5.0.0-next.1
@@ -1126,6 +1129,11 @@ packages:
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0-next.0
       typescript: '>=5.0.0'
+
+  svelte-dnd-action@0.9.52:
+    resolution: {integrity: sha512-f841HB5PCcvp21jsMkxSXCXcsJcGmIPMguN6iI1gXqP9Owcb47+ZUIE5ETUzNJntE9h7dm1wFj2Bm51hRtQ7Lw==}
+    peerDependencies:
+      svelte: '>=3.23.0 || ^5.0.0-next.0'
 
   svelte-sonner@0.3.28:
     resolution: {integrity: sha512-K3AmlySeFifF/cKgsYNv5uXqMVNln0NBAacOYgmkQStLa/UoU0LhfAACU6Gr+YYC8bOCHdVmFNoKuDbMEsppJg==}
@@ -1715,7 +1723,7 @@ snapshots:
 
   binary-extensions@2.3.0: {}
 
-  bits-ui@1.0.0-next.46(svelte@5.1.9):
+  bits-ui@1.0.0-next.62(svelte@5.1.9):
     dependencies:
       '@floating-ui/core': 1.6.8
       '@floating-ui/dom': 1.6.12
@@ -2265,6 +2273,10 @@ snapshots:
       typescript: 5.6.3
     transitivePeerDependencies:
       - picomatch
+
+  svelte-dnd-action@0.9.52(svelte@5.1.9):
+    dependencies:
+      svelte: 5.1.9
 
   svelte-sonner@0.3.28(svelte@5.1.9):
     dependencies:

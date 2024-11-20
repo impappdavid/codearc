@@ -50,7 +50,7 @@
 		projects: [
 			{
 				name: "Todo",
-				url: "#",
+				url: "/project/todo/projectName",
 				icon: ListTodo,
 			},
 			{

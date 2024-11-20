@@ -15,6 +15,9 @@
     import Input from "$lib/components/ui/input/input.svelte";
     import { toast } from "svelte-sonner";
     import { Label } from "$lib/components/ui/label";
+    import * as Select from "$lib/components/ui/select/index.js";
+    import DialogFooter from "$lib/components/ui/dialog/dialog-footer.svelte";
+    import Members from "$lib/components/teams/members.svelte";
 
     let teamData = {
         id: 0,
@@ -64,35 +67,77 @@
 
     let searchQuery = "";
     let users = [
-        {
-            id: 0,
-            userName: "Papp Dávid",
-            userEmail: "pappd377@gmail.com",
-        },
+        { id: 0, userName: "John Smith", userEmail: "john.smith@gmail.com" },
         {
             id: 1,
-            userName: "Bognár Ádám",
-            userEmail: "bgnradam@gmail.com",
+            userName: "Emma Johnson",
+            userEmail: "emma.johnson@gmail.com",
         },
-        {
-            id: 2,
-            userName: "Makai Atilla",
-            userEmail: "mkatilla@gmail.com",
-        },
+        { id: 2, userName: "James Brown", userEmail: "james.brown@gmail.com" },
         {
             id: 3,
-            userName: "Bogda Zoltán",
-            userEmail: "bgnradam@gmail.com",
+            userName: "Olivia Williams",
+            userEmail: "olivia.williams@gmail.com",
         },
         {
             id: 4,
-            userName: "Paplan Péter",
-            userEmail: "pplnpeti@gmail.com",
+            userName: "Michael Jones",
+            userEmail: "michael.jones@gmail.com",
         },
         {
             id: 5,
-            userName: "Papkan Dávid",
-            userEmail: "ppkndave@gmail.com",
+            userName: "Sophia Miller",
+            userEmail: "sophia.miller@gmail.com",
+        },
+        {
+            id: 6,
+            userName: "William Davis",
+            userEmail: "william.davis@gmail.com",
+        },
+        {
+            id: 7,
+            userName: "Isabella Garcia",
+            userEmail: "isabella.garcia@gmail.com",
+        },
+        {
+            id: 8,
+            userName: "Ethan Martinez",
+            userEmail: "ethan.martinez@gmail.com",
+        },
+        {
+            id: 9,
+            userName: "Charlotte Rodriguez",
+            userEmail: "charlotte.rodriguez@gmail.com",
+        },
+        { id: 10, userName: "Liam Wilson", userEmail: "liam.wilson@gmail.com" },
+        {
+            id: 11,
+            userName: "Amelia Anderson",
+            userEmail: "amelia.anderson@gmail.com",
+        },
+        {
+            id: 12,
+            userName: "Mason Thomas",
+            userEmail: "mason.thomas@gmail.com",
+        },
+        { id: 13, userName: "Mia Taylor", userEmail: "mia.taylor@gmail.com" },
+        { id: 14, userName: "Lucas Moore", userEmail: "lucas.moore@gmail.com" },
+        { id: 15, userName: "Harper Lee", userEmail: "harper.lee@gmail.com" },
+        {
+            id: 16,
+            userName: "Henry Harris",
+            userEmail: "henry.harris@gmail.com",
+        },
+        { id: 17, userName: "Ava Clark", userEmail: "ava.clark@gmail.com" },
+        {
+            id: 18,
+            userName: "Alexander Lewis",
+            userEmail: "alexander.lewis@gmail.com",
+        },
+        {
+            id: 19,
+            userName: "Grace Walker",
+            userEmail: "grace.walker@gmail.com",
         },
     ];
 
@@ -121,20 +166,10 @@
             userEmail: "bgnradam@gmail.com",
             teamRole: "Designer",
         },
-        
     ];
+ 
 
-    // Find the closest match
-    $: closestUser =
-        searchQuery.length >= 2
-            ? users.find((user) =>
-                  user.userName
-                      .toLowerCase()
-                      .includes(searchQuery.toLowerCase()),
-              )
-            : null;
-
-    // Find up to 5 closest matches
+    // Find up to 12 closest matches
     $: closestUsers =
         searchQuery.length >= 2
             ? users
@@ -143,8 +178,21 @@
                           .toLowerCase()
                           .includes(searchQuery.toLowerCase()),
                   )
-                  .slice(0, 5)
+                  .slice(0, 12)
             : [];
+
+    function inviteUser(username: String) {
+        toast.success(`User ${username} has been invited`, {
+            description: "Sunday, December 03, 2023 at 9:00 AM",
+            action: {
+                label: "Close",
+                onClick: () => console.info("Close"),
+            },
+        });
+
+        // Clear the input field
+        searchQuery = "";
+    }
 </script>
 
 <Sidebar.Provider>
@@ -270,7 +318,7 @@
                             <DropdownMenuSeparator />
                             <DropdownMenu.Item
                                 onclick={() =>
-                                    (location.href = "../profile/david")}
+                                    (location.href = "../../profile/david")}
                                 class="rounded-lg hover:cursor-pointer"
                             >
                                 <User class="w-4 h-4" />
@@ -336,7 +384,7 @@
                                 stroke-width="2"
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-spider "
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-spider"
                                 ><path
                                     stroke="none"
                                     d="M0 0h24v24H0z"
@@ -475,114 +523,7 @@
                 <div
                     class="w-full bg-muted/30 grid row-span-2 grid rounded-xl border p-4"
                 >
-                    <div class="h-full">
-                        <div class="flex flex-col gap-2 w-full items-center">
-                            <div
-                                class="text-xl text-zinc-600 dark:text-zinc-400"
-                            >
-                                Members
-                            </div>
-                            <Separator />
-                        </div>
-                        
-                            
-                       
-                        <div class="flex flex-col overflow-y-scroll max-h-[700px]">
-                            {#each activeUsers as active}
-                            <div
-                                class="w-full min-h-14 hover:bg-muted/20 border-b flex justify-between px-2"
-                            >
-                                <div class="flex items-center gap-2">
-                                    <div
-                                        class="w-9 h-9 bg-blue-500 rounded-md"
-                                    ></div>
-                                    <div class="flex flex-col justify-center">
-                                        <div class="text-sm">{active.userName}</div>
-
-                                        <div class="text-xs text-zinc-400">
-                                            {active.userEmail}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-4">
-                                    <div
-                                        class="text-xs py-1 px-2 bg-blue-500 rounded-md  text-white"
-                                    >
-                                        {active.teamRole}
-                                    </div>
-
-                                    <div class="flex gap-1">
-                                        <Button
-                                            size="icon"
-                                            class="h-8 w-8 bg-transparent hover:bg-zinc-950/10 dark:hover:bg-white/10 text-black dark:text-white transition-all flex justify-center items-center"
-                                        >
-                                            <ExternalLink />
-                                        </Button>
-
-                                        <Button
-                                            size="icon"
-                                            class="h-8 w-8 bg-transparent hover:bg-blue-500/20 text-blue-500 transition-all flex justify-center items-center"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24"
-                                                height="24"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                class="icon icon-tabler icons-tabler-outline icon-tabler-user-edit"
-                                                ><path
-                                                    stroke="none"
-                                                    d="M0 0h24v24H0z"
-                                                    fill="none"
-                                                /><path
-                                                    d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"
-                                                /><path
-                                                    d="M6 21v-2a4 4 0 0 1 4 -4h3.5"
-                                                /><path
-                                                    d="M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97l-3.39 3.42h-3v-3l3.42 -3.39z"
-                                                /></svg
-                                            >
-                                        </Button>
-
-                                        <Button
-                                            size="icon"
-                                            class="h-8 w-8 bg-transparent hover:bg-red-500/20 text-red-500 transition-all flex justify-center items-center"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24"
-                                                height="24"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                class="icon icon-tabler icons-tabler-outline icon-tabler-user-x"
-                                                ><path
-                                                    stroke="none"
-                                                    d="M0 0h24v24H0z"
-                                                    fill="none"
-                                                /><path
-                                                    d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"
-                                                /><path
-                                                    d="M6 21v-2a4 4 0 0 1 4 -4h3.5"
-                                                /><path d="M22 22l-5 -5" /><path
-                                                    d="M17 22l5 -5"
-                                                /></svg
-                                            >
-                                        </Button>
-                                    </div>
-                                </div>
-                            </div>
-                            {/each}
-                            
-                        </div>
-                    </div>
+                    <Members members={activeUsers}/>
                 </div>
 
                 <div class="w-full rounded-2xl grid">
@@ -603,7 +544,7 @@
                             <div
                                 class="flex flex-col w-full h-full max-h-[400px] overflow-y-scroll"
                             >
-                                <div class="w-full max-w-md mx-auto">
+                                <div class="w-full mx-auto">
                                     <div class="pt-2">
                                         <Input
                                             id="username"
@@ -618,7 +559,7 @@
                                     {#if searchQuery.length >= 2}
                                         {#if closestUsers.length > 0}
                                             <div
-                                                class="bg-zinc-950 p-2 rounded-xl flex flex-col gap-2"
+                                                class="bg-transparent py-2 rounded-xl grid grid-cols-3 w-full gap-2"
                                             >
                                                 {#each closestUsers as user}
                                                     <div
@@ -650,20 +591,8 @@
                                                         >
                                                             <Button
                                                                 onclick={() =>
-                                                                    toast.success(
-                                                                        `User ${user.userName} has been invited`,
-                                                                        {
-                                                                            description:
-                                                                                "Sunday, December 03, 2023 at 9:00 AM",
-                                                                            action: {
-                                                                                label: "Close",
-                                                                                onClick:
-                                                                                    () =>
-                                                                                        console.info(
-                                                                                            "Close",
-                                                                                        ),
-                                                                            },
-                                                                        },
+                                                                    inviteUser(
+                                                                        user.userName,
                                                                     )}
                                                                 size="icon"
                                                                 class="h-7 w-7 p-0 bg-transparent dark:hover:bg-zinc-800 transition-all text-white border"

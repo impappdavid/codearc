@@ -64,6 +64,33 @@
             },
         ],
     };
+    let activeUsers = [
+        {
+            id: 0,
+            userName: "Papp Dávid",
+            userEmail: "pappd377@gmail.com",
+            teamRole: "Frontend",
+        },
+        {
+            id: 1,
+            userName: "Bognár Ádám",
+            userEmail: "bgnradam@gmail.com",
+            teamRole: "Backend",
+        },
+        {
+            id: 2,
+            userName: "Makai Atilla",
+            userEmail: "mkatilla@gmail.com",
+            teamRole: "Homeless",
+        },
+        {
+            id: 3,
+            userName: "Bogda Zoltán",
+            userEmail: "bgnradam@gmail.com",
+            teamRole: "Designer",
+        },
+        
+    ];
 </script>
 
 <Sidebar.Provider>
@@ -559,7 +586,7 @@
                             <div
                                 class="flex flex-col w-full h-full max-h-[400px] overflow-y-scroll"
                             >
-                            {#each teamData.activeMembers as member}
+                            {#each activeUsers as member}
                                 
                             
                                 <div
@@ -573,7 +600,7 @@
                                             class="flex flex-col justify-center"
                                         >
                                             <div class="text-sm font-medium">
-                                                {member.memberName}
+                                                {member.userName}
                                             </div>
                                             <div
                                                 class="text-[11px] text-zinc-600 dark:text-zinc-400"
