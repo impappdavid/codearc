@@ -17,6 +17,7 @@
     import Notification from "$lib/components/notifications/notification.svelte";
     import Board from "$lib/components/todo/Board.svelte";
 	import { datas } from "./data";
+    import TodoToolBar from "$lib/components/todo/todoToolBar.svelte";
 	function handleBoardUpdated(newColumnsData) {
 		// if you wanted to update a database or a server, this is where you would do it
 		$datas = newColumnsData;
@@ -168,7 +169,8 @@
 				</DropdownMenu.Root>
 			</div>
 		</header>
-		<div class="flex flex-1 flex-col gap-4 p-4 py-4">
+		<div class="flex flex-1 flex-col gap-2 xl:p-4 xl:py-4">
+			<TodoToolBar />
 			<Board columns={$datas} onFinalUpdate={handleBoardUpdated}/>
 		</div>
 	</Sidebar.Inset>

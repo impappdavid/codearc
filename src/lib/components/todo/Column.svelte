@@ -4,6 +4,7 @@
 	import Card from "./Card.svelte";
 	import Button from "$lib/components/ui/button/button.svelte";
 	import { Plus } from "lucide-svelte";
+    import RespCard from "./RespCard.svelte";
 
 	const flipDurationMs = 150;
 
@@ -11,6 +12,7 @@
 	export let items;
 	export let onFolderDragStart;
 	export let onDrop;
+
 
 	export let isDraggingFolder;
 	function handleDndConsiderCards(e) {
@@ -36,13 +38,13 @@
 	}
 </script>
 
-<div class="h-full w-full p-2 flex flex-col ">
+<div class="h-full w-full p-2 hidden sm:flex flex-col">
 	<div
-		class="h-fit py-2 px-3 w-full font-semibold text-lg flex items-center justify-between bg-zinc-100 dark:bg-zinc-900/40 border-x border-t  rounded-t-2xl"
+		class="h-fit py-2 px-3 font-semibold text-lg flex items-center justify-between bg-zinc-200/40 dark:bg-zinc-900/40 border-x border-t  rounded-t-2xl"
 	>
 		<div class="flex gap-2 items-center">
 			{name}
-			<div class="h-6 w-6 bg-zinc-800 rounded-md flex justify-center items-center text-xs">{items.length}</div>
+			<div class="h-6 w-6 bg-zinc-200 dark:bg-zinc-800 rounded-md flex justify-center items-center text-xs">{items.length}</div>
 		</div>
 		<Button
 			size="icon"
@@ -52,23 +54,65 @@
 		</Button>
 	</div>
 	<div
-		class="h-full outline-zinc-500 bg-zinc-900/40 rounded-b-2xl focus:ring-none flex flex-col py-1.5 px-1.5 border-x border-b gap-2 max-h-[790px] overflow-y-scroll"
+		class="h-full overflow-x-scroll outline-zinc-500 bg-zinc-200/40 dark:bg-zinc-900/40 rounded-b-2xl focus:ring-none flex xl:flex-col py-1.5 px-1.5 border-x border-b gap-2 max-h-[790px] xl:overflow-y-scroll "
 		use:dndzone={{
 			items,
 			flipDurationMs,
 			dropTargetStyle: {
-				outline: "1px dashed white",
+				outline: "1px dashed #71717a",
 			},
 		}}
 		on:consider={handleDndConsiderCards}
 		on:finalize={handleDndFinalizeCards}
 	>
 		{#each items as item (item.id)}
+		
 			<div
 				animate:flip={{ duration: flipDurationMs }}
 				class="outline-none"
 			>
+			
 				<Card
+					name={item.name}
+					description={item.description}
+					createdBy={item.createdBy}
+					endDate={item.endDate}
+					important={item.important}
+					fordev={item.fordev}
+				/>
+				
+			
+			</div>
+		
+		{/each}
+	</div>
+</div>
+
+<div class="h-full w-full p-2 flex sm:hidden flex-col">
+	<div
+		class="h-fit py-2 px-3 w-full font-semibold text-lg flex items-center justify-between bg-zinc-200/40 dark:bg-zinc-900/40 border-x border-t  rounded-t-2xl"
+	>
+		<div class="flex gap-2 items-center">
+			{name}
+			<div class="h-6 w-6 bg-zinc-200 dark:bg-zinc-800 rounded-md flex justify-center items-center text-xs">{items.length}</div>
+		</div>
+		<Button
+			size="icon"
+			class="bg-transparent hover:bg-zinc-200 dark:hover:bg-zinc-800 h-8 w-8"
+		>
+			<Plus class="w-4 h-4 text-black dark:text-white" />
+		</Button>
+	</div>
+	<div
+		class="h-full outline-zinc-500 bg-zinc-200/40 dark:bg-zinc-900/40 rounded-b-2xl focus:ring-none flex xl:flex-col py-1.5 px-1.5 border-x border-b gap-2 max-h-[790px] overflow-y-scroll"
+		
+	>
+		{#each items as item (item.id)}
+			<div
+				animate:flip={{ duration: flipDurationMs }}
+				class="outline-none"
+			>
+				<RespCard
 					name={item.name}
 					description={item.description}
 					createdBy={item.createdBy}

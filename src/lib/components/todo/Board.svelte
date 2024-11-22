@@ -25,9 +25,9 @@
 </script>
 
 
-<section class="h-full w-full grid grid-cols-5 gap-2"  on:consider={handleDndConsiderColumns} on:finalize={handleDndFinalizeColumns}>
+<section class="h-full w-full flex flex-col  grid xl:grid-cols-5 gap-2"  on:consider={handleDndConsiderColumns} on:finalize={handleDndFinalizeColumns}>
     {#each columns as {id, name,items}, idx (id)}
-  		<div class="h-full w-full bg-transparent rounded-xl" animate:flip="{{duration: flipDurationMs}}" >    
+  		<div class="h-fit w-full xl:h-full overflow-x-scroll  bg-transparent rounded-xl" animate:flip="{{duration: flipDurationMs}}" >    
 				<Column name={name} items={items} isDraggingFolder={isDraggingFolder} onFolderDragStart={() => (isDraggingFolder = true)} onDrop={(newItems) => handleItemFinalize(idx, newItems)} />
 			</div>
     {/each}

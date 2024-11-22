@@ -7,11 +7,10 @@
 	export let createdBy;
 	export let endDate;
 	export let important;
-	export let fordev;
 </script>
 
 <div
-	class="h-fit md:w-[250px] xl:w-full py-2 px-3 flex flex-col gap-2 bg-zinc-200/60 dark:bg-zinc-900 rounded-xl backdrop-blur-lg"
+	class="h-full min-w-[370px] py-2 px-3 flex flex-col gap-2 bg-zinc-200/60 dark:bg-zinc-900 rounded-xl backdrop-blur-lg	"
 >
 	<div class="flex flex-col">
 		<div class="flex gap-1 items-center">
@@ -75,48 +74,21 @@
 
 	<Separator />
 	<div class="flex w-full justify-between items-center">
-		<div
-			class="flex items-center w-fit h-fit overflow-visible py-0.5 px-1.5 bg-zinc-950/50 border rounded-md text-xs text-zinc-400 gap-0.5"
-		>
-		{#if fordev === "frontend"}
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="16"
-			height="16"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			class="icon icon-tabler icons-tabler-outline icon-tabler-stack-forward"
-			><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path
-				d="M12 5l-8 4l8 4l8 -4l-8 -4"
-				fill="currentColor"
-			/><path d="M10 12l-6 3l8 4l8 -4l-6 -3" /></svg
-		>
-		Frontend
-	{:else}
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="16"
-			height="16"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			class="icon icon-tabler icons-tabler-outline icon-tabler-stack-backward"
-			><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path
-				d="M14 12l6 -3l-8 -4l-8 4l6 3"
-			/><path
-				d="M10 12l-6 3l8 4l8 -4l-6 -3l-2 1z"
-				fill="currentColor"
-			/></svg
-		>
-		Backend
-	{/if}
+		<div class="flex items-center w-12 h-fit overflow-visible py-1 w-full">
+			<div class="relative flex">
+				<!-- Yellow Circle -->
+				<div
+					class="w-4 h-4 bg-orange-500 rounded-full border dark:border-zinc-900"
+				></div>
+				<!-- Cyan Circle -->
+				<div
+					class="w-4 h-4 bg-blue-500 rounded-full  -ml-2  border dark:border-zinc-900"
+				></div>
+				<!-- Blue Circle -->
+				<div
+					class="w-4 h-4 bg-emerald-500 rounded-full  -ml-2  border dark:border-zinc-900"
+				></div>
+			</div>
 		</div>
 		<div class="text-xs flex gap-1 rounded-md text-zinc-400 items-center">
 			<CalendarDays class="w-3 h-3" />
