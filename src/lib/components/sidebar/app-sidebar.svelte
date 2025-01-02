@@ -8,7 +8,7 @@
 	import GalleryVerticalEnd from "lucide-svelte/icons/gallery-vertical-end";
 	import Map from "lucide-svelte/icons/map";
 	import Settings2 from "lucide-svelte/icons/settings-2";
-	import { House ,Users, Info,ListTodo,Database,ShieldCheck,Files,Settings,Library, Folder } from "lucide-svelte";
+	import { House ,Users, Info,ListTodo,Database,ShieldCheck,Files,Settings,Library, Folder,AlignCenter } from "lucide-svelte";
 	
 	
 	// This is sample data.
@@ -48,6 +48,11 @@
 			
 			],
 		projects: [
+			{
+				name: "Api routes",
+				url: "/project/apiroutes/projectName",
+				icon: AlignCenter ,
+			},
 			{
 				name: "Todo",
 				url: "/project/todo/projectName",
