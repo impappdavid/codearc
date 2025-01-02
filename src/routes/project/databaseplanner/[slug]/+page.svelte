@@ -15,75 +15,61 @@
     import Modetoggle from "$lib/components/modetoggle.svelte";
     import * as Avatar from "$lib/components/ui/avatar/index.js";
     import Notification from "$lib/components/notifications/notification.svelte";
-    import Board from "$lib/components/todo/Board.svelte";
-	import { datas } from "./data";
-    import TodoToolBar from "$lib/components/todo/todoToolBar.svelte";
-    import { derived } from 'svelte/store';
+	import * as Select from "$lib/components/ui/select/index.js";
+	import CustomNode from "$lib/components/databaseplanner/CustomNode.svelte";
+	import CustomEdge from "$lib/components/databaseplanner/CustomEdge.svelte";
+	import { initialNodes, initialEdges } from './nodes-and-edges';
+    import { writable, get } from 'svelte/store';
+  import {
+    SvelteFlow,
+    Background,
+    Controls,
+    MiniMap,
+    Panel,
+    type Node,
+    type Edge,
+    type ColorMode
+  } from '@xyflow/svelte';
+ 
+  import '@xyflow/svelte/dist/style.css';
+    import Toolbar from "$lib/components/databaseplanner/Toolbar.svelte";
+ 
+ 
+ 
+  const nodes = writable<Node[]>(initialNodes);
+  const edges = writable<Edge[]>(initialEdges);
 
-    // Add filter state
-    let activeFilters = $state({
-        devType: [],
-        priority: [],
-        timeframe: []
-    });
+  let colorMode: ColorMode = 'dark';
 
-    // Create derived value for filtered data
-    const filteredColumns = $derived($datas.map(column => ({
-        ...column,
-        items: column.items.filter(item => {
-            // If no filters are active, show all items
-            if (!activeFilters.devType.length && 
-                !activeFilters.priority.length && 
-                !activeFilters.timeframe.length) {
-                return true;
-            }
+  const nodeTypes = {
+    custom: CustomNode,
+  };
 
-            // Check dev type filter
-            const matchesDevType = !activeFilters.devType.length || 
-                activeFilters.devType.includes(item.fordev);
+  const defaultEdgeOptions = {
+    type: 'smoothstep',
+    animated: false,
+    style: { stroke: '#374151' },
+    markerEnd: { type: 'arrow' }
+  };
 
-            // Check priority filter
-            const matchesPriority = !activeFilters.priority.length || 
-                activeFilters.priority.includes(item.important);
+  function onEdgeDelete(edgeId: string) {
+    edges.update(currentEdges => currentEdges.filter(edge => edge.id !== edgeId));
+  }
 
-            return matchesDevType && matchesPriority;
-        })
-    })));
-
-    function handleFilterChange(event) {
-        activeFilters = {
-            devType: event.detail.devType,
-            priority: event.detail.priority,
-            timeframe: event.detail.timeframe
-        };
-    }
-
-	function handleBoardUpdated(newColumnsData) {
-		// Update the original data while preserving items that were filtered out
-		$datas = $datas.map((originalColumn) => {
-			const newColumn = newColumnsData.find(col => col.id === originalColumn.id);
-			if (!newColumn) return originalColumn;
-
-			// Get all items that were filtered out in the original column
-			const filteredOutItems = originalColumn.items.filter(item => {
-				const matchesDevType = !activeFilters.devType.length || 
-					activeFilters.devType.includes(item.fordev);
-				const matchesPriority = !activeFilters.priority.length || 
-					activeFilters.priority.includes(item.important);
-				return !(matchesDevType && matchesPriority);
-			});
-
-			// Combine the new items with the filtered out items
-			return {
-				...newColumn,
-				items: [...newColumn.items, ...filteredOutItems]
-			};
-		});
-	}
-
-	let value = $state(0);
-
-  
+  function onConnect(params: any) {
+    const newEdge = {
+      ...params,
+      id: `e${params.source}-${params.target}`,
+      type: 'step',
+      animated: true,
+      style: { stroke: '#374151' },
+      markerEnd: { type: 'arrow' },
+      data: {
+        onDelete: onEdgeDelete
+      }
+    };
+    edges.update(currentEdges => [...currentEdges, newEdge]);
+  }
 </script>
 
 <Sidebar.Provider>
@@ -97,17 +83,12 @@
 				<Separator orientation="vertical" class="mr-2 h-4" />
 				<Breadcrumb.Root>
 					<Breadcrumb.List>
-						
 						<Breadcrumb.Item class="hidden md:block">
-							<Breadcrumb.Link href="#">Project</Breadcrumb.Link>
+							<Breadcrumb.Link href="#">Collabug</Breadcrumb.Link>
 						</Breadcrumb.Item>
-                        <Breadcrumb.Separator class="hidden md:block" />
+						<Breadcrumb.Separator class="hidden md:block" />
 						<Breadcrumb.Item>
-							<Breadcrumb.Page>Todo</Breadcrumb.Page>
-						</Breadcrumb.Item>
-                        <Breadcrumb.Separator class="hidden md:block" />
-						<Breadcrumb.Item>
-							<Breadcrumb.Page>CollaBug</Breadcrumb.Page>
+							<Breadcrumb.Page>Home</Breadcrumb.Page>
 						</Breadcrumb.Item>
 					</Breadcrumb.List>
 				</Breadcrumb.Root>
@@ -229,13 +210,23 @@
 				</DropdownMenu.Root>
 			</div>
 		</header>
-		<div class="flex flex-1 flex-col gap-2 px-2 xl:p-4 py-4">
-			<TodoToolBar 
-				increment={() => value += 1} 
-				decrement={() => value -= 1}
-				on:filterChange={handleFilterChange}
-			/>
-			<Board columns={filteredColumns} onFinalUpdate={handleBoardUpdated} />
+
+		<div class="flex flex-1 flex-col gap-4 p-4 py-4 w-full">
+			<SvelteFlow 
+				{nodes} 
+				{edges} 
+				{nodeTypes} 
+				{colorMode}
+				{onConnect} 
+				{defaultEdgeOptions}
+				fitView 
+				maxZoom={1.5}
+			>
+                <Background gap={12} size={1} />
+                <Controls />
+             
+                <Toolbar/>
+            </SvelteFlow>
 		</div>
 	</Sidebar.Inset>
 </Sidebar.Provider>

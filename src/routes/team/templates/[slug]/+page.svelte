@@ -41,13 +41,15 @@
 							<Breadcrumb.Link href="#">Collabug</Breadcrumb.Link>
 						</Breadcrumb.Item>
 						<Breadcrumb.Separator class="hidden md:block" />
-						<Breadcrumb.Item class="hidden md:block">
-							<Breadcrumb.Link href="#">Team</Breadcrumb.Link>
-						</Breadcrumb.Item>
-						<Breadcrumb.Separator class="hidden md:block" />
 						<Breadcrumb.Item>
 							<Breadcrumb.Page>Templates</Breadcrumb.Page>
 						</Breadcrumb.Item>
+						<Breadcrumb.Separator class="hidden md:block" />
+						<Breadcrumb.Item class="hidden md:block">
+							<Breadcrumb.Page>David</Breadcrumb.Page>
+						</Breadcrumb.Item>
+						
+						
 					</Breadcrumb.List>
 				</Breadcrumb.Root>
 			</div>
@@ -109,9 +111,7 @@
                 </Sheet.Root>
 				<DropdownMenu.Root>
 					<DropdownMenu.Trigger class="flex items-center gap-2 ">
-						<div
-							class="w-8 h-8 bg-black dark:bg-white rounded-lg"
-						></div>
+						<div class="w-8 h-8 bg-blue-500 rounded-lg flex justify-center items-center"><svg  xmlns="http://www.w3.org/2000/svg"  width="18"  height="18"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-user"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg></div>
 					</DropdownMenu.Trigger>
 					<DropdownMenu.Content
 						align="end"
@@ -171,7 +171,7 @@
 		</header>
 		<div class="flex flex-1 flex-col gap-4 p-4 py-4">
 			<div
-				class="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min p-2"
+				class="bg-zinc-100 dark:bg-zinc-900/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min p-2"
 			>
 				<Tabs.Root value="listview" class="w-full">
 					<Tabs.List>

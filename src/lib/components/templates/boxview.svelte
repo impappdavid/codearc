@@ -202,8 +202,8 @@
                         key={row.id}
                         class={`selectable-item text-xs flex flex-col gap-1 items-center w-fit px-2 py-2 rounded-xl select-none ${
                             selectedIds.includes(row.id)
-                                ? "bg-zinc-200 dark:bg-zinc-800 rounded-lg"
-                                : "bg-zinc-100 dark:bg-zinc-900 rounded-lg"
+                                ? "bg-zinc-200 dark:bg-zinc-900/90 rounded-lg"
+                                : "bg-zinc-100 dark:bg-transparent rounded-lg"
                         }`}
                         ondblclick={() => (location.href = `/${row.file.url}`)}
                         onclick={(event) => toggleColor(row.id, event)}
@@ -259,8 +259,8 @@
                         key={row.id}
                         class={`selectable-item text-xs flex flex-col gap-1 items-center w-fit px-2 py-2 rounded-xl select-none ${
                             selectedIds.includes(row.id)
-                                ? "bg-zinc-200 dark:bg-zinc-800 rounded-lg"
-                                : "bg-zinc-100 dark:bg-zinc-900 rounded-lg"
+                                ? "bg-zinc-200 dark:bg-zinc-900/90 rounded-lg"
+                                : "bg-zinc-100 dark:bg-transparent rounded-lg"
                         }`}
                         ondblclick={() => (location.href = `/${row.file.url}`)}
                         onclick={(event) => toggleColor(row.id, event)}

@@ -14,7 +14,7 @@
 	// This is sample data.
 	const data = {
 		user: {
-			name: "Collabug",
+			name: "David's team",
 			email: "Creator",
 			avatar: "",
 		},
@@ -30,7 +30,7 @@
 		navMain: [
 			{
 				title: "Home",
-				url: "../home",
+				url: "../../home",
 				icon: House,
 				isActive: true,
 				
@@ -55,23 +55,8 @@
 			},
 			{
 				name: "Database planner",
-				url: "#",
+				url: "/project/databaseplanner/projectName",
 				icon: Database,
-			},
-			{
-				name: "Code quality checker",
-				url: "#",
-				icon: ShieldCheck,
-			},
-			{
-				name: "Documentation generator",
-				url: "#",
-				icon: Files,
-			},
-			{
-				name: "Api test",
-				url: "#",
-				icon: Settings,
 			},
 			
 		],

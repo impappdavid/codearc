@@ -76,7 +76,7 @@
 	<Separator />
 	<div class="flex w-full justify-between items-center">
 		<div
-			class="flex items-center w-fit h-fit overflow-visible py-0.5 px-1.5 bg-zinc-950/50 border rounded-md text-xs text-zinc-400 gap-0.5"
+			class="flex items-center w-fit h-fit overflow-visible py-0.5 px-1.5 bg-zinc-300/60 dark:bg-zinc-950/50 border rounded-md text-xs text-zinc-600 dark:text-zinc-400 gap-0.5"
 		>
 		{#if fordev === "frontend"}
 		<svg
@@ -118,7 +118,7 @@
 		Backend
 	{/if}
 		</div>
-		<div class="text-xs flex gap-1 rounded-md text-zinc-400 items-center">
+		<div class="text-xs flex gap-1 rounded-md text-zinc-600 dark:text-zinc-400 items-center">
 			<CalendarDays class="w-3 h-3" />
 			{endDate}
 		</div>

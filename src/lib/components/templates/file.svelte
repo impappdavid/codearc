@@ -23,7 +23,7 @@
             },
             author: "Papp Dávid",
             reviewer: "Bognár Ádám",
-            lines: 453,
+            lines: 41,
             createdDate: "2024.10.08",
             updatedDate: "2024.10.01",
             isClicked: false,
@@ -36,7 +36,7 @@
                 iconpaths:
                     '<path d="M3 14c.83 .642 2.077 1.017 3.5 1c1.423 .017 2.67 -.358 3.5 -1c.83 -.642 2.077 -1.017 3.5 -1c1.423 -.017 2.67 .358 3.5 1" /><path d="M8 3a2.4 2.4 0 0 0 -1 2a2.4 2.4 0 0 0 1 2" /><path d="M12 3a2.4 2.4 0 0 0 -1 2a2.4 2.4 0 0 0 1 2" /><path d="M3 10h14v5a6 6 0 0 1 -6 6h-2a6 6 0 0 1 -6 -6v-5z" /><path d="M16.746 16.726a3 3 0 1 0 .252 -5.555" />',
                 iconColor: "text-black dark:text-white",
-                url: "team/templates/bottom_nav_menu.xml",
+                url: "team/templates/editor/bottom_nav_menu.xml",
             },
             author: "Bognár Ádám",
             reviewer: "Bognár Ádám",
@@ -57,7 +57,7 @@
             },
             author: "Papp Dávid",
             reviewer: "Papp Dávid",
-            lines: 160,
+            lines: 0,
             createdDate: "2024.07.02",
             updatedDate: "2024.05.01",
             isClicked: false,
@@ -147,8 +147,8 @@
             <div
             class={`selectable-item flex items-center border-t border-zinc-400 select-none ${
                 selectedIds.includes(row.id)
-                    ? "bg-zinc-200 dark:bg-zinc-800 select-none"
-                    : "bg-zinc-100 dark:bg-zinc-900 select-none"
+                    ? "bg-zinc-200 dark:bg-zinc-900/90 select-none"
+                    : "bg-zinc-100 dark:bg-transparent select-none"
             }`}
                 class:selected={selectedIds.includes(row.id)}
                 ondblclick={() => (location.href = `/${row.file.url}`)}
@@ -214,8 +214,8 @@
                 <div
                 class={`selectable-item flex items-center border-t border-zinc-300 dark:border-zinc-700 ${
                     selectedIds.includes(row.id)
-                        ? "bg-zinc-200 dark:bg-zinc-800 select-none"
-                        : "bg-zinc-100 dark:bg-zinc-900 select-none"
+                        ? "bg-zinc-200 dark:bg-zinc-900/90 select-none"
+                        : "bg-zinc-100 dark:bg-transparent select-none"
                 }`}
                     class:selected={selectedIds.includes(row.id)}
                     ondblclick={() => (location.href = `/${row.file.url}`)}

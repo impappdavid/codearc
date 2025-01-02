@@ -44,7 +44,7 @@
                 <div class="flex flex-col gap-4">
                     <Button
                         variant="outline"
-                        class="flex gap-1 bg-zinc-900 dark:text-black text-white dark:bg-white/90 hover:bg-zinc-300 dark:hover:bg-zinc-900/70 rounded-lg"
+                        class="flex gap-1 bg-zinc-900 dark:text-black text-white dark:bg-white/90 hover:bg-zinc-300 dark:hover:bg-white/80 rounded-lg"
                     >
                         <Github />
                         Sign In with Github

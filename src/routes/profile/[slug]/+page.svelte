@@ -32,18 +32,25 @@
             {
                 name: "Twitter",
                 link: "",
+                path: '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />',
+            
             },
             {
                 name: "GitHub",
                 link: "",
+                path: '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />',
+            
             },
             {
                 name: "LinkedIn",
                 link: "",
+                path:'<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 11v5" /><path d="M8 8v.01" /><path d="M12 16v-5" /><path d="M16 16v-3a2 2 0 1 0 -4 0" /><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" />',
             },
             {
                 name: "Website",
                 link: "",
+                path: '<path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" />',
+            
             },
         ],
 
@@ -225,12 +232,10 @@
             </div>
         </header>
         <div class="flex flex-col gap-6 p-4 py-4 h-full">
-            <div
-                class="bg-zinc-100 border dark:bg-muted/30 h-56 flex rounded-xl p-2"
-            ></div>
+            
             <div class="w-full sm:px-8 grid lg:grid-cols-6 gap-4">
                 <div
-                    class="col-span-3 flex flex-col gap-4 p-4 bg-zinc-100 border dark:bg-muted/30 rounded-2xl"
+                    class="col-span-3 flex flex-col gap-4 p-4 bg-zinc-100 border dark:bg-muted/30 rounded-2xl h-fit"
                 >
                     <div class="flex gap-4">
                         <div
@@ -277,11 +282,33 @@
                                     </div>
                                 </div>
                                 <div class="flex gap-2">
-                                    <div
-                                        class="text-xs text-zinc-600 dark:text-zinc-400 py-1 px-2 rounded-md bg-muted/50 border"
-                                    >
-                                        {userData.tag}
-                                    </div>
+                                    {#each userData.links as link}
+                                        <div
+                                            class=" sm:w-1/3 h-9 h-full flex gap-1 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 rounded-md px-2 py-2 transition-all"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"
+                                                >{@html link.path}</svg>
+                                                <div
+                                                class="flex flex-col justify-center"
+                                            >
+                                                <div
+                                                    class="text-xs font-medium"
+                                                >
+                                                    {link.name}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {/each}
                                 </div>
                             </div>
                             <div class="flex items-start">
@@ -301,54 +328,7 @@
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="w-full border-y grid grid-cols-1 sm:flex sm:h-14"
-                    >
-                        {#each userData.links as link}
-                            <Separator orientation="vertical" />
-
-                            <div
-                                class=" sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 sm:rounded-tr-none px-2 py-2 transition-all"
-                            >
-                                <div
-                                    class="w-8 h-8 bg-zinc-200 dark:bg-muted/90 flex items-center justify-center rounded-lg"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"
-                                        ><path
-                                            stroke="none"
-                                            d="M0 0h24v24H0z"
-                                            fill="none"
-                                        /><path
-                                            d="M4 4l11.733 16h4.267l-11.733 -16z"
-                                        /><path
-                                            d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"
-                                        /></svg
-                                    >
-                                </div>
-                                <div class="flex flex-col justify-center">
-                                    <div class="text-sm font-medium">
-                                        {link.name}
-                                    </div>
-                                    <div
-                                        class="text-[10px] text-zinc-600 dark:text-zinc-400"
-                                    >
-                                        Open
-                                    </div>
-                                </div>
-                            </div>
-                            <Separator orientation="vertical" />
-                        {/each}
-                    </div>
+                    
 
                     <div class="w-full flex flex-col gap-2">
                         <div class="text-md font-medium">Summary</div>
@@ -516,9 +496,171 @@
                                     </div>
                                 </div>
                             </div>
+                            <div
+                                class="w-full px-4 sm:p-2 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col items-center justify-center py-2"
+                            >
+                                
+                                <div class="grid grid-cols-12 gap-4 items-center">
+                                    <div class="w-4 h-4 rounded-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20">
+                                            <g fill="#c0c0c0 ">
+                                                <g opacity="0.2">
+                                                    <path d="M5.327 5.783A2 2 0 0 1 7.307 3.5h7.386a2 2 0 0 1 1.98 2.283l-.637 4.451a1.8 1.8 0 0 1-.142.487c-1.909 4.204-7.88 4.204-9.788 0a1.8 1.8 0 0 1-.142-.487z" />
+                                                    <path fill-rule="evenodd" d="M14.693 5.5H7.307l.632 4.42c1.208 2.605 4.914 2.605 6.122 0zm-7.386-2a2 2 0 0 0-1.98 2.283l.637 4.451q.037.253.142.487c1.909 4.204 7.88 4.204 9.788 0q.105-.234.142-.487l.637-4.45a2 2 0 0 0-1.98-2.284z" clip-rule="evenodd" />
+                                                    <path fill-rule="evenodd" d="M10 16.5v-3h2v3z" clip-rule="evenodd" />
+                                                    <path d="M8 16.5a4.243 4.243 0 0 1 6 0l.793.793c.63.63.184 1.707-.707 1.707H7.914c-.89 0-1.337-1.077-.707-1.707z" />
+                                                    <path fill-rule="evenodd" d="M9.123 17.5c1.054-.99 2.7-.99 3.754 0zm4.877-1a4.243 4.243 0 0 0-6 0l-.793.793c-.63.63-.184 1.707.707 1.707h6.172c.89 0 1.337-1.077.707-1.707zm4.547-10.999q.095-.005.192.01a1 1 0 0 1 .848 1.13l-.07.49a5.155 5.155 0 0 1-4.255 4.355l-.003-.02q-.125.034-.259.034H7q-.096 0-.186-.017A5.155 5.155 0 0 1 2.58 7.13l-.068-.473A1.003 1.003 0 0 1 3.518 5.5H18.5z" clip-rule="evenodd" />
+                                                </g>
+                                                <path fill-rule="evenodd" d="M13.693 3.25H6.307a1 1 0 0 0-.99 1.142l.637 4.45q.015.112.062.216c1.554 3.421 6.414 3.421 7.967 0a.8.8 0 0 0 .063-.216l.637-4.45a1 1 0 0 0-.99-1.142m-7.386-1a2 2 0 0 0-1.98 2.283l.637 4.451q.037.253.142.487c1.909 4.204 7.88 4.204 9.788 0q.105-.234.142-.487l.637-4.45a2 2 0 0 0-1.98-2.284z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M9.5 14.75v-2.5h1v2.5z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="m13.086 16.75l-.793-.793a3.243 3.243 0 0 0-4.586 0l-.793.793zM13 15.25a4.243 4.243 0 0 0-6 0l-.793.793c-.63.63-.184 1.707.707 1.707h6.172c.89 0 1.337-1.077.707-1.707zM5 5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1 0-1h2.5A.5.5 0 0 1 5 5" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M5.429 9.495c-2.151-.31-3.774-2.123-3.916-4.276l-.012-.186a.5.5 0 0 1 .998-.066l.012.186c.112 1.697 1.391 3.112 3.06 3.352zM15 5a.5.5 0 0 0 .5.5H18a.5.5 0 0 0 0-1h-2.5a.5.5 0 0 0-.5.5" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M14.571 9.495c2.114-.304 3.77-1.946 3.906-4.116l.022-.348a.5.5 0 0 0-.998-.062l-.022.347c-.103 1.66-1.366 2.947-3.05 3.19z" clip-rule="evenodd" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="w-4 h-4  rounded-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20">
+                                            <g fill="#9966cc ">
+                                                <g opacity="0.2">
+                                                    <path d="M5.327 5.783A2 2 0 0 1 7.307 3.5h7.386a2 2 0 0 1 1.98 2.283l-.637 4.451a1.8 1.8 0 0 1-.142.487c-1.909 4.204-7.88 4.204-9.788 0a1.8 1.8 0 0 1-.142-.487z" />
+                                                    <path fill-rule="evenodd" d="M14.693 5.5H7.307l.632 4.42c1.208 2.605 4.914 2.605 6.122 0zm-7.386-2a2 2 0 0 0-1.98 2.283l.637 4.451q.037.253.142.487c1.909 4.204 7.88 4.204 9.788 0q.105-.234.142-.487l.637-4.45a2 2 0 0 0-1.98-2.284z" clip-rule="evenodd" />
+                                                    <path fill-rule="evenodd" d="M10 16.5v-3h2v3z" clip-rule="evenodd" />
+                                                    <path d="M8 16.5a4.243 4.243 0 0 1 6 0l.793.793c.63.63.184 1.707-.707 1.707H7.914c-.89 0-1.337-1.077-.707-1.707z" />
+                                                    <path fill-rule="evenodd" d="M9.123 17.5c1.054-.99 2.7-.99 3.754 0zm4.877-1a4.243 4.243 0 0 0-6 0l-.793.793c-.63.63-.184 1.707.707 1.707h6.172c.89 0 1.337-1.077.707-1.707zm4.547-10.999q.095-.005.192.01a1 1 0 0 1 .848 1.13l-.07.49a5.155 5.155 0 0 1-4.255 4.355l-.003-.02q-.125.034-.259.034H7q-.096 0-.186-.017A5.155 5.155 0 0 1 2.58 7.13l-.068-.473A1.003 1.003 0 0 1 3.518 5.5H18.5z" clip-rule="evenodd" />
+                                                </g>
+                                                <path fill-rule="evenodd" d="M13.693 3.25H6.307a1 1 0 0 0-.99 1.142l.637 4.45q.015.112.062.216c1.554 3.421 6.414 3.421 7.967 0a.8.8 0 0 0 .063-.216l.637-4.45a1 1 0 0 0-.99-1.142m-7.386-1a2 2 0 0 0-1.98 2.283l.637 4.451q.037.253.142.487c1.909 4.204 7.88 4.204 9.788 0q.105-.234.142-.487l.637-4.45a2 2 0 0 0-1.98-2.284z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M9.5 14.75v-2.5h1v2.5z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="m13.086 16.75l-.793-.793a3.243 3.243 0 0 0-4.586 0l-.793.793zM13 15.25a4.243 4.243 0 0 0-6 0l-.793.793c-.63.63-.184 1.707.707 1.707h6.172c.89 0 1.337-1.077.707-1.707zM5 5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1 0-1h2.5A.5.5 0 0 1 5 5" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M5.429 9.495c-2.151-.31-3.774-2.123-3.916-4.276l-.012-.186a.5.5 0 0 1 .998-.066l.012.186c.112 1.697 1.391 3.112 3.06 3.352zM15 5a.5.5 0 0 0 .5.5H18a.5.5 0 0 0 0-1h-2.5a.5.5 0 0 0-.5.5" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M14.571 9.495c2.114-.304 3.77-1.946 3.906-4.116l.022-.348a.5.5 0 0 0-.998-.062l-.022.347c-.103 1.66-1.366 2.947-3.05 3.19z" clip-rule="evenodd" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="w-4 h-4  rounded-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20">
+                                            <g fill="#9966cc ">
+                                                <g opacity="0.2">
+                                                    <path d="M5.327 5.783A2 2 0 0 1 7.307 3.5h7.386a2 2 0 0 1 1.98 2.283l-.637 4.451a1.8 1.8 0 0 1-.142.487c-1.909 4.204-7.88 4.204-9.788 0a1.8 1.8 0 0 1-.142-.487z" />
+                                                    <path fill-rule="evenodd" d="M14.693 5.5H7.307l.632 4.42c1.208 2.605 4.914 2.605 6.122 0zm-7.386-2a2 2 0 0 0-1.98 2.283l.637 4.451q.037.253.142.487c1.909 4.204 7.88 4.204 9.788 0q.105-.234.142-.487l.637-4.45a2 2 0 0 0-1.98-2.284z" clip-rule="evenodd" />
+                                                    <path fill-rule="evenodd" d="M10 16.5v-3h2v3z" clip-rule="evenodd" />
+                                                    <path d="M8 16.5a4.243 4.243 0 0 1 6 0l.793.793c.63.63.184 1.707-.707 1.707H7.914c-.89 0-1.337-1.077-.707-1.707z" />
+                                                    <path fill-rule="evenodd" d="M9.123 17.5c1.054-.99 2.7-.99 3.754 0zm4.877-1a4.243 4.243 0 0 0-6 0l-.793.793c-.63.63-.184 1.707.707 1.707h6.172c.89 0 1.337-1.077.707-1.707zm4.547-10.999q.095-.005.192.01a1 1 0 0 1 .848 1.13l-.07.49a5.155 5.155 0 0 1-4.255 4.355l-.003-.02q-.125.034-.259.034H7q-.096 0-.186-.017A5.155 5.155 0 0 1 2.58 7.13l-.068-.473A1.003 1.003 0 0 1 3.518 5.5H18.5z" clip-rule="evenodd" />
+                                                </g>
+                                                <path fill-rule="evenodd" d="M13.693 3.25H6.307a1 1 0 0 0-.99 1.142l.637 4.45q.015.112.062.216c1.554 3.421 6.414 3.421 7.967 0a.8.8 0 0 0 .063-.216l.637-4.45a1 1 0 0 0-.99-1.142m-7.386-1a2 2 0 0 0-1.98 2.283l.637 4.451q.037.253.142.487c1.909 4.204 7.88 4.204 9.788 0q.105-.234.142-.487l.637-4.45a2 2 0 0 0-1.98-2.284z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M9.5 14.75v-2.5h1v2.5z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="m13.086 16.75l-.793-.793a3.243 3.243 0 0 0-4.586 0l-.793.793zM13 15.25a4.243 4.243 0 0 0-6 0l-.793.793c-.63.63-.184 1.707.707 1.707h6.172c.89 0 1.337-1.077.707-1.707zM5 5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1 0-1h2.5A.5.5 0 0 1 5 5" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M5.429 9.495c-2.151-.31-3.774-2.123-3.916-4.276l-.012-.186a.5.5 0 0 1 .998-.066l.012.186c.112 1.697 1.391 3.112 3.06 3.352zM15 5a.5.5 0 0 0 .5.5H18a.5.5 0 0 0 0-1h-2.5a.5.5 0 0 0-.5.5" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M14.571 9.495c2.114-.304 3.77-1.946 3.906-4.116l.022-.348a.5.5 0 0 0-.998-.062l-.022.347c-.103 1.66-1.366 2.947-3.05 3.19z" clip-rule="evenodd" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="w-4 h-4  rounded-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20">
+                                            <g fill="#CD7F32 ">
+                                                <g opacity="0.2">
+                                                    <path d="M5.327 5.783A2 2 0 0 1 7.307 3.5h7.386a2 2 0 0 1 1.98 2.283l-.637 4.451a1.8 1.8 0 0 1-.142.487c-1.909 4.204-7.88 4.204-9.788 0a1.8 1.8 0 0 1-.142-.487z" />
+                                                    <path fill-rule="evenodd" d="M14.693 5.5H7.307l.632 4.42c1.208 2.605 4.914 2.605 6.122 0zm-7.386-2a2 2 0 0 0-1.98 2.283l.637 4.451q.037.253.142.487c1.909 4.204 7.88 4.204 9.788 0q.105-.234.142-.487l.637-4.45a2 2 0 0 0-1.98-2.284z" clip-rule="evenodd" />
+                                                    <path fill-rule="evenodd" d="M10 16.5v-3h2v3z" clip-rule="evenodd" />
+                                                    <path d="M8 16.5a4.243 4.243 0 0 1 6 0l.793.793c.63.63.184 1.707-.707 1.707H7.914c-.89 0-1.337-1.077-.707-1.707z" />
+                                                    <path fill-rule="evenodd" d="M9.123 17.5c1.054-.99 2.7-.99 3.754 0zm4.877-1a4.243 4.243 0 0 0-6 0l-.793.793c-.63.63-.184 1.707.707 1.707h6.172c.89 0 1.337-1.077.707-1.707zm4.547-10.999q.095-.005.192.01a1 1 0 0 1 .848 1.13l-.07.49a5.155 5.155 0 0 1-4.255 4.355l-.003-.02q-.125.034-.259.034H7q-.096 0-.186-.017A5.155 5.155 0 0 1 2.58 7.13l-.068-.473A1.003 1.003 0 0 1 3.518 5.5H18.5z" clip-rule="evenodd" />
+                                                </g>
+                                                <path fill-rule="evenodd" d="M13.693 3.25H6.307a1 1 0 0 0-.99 1.142l.637 4.45q.015.112.062.216c1.554 3.421 6.414 3.421 7.967 0a.8.8 0 0 0 .063-.216l.637-4.45a1 1 0 0 0-.99-1.142m-7.386-1a2 2 0 0 0-1.98 2.283l.637 4.451q.037.253.142.487c1.909 4.204 7.88 4.204 9.788 0q.105-.234.142-.487l.637-4.45a2 2 0 0 0-1.98-2.284z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M9.5 14.75v-2.5h1v2.5z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="m13.086 16.75l-.793-.793a3.243 3.243 0 0 0-4.586 0l-.793.793zM13 15.25a4.243 4.243 0 0 0-6 0l-.793.793c-.63.63-.184 1.707.707 1.707h6.172c.89 0 1.337-1.077.707-1.707zM5 5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1 0-1h2.5A.5.5 0 0 1 5 5" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M5.429 9.495c-2.151-.31-3.774-2.123-3.916-4.276l-.012-.186a.5.5 0 0 1 .998-.066l.012.186c.112 1.697 1.391 3.112 3.06 3.352zM15 5a.5.5 0 0 0 .5.5H18a.5.5 0 0 0 0-1h-2.5a.5.5 0 0 0-.5.5" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M14.571 9.495c2.114-.304 3.77-1.946 3.906-4.116l.022-.348a.5.5 0 0 0-.998-.062l-.022.347c-.103 1.66-1.366 2.947-3.05 3.19z" clip-rule="evenodd" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="w-4 h-4  rounded-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20">
+                                            <g fill="#b9f2ff ">
+                                                <g opacity="0.2">
+                                                    <path d="M5.327 5.783A2 2 0 0 1 7.307 3.5h7.386a2 2 0 0 1 1.98 2.283l-.637 4.451a1.8 1.8 0 0 1-.142.487c-1.909 4.204-7.88 4.204-9.788 0a1.8 1.8 0 0 1-.142-.487z" />
+                                                    <path fill-rule="evenodd" d="M14.693 5.5H7.307l.632 4.42c1.208 2.605 4.914 2.605 6.122 0zm-7.386-2a2 2 0 0 0-1.98 2.283l.637 4.451q.037.253.142.487c1.909 4.204 7.88 4.204 9.788 0q.105-.234.142-.487l.637-4.45a2 2 0 0 0-1.98-2.284z" clip-rule="evenodd" />
+                                                    <path fill-rule="evenodd" d="M10 16.5v-3h2v3z" clip-rule="evenodd" />
+                                                    <path d="M8 16.5a4.243 4.243 0 0 1 6 0l.793.793c.63.63.184 1.707-.707 1.707H7.914c-.89 0-1.337-1.077-.707-1.707z" />
+                                                    <path fill-rule="evenodd" d="M9.123 17.5c1.054-.99 2.7-.99 3.754 0zm4.877-1a4.243 4.243 0 0 0-6 0l-.793.793c-.63.63-.184 1.707.707 1.707h6.172c.89 0 1.337-1.077.707-1.707zm4.547-10.999q.095-.005.192.01a1 1 0 0 1 .848 1.13l-.07.49a5.155 5.155 0 0 1-4.255 4.355l-.003-.02q-.125.034-.259.034H7q-.096 0-.186-.017A5.155 5.155 0 0 1 2.58 7.13l-.068-.473A1.003 1.003 0 0 1 3.518 5.5H18.5z" clip-rule="evenodd" />
+                                                </g>
+                                                <path fill-rule="evenodd" d="M13.693 3.25H6.307a1 1 0 0 0-.99 1.142l.637 4.45q.015.112.062.216c1.554 3.421 6.414 3.421 7.967 0a.8.8 0 0 0 .063-.216l.637-4.45a1 1 0 0 0-.99-1.142m-7.386-1a2 2 0 0 0-1.98 2.283l.637 4.451q.037.253.142.487c1.909 4.204 7.88 4.204 9.788 0q.105-.234.142-.487l.637-4.45a2 2 0 0 0-1.98-2.284z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M9.5 14.75v-2.5h1v2.5z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="m13.086 16.75l-.793-.793a3.243 3.243 0 0 0-4.586 0l-.793.793zM13 15.25a4.243 4.243 0 0 0-6 0l-.793.793c-.63.63-.184 1.707.707 1.707h6.172c.89 0 1.337-1.077.707-1.707zM5 5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1 0-1h2.5A.5.5 0 0 1 5 5" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M5.429 9.495c-2.151-.31-3.774-2.123-3.916-4.276l-.012-.186a.5.5 0 0 1 .998-.066l.012.186c.112 1.697 1.391 3.112 3.06 3.352zM15 5a.5.5 0 0 0 .5.5H18a.5.5 0 0 0 0-1h-2.5a.5.5 0 0 0-.5.5" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M14.571 9.495c2.114-.304 3.77-1.946 3.906-4.116l.022-.348a.5.5 0 0 0-.998-.062l-.022.347c-.103 1.66-1.366 2.947-3.05 3.19z" clip-rule="evenodd" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="w-4 h-4  rounded-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20">
+                                            <g fill="#FFCF40 ">
+                                                <g opacity="0.2">
+                                                    <path d="M5.327 5.783A2 2 0 0 1 7.307 3.5h7.386a2 2 0 0 1 1.98 2.283l-.637 4.451a1.8 1.8 0 0 1-.142.487c-1.909 4.204-7.88 4.204-9.788 0a1.8 1.8 0 0 1-.142-.487z" />
+                                                    <path fill-rule="evenodd" d="M14.693 5.5H7.307l.632 4.42c1.208 2.605 4.914 2.605 6.122 0zm-7.386-2a2 2 0 0 0-1.98 2.283l.637 4.451q.037.253.142.487c1.909 4.204 7.88 4.204 9.788 0q.105-.234.142-.487l.637-4.45a2 2 0 0 0-1.98-2.284z" clip-rule="evenodd" />
+                                                    <path fill-rule="evenodd" d="M10 16.5v-3h2v3z" clip-rule="evenodd" />
+                                                    <path d="M8 16.5a4.243 4.243 0 0 1 6 0l.793.793c.63.63.184 1.707-.707 1.707H7.914c-.89 0-1.337-1.077-.707-1.707z" />
+                                                    <path fill-rule="evenodd" d="M9.123 17.5c1.054-.99 2.7-.99 3.754 0zm4.877-1a4.243 4.243 0 0 0-6 0l-.793.793c-.63.63-.184 1.707.707 1.707h6.172c.89 0 1.337-1.077.707-1.707zm4.547-10.999q.095-.005.192.01a1 1 0 0 1 .848 1.13l-.07.49a5.155 5.155 0 0 1-4.255 4.355l-.003-.02q-.125.034-.259.034H7q-.096 0-.186-.017A5.155 5.155 0 0 1 2.58 7.13l-.068-.473A1.003 1.003 0 0 1 3.518 5.5H18.5z" clip-rule="evenodd" />
+                                                </g>
+                                                <path fill-rule="evenodd" d="M13.693 3.25H6.307a1 1 0 0 0-.99 1.142l.637 4.45q.015.112.062.216c1.554 3.421 6.414 3.421 7.967 0a.8.8 0 0 0 .063-.216l.637-4.45a1 1 0 0 0-.99-1.142m-7.386-1a2 2 0 0 0-1.98 2.283l.637 4.451q.037.253.142.487c1.909 4.204 7.88 4.204 9.788 0q.105-.234.142-.487l.637-4.45a2 2 0 0 0-1.98-2.284z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M9.5 14.75v-2.5h1v2.5z" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="m13.086 16.75l-.793-.793a3.243 3.243 0 0 0-4.586 0l-.793.793zM13 15.25a4.243 4.243 0 0 0-6 0l-.793.793c-.63.63-.184 1.707.707 1.707h6.172c.89 0 1.337-1.077.707-1.707zM5 5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1 0-1h2.5A.5.5 0 0 1 5 5" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M5.429 9.495c-2.151-.31-3.774-2.123-3.916-4.276l-.012-.186a.5.5 0 0 1 .998-.066l.012.186c.112 1.697 1.391 3.112 3.06 3.352zM15 5a.5.5 0 0 0 .5.5H18a.5.5 0 0 0 0-1h-2.5a.5.5 0 0 0-.5.5" clip-rule="evenodd" />
+                                                <path fill-rule="evenodd" d="M14.571 9.495c2.114-.304 3.77-1.946 3.906-4.116l.022-.348a.5.5 0 0 0-.998-.062l-.022.347c-.103 1.66-1.366 2.947-3.05 3.19z" clip-rule="evenodd" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+                                    <div class="w-4 h-4 bg-zinc-700 rounded-sm"></div>
+
+                                </div>
+                            </div>
                         </div>
                         <div
-                            class="p-4 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col gap-6 row-span-9 items-center"
+                            class="p-4 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col gap-6 row-span-9  h-fit items-center"
                         >
                             <div
                                 class="text-xl text-zinc-600 dark:text-zinc-400"

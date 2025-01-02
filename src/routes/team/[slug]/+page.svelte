@@ -6,13 +6,7 @@
     import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
     import DropdownMenuSeparator from "$lib/components/ui/dropdown-menu/dropdown-menu-separator.svelte";
     import LogOut from "lucide-svelte/icons/log-out";
-    import {
-        Palette,
-        Settings,
-        User,
-        Bell,
-        ExternalLink,
-    } from "lucide-svelte";
+    import { Palette, Settings, User, Bell, ExternalLink } from "lucide-svelte";
     import * as Sheet from "$lib/components/ui/sheet/index.js";
     import { Button } from "$lib/components/ui/button";
     import * as Dialog from "$lib/components/ui/dialog/index.js";
@@ -29,21 +23,21 @@
             {
                 name: "Twitter",
                 link: "",
+                path: '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />',
             },
             {
                 name: "GitHub",
                 link: "",
+                path: '<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />',
             },
-            {
-                name: "Memberhistory",
-                link: "",
-            },
+            
             {
                 name: "Website",
                 link: "",
+                path: '<path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" />',
             },
         ],
-
+        
         createdAt: "August 6 2024",
         firstProjectDate: "April 17 2024",
         firstProjectName: "Collabug",
@@ -89,7 +83,6 @@
             userEmail: "bgnradam@gmail.com",
             teamRole: "Designer",
         },
-        
     ];
 </script>
 
@@ -198,8 +191,30 @@
                 <DropdownMenu.Root>
                     <DropdownMenu.Trigger class="flex items-center gap-2 ">
                         <div
-                            class="w-8 h-8 bg-black dark:bg-white rounded-lg"
-                        ></div>
+                            class="w-8 h-8 bg-blue-500 rounded-lg flex justify-center items-center"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-user"
+                                ><path
+                                    stroke="none"
+                                    d="M0 0h24v24H0z"
+                                    fill="none"
+                                /><path
+                                    d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"
+                                /><path
+                                    d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"
+                                /></svg
+                            >
+                        </div>
                     </DropdownMenu.Trigger>
                     <DropdownMenu.Content
                         align="end"
@@ -260,18 +275,13 @@
             </div>
         </header>
         <div class="flex flex-col gap-6 p-4 py-4 h-full">
-            <div
-                class="bg-zinc-100 border dark:bg-gradient-to-bl from-zinc-950 via-zinc-900 to-zinc-950 h-56 flex rounded-xl p-2 justify-center items-center text-6xl font-sans dark:text-zinc-700"
-            >
-                Collabug
-            </div>
             <div class="w-full sm:px-8 grid lg:grid-cols-6 gap-4">
                 <div
                     class="col-span-3 flex flex-col gap-4 p-4 bg-zinc-100 border dark:bg-muted/30 rounded-2xl"
                 >
                     <div class="flex gap-4">
                         <div
-                            class="min-w-24 h-24 border bg-emerald-500/80 rounded-2xl flex justify-center items-center"
+                            class="min-w-24 h-24 border bg-blue-500/80 rounded-2xl flex justify-center items-center"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -283,7 +293,7 @@
                                 stroke-width="2"
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-spider text-black"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-spider text-white"
                                 ><path
                                     stroke="none"
                                     d="M0 0h24v24H0z"
@@ -313,18 +323,40 @@
                                         {teamData.description}
                                     </div>
                                 </div>
-                                <div class="flex gap-2">
-                                    <div
-                                        class="text-xs text-zinc-600 dark:text-zinc-400 py-1 px-2 rounded-md bg-muted/50 border"
-                                    >
-                                        {teamData.tag}
-                                    </div>
+                                <div class="flex gap-1">
+                                    {#each teamData.links as link}
+                                        <div
+                                            class=" sm:w-1/3 h-9 h-full flex gap-1 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 rounded-md px-2 py-2 transition-all"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"
+                                                >{@html link.path}</svg>
+                                                <div
+                                                class="flex flex-col justify-center"
+                                            >
+                                                <div
+                                                    class="text-xs font-medium"
+                                                >
+                                                    {link.name}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {/each}
                                 </div>
                             </div>
                             <div class="flex items-start">
                                 {#if teamData.avtivity}
                                     <div
-                                        class="flex justify-center items-center text-xs p-1 px-2 rounded-lg bg-emerald-500/60"
+                                        class="flex justify-center items-center text-xs p-1 px-2 rounded-lg bg-blue-500/60"
                                     >
                                         Active
                                     </div>
@@ -337,54 +369,6 @@
                                 {/if}
                             </div>
                         </div>
-                    </div>
-                    <div
-                        class="w-full border-y grid grid-cols-1 sm:flex sm:h-14 "
-                    >
-                    {#each teamData.links as link}
-                    <Separator orientation="vertical" />
-                    
-                        <div
-                            class=" sm:w-1/4 h-9 h-full flex gap-2 items-center hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/30 sm:rounded-tr-none px-2 py-2 transition-all"
-                        >
-                            <div
-                                class="w-8 h-8 bg-zinc-200 dark:bg-muted/90 flex items-center justify-center rounded-lg"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"
-                                    ><path
-                                        stroke="none"
-                                        d="M0 0h24v24H0z"
-                                        fill="none"
-                                    /><path
-                                        d="M4 4l11.733 16h4.267l-11.733 -16z"
-                                    /><path
-                                        d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"
-                                    /></svg
-                                >
-                            </div>
-                            <div class="flex flex-col justify-center">
-                                <div class="text-sm font-medium">{link.name}</div>
-                                <div
-                                    class="text-[10px] text-zinc-600 dark:text-zinc-400"
-                                >
-                                    Open
-                                </div>
-                            </div>
-                        </div>
-                        <Separator orientation="vertical" />
-                        {/each}
-
-                        
                     </div>
 
                     <div class="w-full flex flex-col gap-2">
@@ -410,7 +394,9 @@
                                         /></svg
                                     >
                                     <div class="flex flex-col items-center">
-                                        <div class="text-sm">{teamData.createdAt}</div>
+                                        <div class="text-sm">
+                                            {teamData.createdAt}
+                                        </div>
                                         <div
                                             class="text-xs text-zinc-600 dark:text-zinc-400"
                                         >
@@ -441,7 +427,9 @@
                                         /><path d="M5 12l5 5l10 -10" /></svg
                                     >
                                     <div class="flex flex-col items-center">
-                                        <div class="text-sm">{teamData.firstProjectDate}</div>
+                                        <div class="text-sm">
+                                            {teamData.firstProjectDate}
+                                        </div>
                                         <div
                                             class="text-xs text-zinc-600 dark:text-zinc-400"
                                         >
@@ -480,7 +468,9 @@
                                         /></svg
                                     >
                                     <div class="flex flex-col items-center">
-                                        <div class="text-sm">{teamData.firstProjectName}</div>
+                                        <div class="text-sm">
+                                            {teamData.firstProjectName}
+                                        </div>
                                         <div
                                             class="text-xs text-zinc-600 dark:text-zinc-400"
                                         >
@@ -509,7 +499,9 @@
                             <div
                                 class="w-full row-span-1 p-4 sm:p-0 bg-zinc-100 border dark:bg-muted/30 rounded-xl flex flex-col items-center justify-center"
                             >
-                                <div class="text-2xl font-medium">{teamData.totalProjectCount}</div>
+                                <div class="text-2xl font-medium">
+                                    {teamData.totalProjectCount}
+                                </div>
                                 <div
                                     class="text-sm text-zinc-600 dark:text-zinc-400"
                                 >
@@ -528,44 +520,42 @@
                                     >
                                         Latest projects
                                     </div>
-                                    <div
-                                        class="flex flex-col w-full"
-                                    >
-                                    <Separator />
-                                    {#each teamData.latestProjects as project}
-                                        
-                                        <div
-                                            class="w-full border-b min-h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 px-2 transition-all flex gap-3 justify-between items-center"
-                                        >
+                                    <div class="flex flex-col w-full">
+                                        <Separator />
+                                        {#each teamData.latestProjects as project}
                                             <div
-                                                class="flex gap-3 items-center"
+                                                class="w-full border-b min-h-14 hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 px-2 transition-all flex gap-3 justify-between items-center"
                                             >
                                                 <div
-                                                    class="w-9 h-9 bg-emerald-500/80 rounded-lg"
-                                                ></div>
-                                                <div
-                                                    class="flex flex-col justify-center"
+                                                    class="flex gap-3 items-center"
                                                 >
                                                     <div
-                                                        class="text-sm font-medium"
-                                                    >
-                                                        {project.projectName}
-                                                    </div>
+                                                        class="w-9 h-9 bg-blue-500/80 rounded-lg"
+                                                    ></div>
                                                     <div
-                                                        class="text-[11px] text-zinc-600 dark:text-zinc-400"
+                                                        class="flex flex-col justify-center"
                                                     >
-                                                        {project.projectType}
+                                                        <div
+                                                            class="text-sm font-medium"
+                                                        >
+                                                            {project.projectName}
+                                                        </div>
+                                                        <div
+                                                            class="text-[11px] text-zinc-600 dark:text-zinc-400"
+                                                        >
+                                                            {project.projectType}
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div
+                                                    class="flex justify-center items-center"
+                                                >
+                                                    <ExternalLink
+                                                        class="w-4 h-4"
+                                                    />
+                                                </div>
                                             </div>
-                                            <div
-                                                class="flex justify-center items-center"
-                                            >
-                                                <ExternalLink class="w-4 h-4" />
-                                            </div>
-                                        </div>
                                         {/each}
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -586,37 +576,36 @@
                             <div
                                 class="flex flex-col w-full h-full max-h-[400px] overflow-y-scroll"
                             >
-                            {#each activeUsers as member}
-                                
-                            
-                                <div
-                                    class="w-full min-h-14 border-b hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 px-2 transition-all flex gap-3 justify-between items-center"
-                                >
-                                    <div class="flex gap-3 items-center">
-                                        <div
-                                            class="w-9 h-9 bg-emerald-500/80 rounded-lg"
-                                        ></div>
-                                        <div
-                                            class="flex flex-col justify-center"
-                                        >
-                                            <div class="text-sm font-medium">
-                                                {member.userName}
-                                            </div>
+                                {#each activeUsers as member}
+                                    <div
+                                        class="w-full min-h-14 border-b hover:cursor-pointer hover:bg-zinc-200 dark:hover:bg-muted/40 px-2 transition-all flex gap-3 justify-between items-center"
+                                    >
+                                        <div class="flex gap-3 items-center">
                                             <div
-                                                class="text-[11px] text-zinc-600 dark:text-zinc-400"
+                                                class="w-9 h-9 bg-blue-500/80 rounded-lg"
+                                            ></div>
+                                            <div
+                                                class="flex flex-col justify-center"
                                             >
-                                                {member.teamRole}
+                                                <div
+                                                    class="text-sm font-medium"
+                                                >
+                                                    {member.userName}
+                                                </div>
+                                                <div
+                                                    class="text-[11px] text-zinc-600 dark:text-zinc-400"
+                                                >
+                                                    {member.teamRole}
+                                                </div>
                                             </div>
                                         </div>
+                                        <div
+                                            class="flex justify-center items-center"
+                                        >
+                                            <ExternalLink class="w-4 h-4" />
+                                        </div>
                                     </div>
-                                    <div
-                                        class="flex justify-center items-center"
-                                    >
-                                        <ExternalLink class="w-4 h-4" />
-                                    </div>
-                                </div>
                                 {/each}
-                                
                             </div>
                         </div>
                     </div>
