@@ -14,11 +14,14 @@
 <div class="w-full px-2 sm:px-0">
     <Navbar></Navbar>
 
-    <section class="w-full flex flex-col items-center pt-2 gap-8">
+    <section class="w-full flex flex-col items-center ">
         <Hero/>
-        <Stats/>
         <Gettingstarted/>
         <Features/>
+        <Stats/>
+        
+        
+        
         <Howitworks />
     </section>
 </div>

@@ -1,7 +1,7 @@
 <script>
     import Animatedtext from "$lib/components/animatedtext.svelte";
     import { cn } from "$lib/utils";
-    import { Link, Github } from "lucide-svelte";
+    import { Link, Github, ScanFace, ArrowRight } from "lucide-svelte";
     import * as Form from "$lib/components/ui/form";
     import { enhance } from "$app/forms";
     import { Input } from "$lib/components/ui/input";
@@ -19,14 +19,20 @@
         <div class="w-full flex flex-col gap-4 items-center">
             <div
                 class={cn(
-                    "group mx-auto rounded-md w-fit border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-zinc-200 dark:border-white/5 dark:bg-zinc-900 dark:hover:bg-zinc-800",
+                    "group  rounded-lg w-fit border border-sky-500/50 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-zinc-200 dark:border-white/5 dark:bg-sky-900 dark:hover:bg-sky-800",
                 )}
             >
                 <Animatedtext
-                    class=" inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-zinc-600 hover:duration-600 hover:dark:text-zinc-400 flex gap-1 text-sm"
+                    class=" inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-sky-600 hover:duration-600 hover:dark:text-sky-400 flex gap-1 text-sm"
                 >
-                    <Link class="w-4 h-4" />
-                    Collabug v1.0
+                    <ScanFace class="w-4 h-4 " />
+                    <div class="flex gap-2 text-xs">
+                        <div class="font-medium">New </div>
+                        <div class="">-</div>
+                        <div class="flex items-center gap-0.5">
+                            Introducing DevFlow <ArrowRight class="w-4 h-4" />
+                        </div>
+                    </div>
                 </Animatedtext>
             </div>
             <div class="flex flex-col gap-2">
@@ -117,7 +123,7 @@
                 </div>
 
                 <Button
-                    class="transition-all bg-zinc-900 dark:bg-zinc-200 text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-300 rounded-lg p-2 pt-4 pb-4 transition-all"
+                    class="transition-all bg-zinc-900 dark:bg-sky-400 text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-sky-500 rounded-lg p-2 pt-4 pb-4 transition-all"
                     type="submit">Create Account</Button
                 >
             </form>

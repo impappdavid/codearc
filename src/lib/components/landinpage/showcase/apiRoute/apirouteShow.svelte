@@ -1,6 +1,5 @@
 <script>
     import { Pencil, Route } from "lucide-svelte";
-    import Separator from "../ui/separator/separator.svelte";
     import { Button, buttonVariants } from "$lib/components/ui/button";
     const data = [
         {
@@ -218,7 +217,7 @@
     content="width=device-width, initial-scale=1, user-scalable=no"
 />
 
-<div class="grid md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-6 gap-2">
+<div class="grid md:grid-cols-3 gap-2">
     {#if searchdata.length > 0}
     {#if filteredRows.length > 0}
         {#each filteredRows as route}

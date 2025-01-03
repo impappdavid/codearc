@@ -6,7 +6,7 @@
     export { className as class };
   </script>
   
-  <p
+  <span
     style:--shimmer-width="{shimmerWidth}px"
     class={cn(
       " max-w-md text-zinc-600/50 dark:text-zinc-300/50 ",
@@ -21,4 +21,4 @@
     )}
   >
     <slot>Shimmer Animation</slot>
-  </p>
+  </span>

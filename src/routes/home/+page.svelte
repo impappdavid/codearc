@@ -413,7 +413,7 @@
 							<Sheet.Footer class="">
 								<div class="w-full">
 									<Button
-										class="h-9 w-full dark:bg-zinc-950 text-white dark:hover:bg-zinc-950/80 rounded-xl"
+										class="h-9 w-full dark:bg-sky-400 text-black dark:hover:bg-sky-500 rounded-xl"
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
