@@ -35,7 +35,6 @@
 			interactionNumber: 45,
 			type: "bg-green-500/40",
 			rank: "silver",
-
 		},
 		{
 			week: 2,
@@ -345,6 +344,7 @@
 			rank: "none",
 		},
 	];
+	import { toggleMode } from "mode-watcher";
 </script>
 
 <Sidebar.Provider>
@@ -444,7 +444,7 @@
 				<DropdownMenu.Root>
 					<DropdownMenu.Trigger class="flex items-center gap-2 ">
 						<div
-							class="w-8 h-8 bg-blue-500 rounded-lg flex justify-center items-center"
+							class="w-8 h-8 bg-orange-500 rounded-lg flex justify-center text-white dark:text-black items-center"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -486,25 +486,14 @@
 								<User class="w-4 h-4" />
 								Profile
 							</DropdownMenu.Item>
-							<Dialog.Root>
-								<Dialog.Trigger class="w-full outline-none">
-									<DropdownMenu.Item
-										class="rounded-lg hover:cursor-pointer"
-									>
-										<Palette class="w-4 h-4" />
-										Theme
-									</DropdownMenu.Item>
-								</Dialog.Trigger>
-								<Dialog.Content
-									class="rounded-xl bg-zinc-200 dark:bg-zinc-900 flex flex-col gap-4"
-								>
-									<Dialog.Header>
-										<Dialog.Title>Theme select</Dialog.Title
-										>
-									</Dialog.Header>
-									<Modetoggle />
-								</Dialog.Content>
-							</Dialog.Root>
+
+							<DropdownMenu.Item
+								class="rounded-lg hover:cursor-pointer"
+								onclick={toggleMode}
+							>
+								<Palette class="w-4 h-4"/>
+								Toggle mode
+							</DropdownMenu.Item>
 
 							<DropdownMenuSeparator />
 
@@ -692,42 +681,42 @@
 									side="bottom"
 								>
 									<div class="flex gap-1 items-center">
-										<div class="w-3 h-3 bg-green-500 rounded-sm">
-									
-										</div>
+										<div
+											class="w-3 h-3 bg-green-500 rounded-sm"
+										></div>
 
 										<div class="text-sm text-zinc-400">
 											120+
 										</div>
 									</div>
 									<div class="flex gap-1 items-center">
-										<div class="w-3 h-3 bg-green-500/80 rounded-sm">
-									
-										</div>
+										<div
+											class="w-3 h-3 bg-green-500/80 rounded-sm"
+										></div>
 										<div class="text-sm text-zinc-400">
 											90 - 120
 										</div>
 									</div>
 									<div class="flex gap-1 items-center">
-										<div class="w-3 h-3 bg-green-500/60 rounded-sm">
-									
-										</div>
+										<div
+											class="w-3 h-3 bg-green-500/60 rounded-sm"
+										></div>
 										<div class="text-sm text-zinc-400">
 											60 - 90
 										</div>
 									</div>
 									<div class="flex gap-1 items-center">
-										<div class="w-3 h-3 bg-green-500/40 rounded-sm">
-									
-										</div>
+										<div
+											class="w-3 h-3 bg-green-500/40 rounded-sm"
+										></div>
 										<div class="text-sm text-zinc-400">
 											30 - 60
 										</div>
 									</div>
 									<div class="flex gap-1 items-center">
-										<div class="w-3 h-3 bg-green-500/20 rounded-sm">
-									
-										</div>
+										<div
+											class="w-3 h-3 bg-green-500/20 rounded-sm"
+										></div>
 										<div class="text-sm text-zinc-400">
 											0 - 30
 										</div>
@@ -771,24 +760,33 @@
 					</div>
 					<div class="p-2 flex flex-wrap gap-2">
 						{#each datas as data}
-						<HoverCard.Root>
-							<HoverCard.Trigger>
-								<div class="w-3 h-3 {data.type} rounded-sm">
-									
-								</div>
-							</HoverCard.Trigger>
-							<HoverCard.Content
-								class="w-fit bg-zinc-900/70 backdrop-blur-lg rounded-xl"
-								side="bottom"
-							>
-								<div class="flex flex-col gap-1 justify-center">
-									<div class="text-sm">Week {data.week}</div>
-									<div class="text-xl text-green-500 font-medium">{data.interactionNumber}</div>
-									<div class="text-xs text-zinc-400">Interaction</div>
-								</div>
-								
-							</HoverCard.Content>
-						</HoverCard.Root>
+							<HoverCard.Root>
+								<HoverCard.Trigger>
+									<div
+										class="w-3 h-3 {data.type} rounded-sm"
+									></div>
+								</HoverCard.Trigger>
+								<HoverCard.Content
+									class="w-fit bg-zinc-900/70 backdrop-blur-lg rounded-xl"
+									side="bottom"
+								>
+									<div
+										class="flex flex-col gap-1 justify-center"
+									>
+										<div class="text-sm">
+											Week {data.week}
+										</div>
+										<div
+											class="text-xl text-green-500 font-medium"
+										>
+											{data.interactionNumber}
+										</div>
+										<div class="text-xs text-zinc-400">
+											Interaction
+										</div>
+									</div>
+								</HoverCard.Content>
+							</HoverCard.Root>
 						{/each}
 					</div>
 					<div class="text-xs text-zinc-600 dark:text-zinc-400">

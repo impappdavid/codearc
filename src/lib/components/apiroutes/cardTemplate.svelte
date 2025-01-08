@@ -241,7 +241,7 @@
                                 >
                                     {route.action}
                                 </div>
-                                <div class="text-sm font-medium">
+                                <div class="text-sm font-medium text-white dark:text-black">
                                     {route.route}
                                 </div>
                             </div>
@@ -297,7 +297,7 @@
                     <div class="flex flex-col gap-1">
                         <div class="text-xs">Request body</div>
                         <div
-                            class="flex flex-col justify-center gap-0.5 w-full h-fit border bg-zinc-900 p-1 rounded-lg text-xs"
+                            class="flex flex-col justify-center gap-0.5 w-full h-fit border bg-zinc-200 dark:bg-zinc-900 p-1 rounded-lg text-xs"
                         >
                             <div class="">&nbsp; &#123;</div>
                             {#each route.requestBody as req}
@@ -312,7 +312,7 @@
                     <div class="flex flex-col gap-1">
                         <div class="text-xs">Response</div>
                         <div
-                            class="flex flex-col justify-center gap-0.5 w-full h-fit border bg-zinc-900 p-1 rounded-lg text-xs"
+                            class="flex flex-col justify-center gap-0.5 w-full h-fit border bg-zinc-200 dark:bg-zinc-900 p-1 rounded-lg text-xs"
                         >
                             <div class="">&nbsp; &#123;</div>
                             {#each route.responseBody as resp}
@@ -351,7 +351,7 @@
                                     >
                                         {route.action}
                                     </div>
-                                    <div class="text-sm font-medium">
+                                    <div class="text-sm font-medium text-white dark:text-black">
                                         {route.route}
                                     </div>
                                 </div>
@@ -407,7 +407,7 @@
                         <div class="flex flex-col gap-1">
                             <div class="text-xs">Request body</div>
                             <div
-                                class="flex flex-col justify-center gap-0.5 w-full h-fit border bg-zinc-900 p-1 rounded-lg text-xs"
+                                class="flex flex-col justify-center gap-0.5 w-full h-fit border bg-zinc-200 dark:bg-zinc-900 p-1 rounded-lg text-xs"
                             >
                                 <div class="">&nbsp; &#123;</div>
                                 {#each route.requestBody as req}
@@ -422,7 +422,7 @@
                         <div class="flex flex-col gap-1">
                             <div class="text-xs">Response</div>
                             <div
-                                class="flex flex-col justify-center gap-0.5 w-full h-fit border bg-zinc-900 p-1 rounded-lg text-xs"
+                                class="flex flex-col justify-center gap-0.5 w-full h-fit border bg-zinc-200 dark:bg-zinc-900 p-1 rounded-lg text-xs"
                             >
                                 <div class="">&nbsp; &#123;</div>
                                 {#each route.responseBody as resp}

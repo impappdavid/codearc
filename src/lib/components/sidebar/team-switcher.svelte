@@ -24,9 +24,9 @@
 						class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground rounded-xl border transition-all hover:bg-zinc-950/20"
 					>
 						<div
-							class="bg-blue-500 text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
+							class="bg-orange-500 text-sidebar-primary-foreground  flex aspect-square size-8 items-center justify-center rounded-lg"
 						>
-							<activeTeam.logo class="size-4" />
+							<activeTeam.logo class="size-4 text-white dark:text-black" />
 						</div>
 						<div class="grid flex-1 text-left text-sm leading-tight">
 							<span class="truncate font-semibold">
