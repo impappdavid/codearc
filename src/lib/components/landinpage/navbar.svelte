@@ -3,26 +3,8 @@
 </script>
 
 <div class="w-full flex-col justify-center sticky top-5 z-50">
-    <div class="flex items-center px-4 sm:px-12 lg:px-24 justify-between w-full">
-        <div class="w-full">
-            <a
-                href="./"
-                class="w-fit p-1 dark:text-white flex gap-1 font-bold text-lg items-center transition-all dark:hover:text-orange-400"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                >
-                    <path
-                        fill="#f97316"
-                        d="m23.414 12l-4.95-4.95l-1.414 1.414L20.586 12l-2.5 2.501l1.415 1.414zm-2 8L4 2.587L2.586 4.001l3 3l-5 5l4.95 4.949l1.414-1.414L3.414 12L7 8.415l13 13z"
-                    />
-                </svg>
-                CodeArc
-            </a>
-        </div>
+    <div class="flex items-center px-4 sm:px-12 lg:px-24 justify-center w-full">
+        
         <div
             class="w-fit hidden lg:flex gap-6 bg-zinc-100/70 dark:bg-zinc-900/70 backdrop-blur-md p-1.5 px-2 rounded-full border"
         >
@@ -79,7 +61,7 @@
             </a>
             <div class="flex gap-1.5 items-center">
                 <div
-                    class="w-fit min-w-max px-2 h-7 bg-zinc-100/90 dark:bg-zinc-900/90 rounded-full flex justify-center gap-0.5 items-center border text-xs text-orange-500 opacity-60 hover:opacity-100 hover:cursor-pointer transition-all"
+                    class="w-fit min-w-max px-2 h-7 bg-zinc-100/90 dark:bg-zinc-900/90 rounded-full flex justify-center gap-0.5 items-center border text-xs text-white opacity-60 hover:opacity-100 hover:cursor-pointer transition-all"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -100,13 +82,6 @@
                 </div>
             </div>
         </div>
-        <div class="w-full py-3 px-2 flex justify-end items-center gap-2">
-            <a
-                href="/login"
-                class="tracking-wide bg-zinc-950 dark:bg-white backdrop-blur-sm border flex hover:bg-zinc-950/80 dark:hover:bg-white/80 text-white dark:text-black items-center px-4 py-1.5 text-sm lg:text-md rounded-full transition-all"
-            >
-                Get started</a
-            >
-        </div>
+       
     </div>
 </div>
